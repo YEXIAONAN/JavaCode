@@ -13,5 +13,25 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+    <plugin>
+        <groupId>pl.tkowalczuk</groupId>
+        <artifactId>maven-launch4j-plugin</artifactId>
+        <version>2.4.0</version>
+        <executions>
+            <execution>
+                <goals>
+                    <goal>launch4j</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <outputFile>${project.build.directory}/${project.artifactId}.exe</outputFile>
+            <jar>${project.build.directory}/${project.build.finalName}.jar</jar>
+            <mainClass>org.yexiaonan.DutyRosterGUI</mainClass>
+        </configuration>
+    </plugin>
+
+
+
 
 </project>
