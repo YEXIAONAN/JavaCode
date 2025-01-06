@@ -19,7 +19,8 @@ public class Array {
             double[] arr6 = {178.7, 168.5, 177.6, 165.8};
 
             int[] arr7 = {11,22,33,44};
-        System.out.println(Arrays.toString(arr3));
-        System.out.println(arr7);
+
+
+
     }
 }
