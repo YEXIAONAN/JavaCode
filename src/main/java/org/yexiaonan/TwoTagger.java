@@ -1,3 +1,5 @@
+package org.yexiaonan;
+
 import java.util.Scanner;
 
 public class TwoTagger {
