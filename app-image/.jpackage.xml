@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://javafxpackager.oracle.com">
+    <name>DutyRosterApp</name>
+    <main-jar>DutyRosterApp.jar</main-jar>
+    <main-class>org.project.DutyRosterApp</main-class>
+    <icon>icon.png</icon> <!-- 如果有图标，可以指定 -->
+</application>
