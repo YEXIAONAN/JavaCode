@@ -15,10 +15,10 @@ import java.util.TimeZone;
 public class DutyRosterApp {
 
     private static final String[] dutyStudents = {
-            "xxx", "xxx", "xxx", "xxx",
-            "xxx", "xxx", "xxx", "xxx",
-            "xxx", "xxx", "xxx", "xxx",
-            "xxx"
+            "梁文龙", "林远喜", "廖世鑫", "农光浩",
+            "潘润根", "黄正宇", "周朝双", "林李想",
+            "叶小楠", "黄显套", "吴光鑫", "农秋峰",
+            "程语兴"
     };
     private static int currentIndex = 0; // 假设今天是xxx值日，根据数组索引调整
     private static JLabel currentDutyLabel;
