@@ -3,4 +3,12 @@
 
 
 
-You can in there see my how to Leaning to Java 
+I am a secondary vocational student, and this is the code I use to learn the Java programming language. Here, you can see everything I have learned.
+
+
+
+----
+
+
+
+![1736735138621.png](https://www.helloimg.com/i/2025/01/13/678478e76a4dc.png)
