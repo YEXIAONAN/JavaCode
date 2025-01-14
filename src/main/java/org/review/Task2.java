@@ -1,0 +1,7 @@
+package org.review;
+
+public class Task2 {
+    public static void main(String[] args) {
+
+    }
+}
