@@ -1,4 +1,4 @@
-package org.packeg;
+package org.yexiaonan;
 
 public class MainEnter {
     private String name;
