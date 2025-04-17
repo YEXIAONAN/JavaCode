@@ -9,21 +9,17 @@ import java.net.UnknownHostException;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.swing.border.EmptyBorder;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
+import javax.swing.border.EmptyBorder;
 
 public class SignInSystemGUI extends JFrame {
 
-    // 口令
     private static final String PASSWORD = "104";
-
-    // MySQL 配置
     private static final String DB_URL = "jdbc:mysql://172.16.7.70:3306/sign_in_system?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "123456";  // 请替换成你的密码
+    private static final String DB_PASSWORD = "123456";
 
-    // 定义授权用户列表
     private static final Set<String> authorizedUsers = new HashSet<>();
     static {
         authorizedUsers.add("yexiaonan");
@@ -41,21 +37,19 @@ public class SignInSystemGUI extends JFrame {
 
     public SignInSystemGUI() {
         setTitle("大数据 - 签到系统");
-        setSize(800, 450);  // 增大界面尺寸
+        setSize(800, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
-        // 设置字体
         Font titleFont = new Font("Microsoft YaHei", Font.BOLD, 24);
         Font labelFont = new Font("Microsoft YaHei", Font.PLAIN, 18);
 
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(new Color(0xF4F4F4));  // 浅灰色背景
-        panel.setBorder(new EmptyBorder(20, 60, 20, 60));  // 增大边距
+        panel.setBackground(new Color(0xF4F4F4));
+        panel.setBorder(new EmptyBorder(20, 60, 20, 60));
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(15, 15, 15, 15);  // 增大组件间距
+        gbc.insets = new Insets(15, 15, 15, 15);
 
-        // 标题
         JLabel titleLabel = new JLabel("欢迎使用大数据 - 签到系统");
         titleLabel.setFont(titleFont);
         titleLabel.setForeground(new Color(0x0077CC));
@@ -64,14 +58,12 @@ public class SignInSystemGUI extends JFrame {
         gbc.gridwidth = 2;
         panel.add(titleLabel, gbc);
 
-        // 当前时间显示
         timeLabel = new JLabel();
         timeLabel.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
         timeLabel.setForeground(Color.GRAY);
         gbc.gridy = 1;
         panel.add(timeLabel, gbc);
 
-        // 姓名标签和输入框
         gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.LINE_START;
         gbc.gridy = 2;
@@ -81,11 +73,10 @@ public class SignInSystemGUI extends JFrame {
         panel.add(nameLabel, gbc);
 
         gbc.gridx = 1;
-        nameField = new JTextField(25);  // 增大输入框宽度
+        nameField = new JTextField(25);
         nameField.setFont(labelFont);
         panel.add(nameField, gbc);
 
-        // 口令标签和输入框
         gbc.gridy = 3;
         gbc.gridx = 0;
         JLabel passwordLabel = new JLabel("请输入口令:");
@@ -93,11 +84,10 @@ public class SignInSystemGUI extends JFrame {
         panel.add(passwordLabel, gbc);
 
         gbc.gridx = 1;
-        passwordField = new JTextField(25);  // 增大输入框宽度
+        passwordField = new JTextField(25);
         passwordField.setFont(labelFont);
         panel.add(passwordField, gbc);
 
-        // 签到按钮
         gbc.gridy = 4;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
@@ -106,10 +96,9 @@ public class SignInSystemGUI extends JFrame {
         signInButton.setBackground(new Color(0x22BB55));
         signInButton.setForeground(Color.WHITE);
         signInButton.setFocusPainted(false);
-        signInButton.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));  // 增大字体
+        signInButton.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));
         panel.add(signInButton, gbc);
 
-        // 消息标签
         gbc.gridy = 5;
         messageLabel = new JLabel(" ");
         messageLabel.setFont(labelFont);
@@ -117,7 +106,6 @@ public class SignInSystemGUI extends JFrame {
 
         signInButton.addActionListener(new SignInButtonListener());
 
-        // 更新时间显示
         Timer timer = new Timer(1000, e -> updateTime());
         timer.start();
         updateTime();
@@ -127,7 +115,7 @@ public class SignInSystemGUI extends JFrame {
 
     private void updateTime() {
         String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        timeLabel.setText("当前时间： " + currentTime);
+        timeLabel.setText("当前时间（本地）： " + currentTime);
     }
 
     private class SignInButtonListener implements ActionListener {
@@ -146,7 +134,6 @@ public class SignInSystemGUI extends JFrame {
                 return;
             }
 
-            // 检查用户是否在授权用户列表中
             if (!authorizedUsers.contains(name)) {
                 showMessage("你没有权限签到！", Color.RED);
                 return;
@@ -162,44 +149,52 @@ public class SignInSystemGUI extends JFrame {
     }
 
     private void signIn(String name) {
-        String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-        String signInTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
-        String ipAddress = getClientIpAddress();  // 获取IP地址
-
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            // 动态创建表格：表名使用日期，如 sign_ins_2025_04_17
+            // 使用服务器时间（NOW()）
+            String serverTimeQuery = "SELECT NOW(), CURDATE()";
+            String signInTime, currentDate;
+            try (Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(serverTimeQuery)) {
+                if (rs.next()) {
+                    signInTime = rs.getString(1); // NOW()
+                    currentDate = rs.getString(2); // CURDATE()
+                } else {
+                    showMessage("无法获取服务器时间", Color.RED);
+                    return;
+                }
+            }
+
+            String tableName = "sign_ins_" + currentDate.replace("-", "_");
             String createTableQuery = String.format(
-                    "CREATE TABLE IF NOT EXISTS `sign_ins_%s` (" +
+                    "CREATE TABLE IF NOT EXISTS `%s` (" +
                             "id INT AUTO_INCREMENT PRIMARY KEY," +
                             "name VARCHAR(255)," +
                             "sign_in_time DATETIME," +
                             "ip_address VARCHAR(50)," +
-                            "sign_in_date DATE" +
-                            ")", currentDate.replace("-", "_"));
+                            "sign_in_date DATE)", tableName);
 
             try (Statement stmt = conn.createStatement()) {
                 stmt.executeUpdate(createTableQuery);
             }
 
-            // 检查今天该用户签到次数
-            String checkCountQuery = "SELECT COUNT(*) FROM `sign_ins_" + currentDate.replace("-", "_") + "` WHERE name = ? AND sign_in_date = ?";
-            try (PreparedStatement stmt = conn.prepareStatement(checkCountQuery)) {
-                stmt.setString(1, name);
-                stmt.setString(2, currentDate);
-                ResultSet rs = stmt.executeQuery();
-                if (rs.next() && rs.getInt(1) >= 2) {
-                    showMessage("每天最多只能签到两次！", Color.RED);
-                    return;
+            // 限制每天每人最多2次
+            String checkQuery = "SELECT COUNT(*) FROM `" + tableName + "` WHERE name = ?";
+            try (PreparedStatement checkStmt = conn.prepareStatement(checkQuery)) {
+                checkStmt.setString(1, name);
+                try (ResultSet rs = checkStmt.executeQuery()) {
+                    if (rs.next() && rs.getInt(1) >= 2) {
+                        showMessage("今日已签到两次，无法再次签到！", Color.RED);
+                        return;
+                    }
                 }
             }
 
-            // 插入签到记录
-            String insertQuery = "INSERT INTO `sign_ins_" + currentDate.replace("-", "_") + "` (name, sign_in_time, ip_address, sign_in_date) VALUES (?, ?, ?, ?)";
+            String ipAddress = getClientIpAddress();
+            String insertQuery = "INSERT INTO `" + tableName + "` (name, sign_in_time, ip_address, sign_in_date) VALUES (?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
                 stmt.setString(1, name);
                 stmt.setString(2, signInTime);
-                stmt.setString(3, ipAddress);  // 设置IP地址
-                stmt.setString(4, currentDate);  // 设置当天日期
+                stmt.setString(3, ipAddress);
+                stmt.setString(4, currentDate);
                 stmt.executeUpdate();
 
                 showMessage("签到成功！" + name + " 于 " + signInTime + "，IP: " + ipAddress, new Color(0x007744));
@@ -212,12 +207,10 @@ public class SignInSystemGUI extends JFrame {
 
     private String getClientIpAddress() {
         try {
-            // 获取本地机器的 IP 地址
             InetAddress localHost = InetAddress.getLocalHost();
-            return localHost.getHostAddress();  // 获取本机 IP 地址
+            return localHost.getHostAddress();
         } catch (UnknownHostException e) {
-            e.printStackTrace();
-            return "无法获取IP";  // 如果获取失败，返回一个错误信息
+            return "无法获取IP";
         }
     }
 
