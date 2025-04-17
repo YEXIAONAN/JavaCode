@@ -50,7 +50,8 @@ public class SignInSystemGUI extends JFrame {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(15, 15, 15, 15);
 
-        JLabel titleLabel = new JLabel("欢迎使用大数据 - 签到系统");
+        JLabel titleLabel = new JLabel("欢迎使用 \n 大数据 - 签到系统");
+
         titleLabel.setFont(titleFont);
         titleLabel.setForeground(new Color(0x0077CC));
         gbc.gridx = 0;
