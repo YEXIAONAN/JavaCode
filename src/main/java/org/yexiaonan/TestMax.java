@@ -9,13 +9,25 @@ public class TestMax {
 
     }
 
-    public static int max(int sum1,int sum2){
+    /**
+     * 比较两个整数的大小，返回其中的最大值。
+     * 
+     * @param sum1 第一个整数
+     * @param sum2 第二个整数
+     * @return 两个整数中的最大值
+     */
+    public static int max(int sum1, int sum2) {
+        // 用于存储比较结果的变量
         int result;
-        if (sum1 > sum2){
+        // 判断 sum1 是否大于 sum2
+        if (sum1 > sum2) {
+            // 如果 sum1 大于 sum2，则将 sum1 赋值给 result
             result = sum1;
-        }else {
+        } else {
+            // 否则，将 sum2 赋值给 result
             result = sum2;
         }
+        // 返回比较结果
         return result;
     }
 }
