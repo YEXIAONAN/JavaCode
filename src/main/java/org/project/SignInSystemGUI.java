@@ -21,7 +21,7 @@ public class SignInSystemGUI extends JFrame {
     // MySQL 配置
     private static final String DB_URL = "jdbc:mysql://172.16.7.70:3306/sign_in_system?useSSL=false&serverTimezone=UTC";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "123456";  // <- 请替换成你的密码
+    private static final String DB_PASSWORD = "123456";  // 请替换成你的密码
 
     // 定义授权用户列表
     private static final Set<String> authorizedUsers = new HashSet<>();
@@ -41,19 +41,19 @@ public class SignInSystemGUI extends JFrame {
 
     public SignInSystemGUI() {
         setTitle("大数据 - 签到系统");
-        setSize(600, 350);
+        setSize(800, 450);  // 增大界面尺寸
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
         // 设置字体
-        Font titleFont = new Font("Microsoft YaHei", Font.BOLD, 20);
-        Font labelFont = new Font("Microsoft YaHei", Font.PLAIN, 16);
+        Font titleFont = new Font("Microsoft YaHei", Font.BOLD, 24);
+        Font labelFont = new Font("Microsoft YaHei", Font.PLAIN, 18);
 
         JPanel panel = new JPanel(new GridBagLayout());
-        panel.setBackground(Color.WHITE);
-        panel.setBorder(new EmptyBorder(20, 40, 20, 40));
+        panel.setBackground(new Color(0xF4F4F4));  // 浅灰色背景
+        panel.setBorder(new EmptyBorder(20, 60, 20, 60));  // 增大边距
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.insets = new Insets(15, 15, 15, 15);  // 增大组件间距
 
         // 标题
         JLabel titleLabel = new JLabel("欢迎使用大数据 - 签到系统");
@@ -66,7 +66,7 @@ public class SignInSystemGUI extends JFrame {
 
         // 当前时间显示
         timeLabel = new JLabel();
-        timeLabel.setFont(new Font("Microsoft YaHei", Font.PLAIN, 14));
+        timeLabel.setFont(new Font("Microsoft YaHei", Font.PLAIN, 16));
         timeLabel.setForeground(Color.GRAY);
         gbc.gridy = 1;
         panel.add(timeLabel, gbc);
@@ -81,7 +81,8 @@ public class SignInSystemGUI extends JFrame {
         panel.add(nameLabel, gbc);
 
         gbc.gridx = 1;
-        nameField = new JTextField(20);
+        nameField = new JTextField(25);  // 增大输入框宽度
+        nameField.setFont(labelFont);
         panel.add(nameField, gbc);
 
         // 口令标签和输入框
@@ -92,7 +93,8 @@ public class SignInSystemGUI extends JFrame {
         panel.add(passwordLabel, gbc);
 
         gbc.gridx = 1;
-        passwordField = new JTextField(20);
+        passwordField = new JTextField(25);  // 增大输入框宽度
+        passwordField.setFont(labelFont);
         panel.add(passwordField, gbc);
 
         // 签到按钮
@@ -104,7 +106,7 @@ public class SignInSystemGUI extends JFrame {
         signInButton.setBackground(new Color(0x22BB55));
         signInButton.setForeground(Color.WHITE);
         signInButton.setFocusPainted(false);
-        signInButton.setFont(new Font("Microsoft YaHei", Font.BOLD, 14));
+        signInButton.setFont(new Font("Microsoft YaHei", Font.BOLD, 18));  // 增大字体
         panel.add(signInButton, gbc);
 
         // 消息标签
@@ -160,34 +162,50 @@ public class SignInSystemGUI extends JFrame {
     }
 
     private void signIn(String name) {
+        String currentDate = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
         String signInTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         String ipAddress = getClientIpAddress();  // 获取IP地址
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-             PreparedStatement stmt = conn.prepareStatement("INSERT INTO sign_ins (name, sign_in_time, ip_address) VALUES (?, ?, ?)")) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
+            // 检查今天该用户是否已签到两次
+            String countQuery = "SELECT COUNT(*) FROM sign_ins WHERE name = ? AND sign_in_date = ?";
+            try (PreparedStatement countStmt = conn.prepareStatement(countQuery)) {
+                countStmt.setString(1, name);
+                countStmt.setString(2, currentDate);
+                ResultSet rs = countStmt.executeQuery();
+                if (rs.next() && rs.getInt(1) >= 2) {
+                    showMessage("今天你已经打卡两次了，不能再签到！", Color.RED);
+                    return;
+                }
+            }
 
-            stmt.setString(1, name);
-            stmt.setString(2, signInTime);
-            stmt.setString(3, ipAddress);  // 设置IP地址
-            stmt.executeUpdate();
+            // 插入签到记录
+            String insertQuery = "INSERT INTO sign_ins (name, sign_in_time, ip_address, sign_in_date) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
+                stmt.setString(1, name);
+                stmt.setString(2, signInTime);
+                stmt.setString(3, ipAddress);  // 设置IP地址
+                stmt.setString(4, currentDate);  // 设置当天日期
+                stmt.executeUpdate();
 
-            showMessage("签到成功！" + name + " 于 " + signInTime + "，IP: " + ipAddress, new Color(0x007744));
+                showMessage("签到成功！" + name + " 于 " + signInTime + "，IP: " + ipAddress, new Color(0x007744));
+            }
 
         } catch (SQLException e) {
             showMessage("数据库错误：" + e.getMessage(), Color.RED);
         }
     }
 
-private String getClientIpAddress() {
-    try {
-        // 获取本地机器的 IP 地址
-        InetAddress localHost = InetAddress.getLocalHost();
-        return localHost.getHostAddress();  // 获取本机 IP 地址
-    } catch (UnknownHostException e) {
-        e.printStackTrace();
-        return "无法获取IP";  // 如果获取失败，返回一个错误信息
+    private String getClientIpAddress() {
+        try {
+            // 获取本地机器的 IP 地址
+            InetAddress localHost = InetAddress.getLocalHost();
+            return localHost.getHostAddress();  // 获取本机 IP 地址
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+            return "无法获取IP";  // 如果获取失败，返回一个错误信息
+        }
     }
-}
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
