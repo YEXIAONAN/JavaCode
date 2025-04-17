@@ -1,6 +1,5 @@
 package org.yexiaonan;
 
-import java.util.Arrays;
 
 public class ArrayRecover {
     public static void main(String[] args) {
