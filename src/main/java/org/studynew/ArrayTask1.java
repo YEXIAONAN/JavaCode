@@ -1,6 +1,6 @@
 package org.studynew;
 
-import java.lang.reflect.Array;
+// import java.lang.reflect.Array;
 
 public class ArrayTask1 {
     public static void main(String[] args) {
