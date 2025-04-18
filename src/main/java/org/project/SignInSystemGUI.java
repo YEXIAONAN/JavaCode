@@ -167,20 +167,34 @@ public class SignInSystemGUI extends JFrame {
         String ipAddress = getClientIpAddress();  // 获取IP地址
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
-            // 检查今天该用户是否已签到两次
-            String countQuery = "SELECT COUNT(*) FROM sign_ins WHERE name = ? AND sign_in_date = ?";
-            try (PreparedStatement countStmt = conn.prepareStatement(countQuery)) {
-                countStmt.setString(1, name);
-                countStmt.setString(2, currentDate);
-                ResultSet rs = countStmt.executeQuery();
+            // 动态创建表格：表名使用日期，如 sign_ins_2025_04_17
+            String createTableQuery = String.format(
+                    "CREATE TABLE IF NOT EXISTS `sign_ins_%s` (" +
+                            "id INT AUTO_INCREMENT PRIMARY KEY," +
+                            "name VARCHAR(255)," +
+                            "sign_in_time DATETIME," +
+                            "ip_address VARCHAR(50)," +
+                            "sign_in_date DATE" +
+                            ")", currentDate.replace("-", "_"));
+
+            try (Statement stmt = conn.createStatement()) {
+                stmt.executeUpdate(createTableQuery);
+            }
+
+            // 检查今天该用户签到次数
+            String checkCountQuery = "SELECT COUNT(*) FROM `sign_ins_" + currentDate.replace("-", "_") + "` WHERE name = ? AND sign_in_date = ?";
+            try (PreparedStatement stmt = conn.prepareStatement(checkCountQuery)) {
+                stmt.setString(1, name);
+                stmt.setString(2, currentDate);
+                ResultSet rs = stmt.executeQuery();
                 if (rs.next() && rs.getInt(1) >= 2) {
-                    showMessage("今天你已经打卡两次了，不能再签到！", Color.RED);
+                    showMessage("每天最多只能签到两次！", Color.RED);
                     return;
                 }
             }
 
             // 插入签到记录
-            String insertQuery = "INSERT INTO sign_ins (name, sign_in_time, ip_address, sign_in_date) VALUES (?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO `sign_ins_" + currentDate.replace("-", "_") + "` (name, sign_in_time, ip_address, sign_in_date) VALUES (?, ?, ?, ?)";
             try (PreparedStatement stmt = conn.prepareStatement(insertQuery)) {
                 stmt.setString(1, name);
                 stmt.setString(2, signInTime);
