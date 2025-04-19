@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.*;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class ChineseTextFillQuiz {
     private JFrame frame;
     private JPanel panel;
