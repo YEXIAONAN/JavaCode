@@ -5,7 +5,7 @@ import java.net.*;
 
 public class ChatClient {
     // 定义服务器的IP地址和端口号
-    private static final String SERVER_IP = "localhost"; // 服务器IP地址，当前为本地
+    private static final String SERVER_IP = "172.16.7.2"; // 服务器IP地址，当前为本地
     private static final int SERVER_PORT = 12345;        // 服务器端口号
 
     public static void main(String[] args) throws IOException {
