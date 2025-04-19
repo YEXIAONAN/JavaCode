@@ -23,5 +23,9 @@ public class MoviesSit {
         }else {
             System.out.println("票数错误");
         }
+        // 关闭扫描器
+        scanner.close();
+        // 结束程序
+        System.out.println("程序结束");
     }
 }
