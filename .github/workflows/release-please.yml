@@ -1,0 +1,22 @@
+name: Release Please
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Run release-please
+        uses: google-github-actions/release-please-action@v4
+        with:
+          release-type: java
+          package-name: JavaCode
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
