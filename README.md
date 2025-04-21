@@ -1,5 +1,7 @@
 # JavaCode Repository 🚀
 
+EngLish | [中文]()
+
 Welcome to the **JavaCode** repository, a comprehensive collection of Java learning resources and projects developed by **YEXIAONAN**. This repository serves as a personal archive of my journey in mastering Java, containing various examples, exercises, and small-scale projects to demonstrate key programming concepts and practices. 💻
 
 ## Table of Contents 📑
