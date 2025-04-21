@@ -25,22 +25,6 @@ public class AiRun {
             }
 
             // 读取响应
-            int responseCode = con.getResponseCode();
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream(), "utf-8"));
-                StringBuilder response = new StringBuilder();
-                String line;
-                while ((line = in.readLine()) != null) {
-                    response.append(line);
-                }
-                in.close();
-
-                // 输出响应内容
-//                System.out.println("Response: " + response.toString());
-            } else {
-//                System.out.println("POST request failed. Response Code: " + responseCode);
-            }
-
             System.out.println("🧠 启动中：您的 AI 健康助手正在加载...\n");
             try {
                 Thread.sleep(800);
