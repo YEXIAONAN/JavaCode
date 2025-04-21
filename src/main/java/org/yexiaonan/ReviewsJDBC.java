@@ -8,16 +8,22 @@ public class ReviewsJDBC {
 
     public static void main(String[] args) {
         // 数据库连接信息
-        String url = "jdbc:mysql://localhost:3306/food"; // 请根据实际情况修改数据库URL
+        String url = "jdbc:mysql://172.16.7.100:3306/food"; // 请根据实际情况修改数据库URL
         String username = "root";
         String password = "123456";
 
         Connection connection = null;
 
         try {
+            // 加载MySQL JDBC驱动程序
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
             // 尝试连接到数据库
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("数据库连接成功！");
+        } catch (ClassNotFoundException e) {
+            System.out.println("未找到MySQL JDBC驱动程序！");
+            e.printStackTrace();
         } catch (SQLException e) {
             System.out.println("数据库连接失败！");
             e.printStackTrace();
