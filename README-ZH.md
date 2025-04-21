@@ -1,6 +1,6 @@
 # Java代码仓库 🚀
 
-[EngLish](https://github.com/YEXIAONAN/JavaCode) | 中文
+[EngLish](https://github.com/YEXIAONAN/JavaCode) | **中文**
 
 欢迎来到 **JavaCode** 仓库，这里汇集了 **YEXIAONAN** 开发的 Java 学习资源和项目。这个仓库是我个人在掌握 Java 编程过程中的一份存档，包含了各种示例、练习和小规模项目，用于展示关键的编程概念和实践。💻
 

@@ -1,6 +1,6 @@
 # JavaCode Repository 🚀
 
-EngLish | [中文]()
+EngLish | [中文](https://github.com/YEXIAONAN/JavaCode/blob/main/README.md)
 
 Welcome to the **JavaCode** repository, a comprehensive collection of Java learning resources and projects developed by **YEXIAONAN**. This repository serves as a personal archive of my journey in mastering Java, containing various examples, exercises, and small-scale projects to demonstrate key programming concepts and practices. 💻
 
