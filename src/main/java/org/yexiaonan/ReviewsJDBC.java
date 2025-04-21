@@ -8,7 +8,7 @@ public class ReviewsJDBC {
 
     public static void main(String[] args) {
         // 数据库连接信息
-        String url = "jdbc:mysql://172.16.7.100:3306/food"; // 请根据实际情况修改数据库URL
+        String url = "jdbc:mysql://localhost:3306/food"; // 请根据实际情况修改数据库URL
         String username = "root";
         String password = "123456";
 
