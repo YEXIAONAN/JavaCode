@@ -60,29 +60,6 @@ git clone [https://github.com/YEXIAONAN/JavaCode.git](https://github.com/YEXIAON
 
 感谢您浏览此仓库。祝您编程愉快！✨
 
-以下是为您的 GitHub 仓库 [YEXIAONAN/JavaCode](https://github.com/YEXIAONAN/JavaCode) 设计的“贡献者”部分，旨在提升项目的专业形象并鼓励社区参与：
+## Star History
 
----
-
-## 🤝 贡献者
-
-感谢所有为本项目做出贡献的开发者们！您的每一次提交、每一个建议，都是推动 JavaCode 不断进步的动力。
-### 📊 当前贡献者统计
-
-[![贡献者统计](https://contrib.rocks/image?repo=YEXIAONAN/JavaCode)](https://github.com/YEXIAONAN/JavaCode/graphs/contributors)
-
-此图由 [contrib.rocks](https://contrib.rocks) 提供，实时展示了对本项目有贡献的开发者头。
-
-### 🧭 如何参与贡献
-
-我们欢迎各类贡献，无论是修复 bug、添加新功能，还是改进文档。以下是参与的基本流程：
-
-1. **Fork 仓库**：点击右上角的 "Fork" 按钮，将项目复制到您的账户下。
-2. **克隆到本地**：使用 `git clone` 命令将 Fork 的仓库克隆到本地。
-3. **创建分支**：为您的修改创建一个新的分支，例如：`git checkout -b feature/your-feature-name`。
-4. **提交更改**：在本地进行修改，并使用 `git commit` 提交更改。
-5. **推送分支**：将分支推送到您的 GitHub 仓库：`git push origin feature/your-feature-name`。
-6. **创建 Pull Request**：在 GitHub 上提交 Pull Request，描述您的更改内容。
-> 详细的贡献指南请参阅 [CONTRIBUTING.md](./CONTRIBUTING.m)。
-
-> 如需添加您的信息，请提交 Pull Request 更此表格。
+![本地路径](image/star-history-2025422.png)
