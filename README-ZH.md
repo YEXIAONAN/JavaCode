@@ -62,4 +62,4 @@ git clone [https://github.com/YEXIAONAN/JavaCode.git](https://github.com/YEXIAON
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=YEXIAONAN/JavaCode&type=Date)](https://www.star-history.com/#YEXIAONAN/JavaCode&Date)
+![本地路径](image/star-history-2025422.png)
