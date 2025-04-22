@@ -58,3 +58,7 @@ For any questions, feedback, or inquiries, please feel free to reach out to me:
 - Email: yexiaonanair@outlook.com
 
 Thank you for exploring this repository. Happy coding! ✨
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=YEXIAONAN/JavaCode&type=Date)](https://www.star-history.com/#YEXIAONAN/JavaCode&Date)
