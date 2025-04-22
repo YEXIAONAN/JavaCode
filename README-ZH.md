@@ -58,5 +58,39 @@ git clone [https://github.com/YEXIAONAN/JavaCode.git](https://github.com/YEXIAON
   - GitHub: [YEXIAONAN](https://github.com/YEXIAONAN)
   - 邮箱: [email address removed]
 
-感谢您浏览此仓库。祝您编程愉快！✨
+## 🤝 贡献者
 
+非常感谢所有为本项目做出贡献的开发者！每一次提交、每一个 issue、每一个 Pull Request，都是推动 **JavaCode** 持续进步的重要力量。
+
+### 📊 贡献者统计
+
+<a href="https://github.com/yexiaonan/javacode/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=yexiaonan/javacode" />
+</a>
+
+> 图像由 [contrib.rocks](https://contrib.rocks) 生成，实时展示项目贡献者头像。
+
+### 🧭 如何参与贡献
+
+我们欢迎各种形式的贡献 —— 无论是修复 Bug、添加新功能、优化代码结构还是完善文档，您的参与都非常宝贵：
+
+1. **Fork 仓库**：点击 GitHub 页面右上角的 “Fork”。
+2. **克隆仓库到本地**：
+   ```bash
+   git clone https://github.com/your-username/JavaCode.git
+   ```
+3. **创建新分支**：
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **进行修改并提交**：
+   ```bash
+   git commit -m "添加：你的修改说明"
+   ```
+5. **推送分支到远程**：
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **提交 Pull Request**：在 GitHub 上发起合并请求，描述您的更改内容。
+
+感谢您浏览此仓库。祝您编程愉快！✨

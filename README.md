@@ -57,5 +57,39 @@ For any questions, feedback, or inquiries, please feel free to reach out to me:
 - GitHub: [YEXIAONAN](https://github.com/YEXIAONAN)
 - Email: yexiaonanair@outlook.com
 
-Thank you for exploring this repository. Happy coding! ✨
+## 🤝 Contributors
 
+A huge thank you to everyone who has contributed to this project! Every commit, issue, and pull request helps make **JavaCode** better for everyone.
+
+### 📊 Contributor Stats
+
+<a href="https://github.com/yexiaonan/javacode/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=yexiaonan/javacode" />
+</a>
+
+> Made with [contrib.rocks](https://contrib.rocks)
+
+### 🧭 How to Contribute
+
+We welcome contributions of all kinds — bug fixes, new features, code cleanup, documentation, and more. Here’s how to get started:
+
+1. **Fork the repository** via GitHub.
+2. **Clone the fork** to your local machine:
+   ```bash
+   git clone https://github.com/your-username/JavaCode.git
+   ```
+3. **Create a new branch**:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+4. **Make your changes** and commit them:
+   ```bash
+   git commit -m "Add: your description here"
+   ```
+5. **Push the branch** to your fork:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+6. **Create a Pull Request** from your forked repo on GitHub.
+
+Thank you for exploring this repository. Happy coding! ✨
