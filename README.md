@@ -85,3 +85,7 @@ We welcome contributions of all kinds — bug fixes, feature additions, document
 
 > Want to see your name here? Open a pull request and help improve the project!
 now if you'd like to generate the correct contributor avatars using real GitHub user IDs or automate this section with GitHub Actions.
+
+## Star History
+
+![本地路径](image/star-history-2025422.png)
