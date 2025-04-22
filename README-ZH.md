@@ -59,7 +59,3 @@ git clone [https://github.com/YEXIAONAN/JavaCode.git](https://github.com/YEXIAON
   - 邮箱: [email address removed]
 
 感谢您浏览此仓库。祝您编程愉快！✨
-
-## Star History
-
-![本地路径](image/star-history-2025422.png)

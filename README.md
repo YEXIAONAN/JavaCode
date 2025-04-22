@@ -1,6 +1,6 @@
 # JavaCode Repository 🚀
 
-**EngLish** | [中文](https://github.com/YEXIAONAN/JavaCode/blob/main/README-ZH.md)
+EngLish | [中文](https://github.com/YEXIAONAN/JavaCode/blob/main/README-ZH.md)
 
 Welcome to the **JavaCode** repository, a comprehensive collection of Java learning resources and projects developed by **YEXIAONAN**. This repository serves as a personal archive of my journey in mastering Java, containing various examples, exercises, and small-scale projects to demonstrate key programming concepts and practices. 💻
 
@@ -58,7 +58,3 @@ For any questions, feedback, or inquiries, please feel free to reach out to me:
 - Email: yexiaonanair@outlook.com
 
 Thank you for exploring this repository. Happy coding! ✨
-
-## Star History
-
-![本地路径](image/star-history-2025422.png)
