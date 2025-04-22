@@ -59,6 +59,3 @@ For any questions, feedback, or inquiries, please feel free to reach out to me:
 
 Thank you for exploring this repository. Happy coding! ✨
 
-## Star History
-
-![本地路径](image/star-history-2025422.png)
