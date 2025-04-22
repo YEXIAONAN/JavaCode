@@ -1,19 +1,23 @@
 name: Release and Build JAR
 
+# 触发工作流的事件：在 main 分支有推送时触发
 on:
   push:
     branches:
       - main
 
+# 定义作业
 jobs:
   release:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
     steps:
+      # 检出代码
       - name: 📥 Checkout
         uses: actions/checkout@v4
 
+      # 运行 release-please 来创建版本和生成 PR
       - name: 🧾 Run release-please
         id: release
         uses: googleapis/release-please-action@v4
@@ -27,21 +31,36 @@ jobs:
     needs: release
     if: ${{ needs.release.outputs.release_created == 'true' }}
     steps:
+      # 检出代码
       - name: 📥 Checkout
         uses: actions/checkout@v4
 
+      # 设置 Java 环境
       - name: ☕ Setup Java
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
 
+      # 使用 Maven 构建项目
       - name: 🛠️ Build with Maven
         run: mvn clean package
 
+      # 上传构建的 JAR 文件到 GitHub Release
       - name: 📦 Upload to GitHub Release
         uses: softprops/action-gh-release@v1
         with:
           files: target/*.jar
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+# 配置 GitHub Token 权限
+permissions:
+  pull-requests: write       # 为创建 Pull Request 赋予写权限
+  contents: write            # 允许推送更改到仓库内容
+  issues: write              # 允许对 issues 进行操作
+  actions: read              # 允许读取工作流状态
+
+# 配置 GitHub Token 权限的环境变量
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
