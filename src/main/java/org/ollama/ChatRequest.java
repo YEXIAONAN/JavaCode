@@ -31,7 +31,17 @@ public class ChatRequest {
             con.setDoOutput(true);
 
             // 构造 JSON 格式的请求体，指定使用的模型和用户消息
-            String jsonInputString = "{\"model\":\"deepseek-r1:1.5b\",\"messages\":[{\"role\":\"user\",\"content\":\"你好\"}]}";
+            String jsonInputString = "{\"model\":\"EntropyYue/chatglm3:latest\",\"messages\":[{\"role\":\"user\",\"content\":\"你好\"}]}";
+            /**可以在Ollama服务中使用命令查看模型列表
+             * C:\Users\Ollama>ollama list
+             * NAME                          ID              SIZE      MODIFIED
+             * EntropyYue/chatglm3:latest    8f6f34227356    3.6 GB    5 days ago
+             * gemma2:2b                     8ccf136fdd52    1.6 GB    13 days ago
+             * llama3.2:latest               a80c4f17acd5    2.0 GB    6 weeks ago
+             * deepseek-r1:1.5b              a42b25d8c10a    1.1 GB    7 weeks ago
+             */
+
+
 
             // 尝试将 JSON 请求体写入输出流
             try (OutputStream os = con.getOutputStream()) {
