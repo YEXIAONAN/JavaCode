@@ -3,10 +3,11 @@ package org.review;
 import java.util.Scanner;
 
 public class ConstructorDemo1 {
-    String Name = "木木老师";
-    int Age = 19;
 
-    public ConstructorDemo1 (String name,int Age) {
+    private final String Name;
+    private final int Age;
+
+    public ConstructorDemo1 (String name, int Age) {
         this.Name = name;
         this.Age = Age;
         System.out.println();
@@ -21,7 +22,16 @@ public class ConstructorDemo1 {
 
         System.out.println("input user age");
         int age = sc.nextInt();
+        
+
     }
 
 
+    public int getAge() {
+        return Age;
+    }
+
+    public String getName() {
+        return Name;
+    }
 }
