@@ -9,6 +9,7 @@ public class Demo1 {
     String sex = "男";
 
     public void printInfo(){
+        // fix 语法
         System.out.println("我是"  + name + "我今年" + age + "我喜欢" + sex + "的");
     }
 

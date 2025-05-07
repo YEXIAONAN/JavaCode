@@ -1,4 +1,4 @@
-package org.test.network;
+package org.ChatRoom;
 
 // 文件名 GreetingClient.java
 
