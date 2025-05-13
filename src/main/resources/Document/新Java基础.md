@@ -103,4 +103,196 @@
 
 ![Java数据类型](../image/JavaChar.png)
 
+- 自动类型转换注意细节
 
+1. 有多种类型的数据混合运算时，系统首先自动将所有数据转换成容量大的数据类型，然后再进行计算。
+2. 当我们把精度大的数据类型赋值给小的数据类型时，就会报错，反之将会进行自动类型转换
+3. （byte，short）和char之间不会相互自动转换
+4. byte，short，char他们三者可以计算，在计算时首先转换为int类型
+5. Boolean不参与转换！！！
+6. 自动提升原则：表达式结果的类型自动提升为 操作数中的最大类型
+
+
+- 强制类型转换
+
+- 自动类型转换的逆过程，将容量大的数据类型转换为容量小的数据类型。使用时要加上强制转换符号（），但可能造成精度降低或者溢出，格外注意！！！
+
+**案例**
+
+```java
+public class ForceConvert {
+  public static void main(String[] args) {
+    int i = (int)1.9;
+    System.out.println(i);
+
+    int j = 100;
+    byte b1 = (byte)j;
+    System.out.println(b1);
+  }
+}
+```
+
+强制类型转换细节说明：
+
+  1.当进行数据的大小从 大———>小，就需要使用到强制类型转换
+  2.强制转换符号只针对与最近的操作数有效，往往会使用小括号提升优先级
+ ```java
+ public class ForceConvertDetail {
+  public static void main(String[] args) {
+    // 如果需要对多种数据进行求和，需要使用（）来提升计算的优先级，然后才能进行编译。
+    // 例如像下方的代码就是无法运行的，因为其最终得到的数据类型与赋值数据类型不相符
+    //int x = (int)10*3.5+6*1.5;
+    
+    // 正确写法：
+    int x = (int)(10*3.5+6*1.5);
+    System.out.println(x);
+  }
+}
+ ```
+   3.char类型可以保存int的常量值，但不能保存int的变量值，需要强转
+ ```java
+ public class ForceConvertDetail {
+  public static void main(String[] args) {
+    char c1 = 100;
+    int m = 100;
+
+    // char 只能保存常量，不能覆盖变量值
+    char c2 = m; // Error
+    // 强制类型转换
+    char c3 = (char)m; // OK
+
+  }
+}
+
+ ```
+  4.byte和short类型在进行运算时，当作int类型处理
+
+
+
+### Java内置数据类型
+> Java语言提供了八种基本类型。六种数字类型（四个整数型，两个浮点型），一种字符类型，还有一种布尔型。
+
+- byte：
+byte 数据类型是8位、有符号的，以二进制补码表示的整数；
+最小值是 -128（-2^7）；
+最大值是 127（2^7-1）；
+默认值是 0；
+byte 类型用在大型数组中节约空间，主要代替整数，因为 byte 变量占用的空间只有 int 类型的四分之一；
+例子：byte a = 100，byte b = -50。
+
+
+- short：
+short 数据类型是 16 位、有符号的以二进制补码表示的整数
+最小值是 -32768（-2^15）；
+最大值是 32767（2^15 - 1）；
+Short 数据类型也可以像 byte 那样节省空间。一个short变量是int型变量所占空间的二分之一；
+默认值是 0；
+例子：short s = 1000，short r = -20000。
+
+
+- int：
+int 数据类型是32位、有符号的以二进制补码表示的整数；
+最小值是 -2,147,483,648（-2^31）；
+最大值是 2,147,483,647（2^31 - 1）；
+一般地整型变量默认为 int 类型；
+默认值是 0 ；
+例子：int a = 100000, int b = -200000。
+
+
+- long：
+long 数据类型是 64 位、有符号的以二进制补码表示的整数；
+最小值是 -9,223,372,036,854,775,808（-2^63）；
+最大值是 9,223,372,036,854,775,807（2^63 -1）；
+这种类型主要使用在需要比较大整数的系统上；
+默认值是 0L；
+例子： long a = 100000L，long b = -200000L。
+"L"理论上不分大小写，但是若写成"l"容易与数字"1"混淆，不容易分辩。所以最好大写。
+
+
+- float：
+float 数据类型是单精度、32位、符合IEEE 754标准的浮点数；
+float 在储存大型浮点数组的时候可节省内存空间；
+默认值是 0.0f；
+浮点数不能用来表示精确的值，如货币；
+例子：float f1 = 234.5f。
+
+
+- double：
+double 数据类型是双精度、64 位、符合 IEEE 754 标准的浮点数；
+浮点数的默认类型为 double 类型；
+double类型同样不能表示精确的值，如货币；
+默认值是 0.0d；
+```
+例子：
+
+double   d1  = 7D ;
+double   d2  = 7.;
+double   d3  =  8.0;
+double   d4  =  8.D;
+double   d5  =  12.9867;
+7 是一个 int 字面量，而 7D，7. 和 8.0 是 double 字面量。 
+```
+
+
+- boolean：
+boolean数据类型表示一位的信息；
+只有两个取值：true 和 false；
+这种类型只作为一种标志来记录 true/false 情况；
+默认值是 false；
+例子：boolean one = true。
+
+
+- char：
+char 类型是一个单一的 16 位 Unicode 字符；
+最小值是 \u0000（十进制等效值为 0）；
+最大值是 \uffff（即为 65535）；
+char 数据类型可以储存任何字符；
+例子：char letter = 'A';。
+
+
+- 基本数据类型和String类型的转换
+  - 介绍
+    - 在程序开发中，我们经常需要将数据类型转换成String类型。或者将String类型转换成基本的数据类型。
+  - 基本类型转String类型
+    - 语法：将基本的数据类型的值 + "" 即可
+ ```java
+public class StringToBasic {
+  public static void main(String[] args){
+    // 基本数据类型 ——> String
+    int n1 = 100;
+    float f1= 100F;
+    double d1 = 5.5;
+    boolean b1 = false;
+
+
+    String s1 = n1 + "";
+    String s2 = f1 + "";
+    String s3 = d1 + "";
+    String s4 = b1 + "";
+
+    System.out.println(s1+s2+s3+s4);
+
+
+  }
+}
+```
+  - String类型转基本数据类型
+    - 语法：通过基本类型的包装类调用parseXX方法即可
+```java
+public class StringToBasic {
+  public static void main(String[] args){
+    // String——>转换基本类型
+    String s5 = "123";
+
+    // 一学就会，使用ParseXX转换
+    int sum = Integer.parseInt(s5);
+    float sum2 = Float.parseFloat(s5);
+    double sum3 = Double.parseDouble(s5);
+    long sum4 = Long.parseLong(s5);
+    byte sum5 =  Byte.parseByte(s5);
+    boolean sum6 = Boolean.parseBoolean("true");
+
+    System.out.println(sum6);
+  }
+}
+```
