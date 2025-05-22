@@ -55,7 +55,7 @@ This repository is licensed under the [MIT License](LICENSE), which allows you t
 For any questions, feedback, or inquiries, please feel free to reach out to me:
 
 - GitHub: [YEXIAONAN](https://github.com/YEXIAONAN)
-- Email: yexiaonanair@outlook.com
+- Email: yexiaonan78@gmail.com
 
 ## 🤝 Contributors
 

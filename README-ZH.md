@@ -56,7 +56,7 @@ git clone [https://github.com/YEXIAONAN/JavaCode.git](https://github.com/YEXIAON
 如有任何问题、反馈或咨询，请随时与我联系：
 
   - GitHub: [YEXIAONAN](https://github.com/YEXIAONAN)
-  - 邮箱: [email address removed]
+  - 邮箱: yexiaonan78@gmail.com
 
 ## 🤝 贡献者
 
