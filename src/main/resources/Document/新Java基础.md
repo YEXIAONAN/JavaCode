@@ -1055,3 +1055,26 @@ public class ArrayForEach {
 }
 ```
 
+##### 多堆数组
+- 多堆数组是包含一个或多个数组的数组
+- 要创建二维数组，，将每个数组添加到其自己的**花括号**集中
+
+```java
+int[][] myNums = {{1,2,3,4},{5,6,7,8}}
+```
+
+myNums 现在是一个包含两个数组元素的数组。
+
+要访问myNums数组的元素，请指定两个索引:一个用于数组，另一个用于该数组内的元素。此示例访问MyNumber的第二个数组(1)中的第三个元素(2):
+
+```java
+public class Array2D {
+    public static void main(String[] args) {
+        int[][] MyNums = { {1, 2, 3, 4}, {5, 6, 7} };
+        int x = MyNums[1][2];
+        System.out.println(x);
+    }
+}
+```
+
+我们还可以在另一个for loop循环中使用for loop 循环来获取二维数组的元素（我们仍然必须指向两个索引）:
