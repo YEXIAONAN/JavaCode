@@ -438,6 +438,17 @@ byte b = 2 ; b += 3; b++
 
 ### Java标识符命名规则和规范
 
+
+
+
+
+- 运算符有不同的优先级，所谓优先级就是表达式运算中运算顺序。
+- 只有单目运算符，赋值运算符是从右向左运算的。
+
+
+
+### Java标识符命名规则和规范
+
 - 标识符概念
 1. Java对各种变量，方法和类等命名时使用的字符序列称为标识符
 2. 凡是自己可以起名字的地都叫标识符
@@ -506,3 +517,564 @@ public static void main(String[] args) {
 6. Java没有无符号数，换言之，java中的数都是有符号的
 7. 在计算机运算的时候，都是以补码的方式来运算的
 8. 当我们看运算结果的时候，要看他的原码
+
+- 运算符有不同的优先级，所谓优先级就是表达式运算中运算顺序。
+- 只有单目运算符，赋值运算符是从右向左运算的。
+
+
+
+### Java程序控制结构
+
+#### JavaIf判断语句
+
+1）单分支
+
+- 基本语法
+```java
+public if01 {
+if(条件表达式){
+    执行代码;(可以有多条语句)
+}
+}
+```
+> 当条件表达式里面的内容为true，则会执行{}里面的代码。如果为false则不执行
+> 
+> 特别说明：如果{}中只有一条语句，则可以不加上{}，建议写上{}
+
+2）双分支
+- 基本语法
+```java
+public if02 {
+if(条件表达式){
+    执行代码;(可以有多条语句)
+}else{
+    执行代码;(可以有多条语句)
+}
+}
+```
+> 当条件表达式里面的内容为true，则会执行{}里面的代码。如果为false则执行else{}里面的语句
+>
+
+
+3）多分支
+- 嵌套分支
+在一个分支结构中又完整的嵌套了另一个完整的分支结构，里面的分支结构称为内层分支，外面的结构称为外层分支。（不要超过三层！可读性较差）
+
+- 基础语法
+```java
+        if (){
+        if (){
+
+        }else {
+
+        }
+        }
+```
+
+
+
+#### JavaSwitch语句
+
+- 从多个要执行的代码块中选择一个来执行，实例
+
+```java
+switch(expression) {
+  case x:
+    // 代码块
+    break;
+  case y:
+    // 代码块
+    break;
+  default:
+    // 代码块
+}
+```
+
+工作原理:
+
+- `switch` 表达式计算一次
+- `case` 将表达式的值与每种情况的值进行比较
+- 如果存在匹配项，则执行关联的代码块
+
+
+
+`break` 中断关键字：
+
+当Java 达到中断关键字时，它会脱离`break` 。
+
+这将停止在块内执行更多代码和案例测试。
+
+当找到匹配项，工作完成后就结束。没有必要进行更多的测试。
+
+>  `break` 中断可以节省大量执行时间，因为它忽略"switch"中所有其余代码的执行。
+
+
+
+`default` 关键字
+
+> `default` 关键字指定在没有大小写匹配时默认要运行的一些代码:
+
+```java
+package org.code;
+
+public class SwitchOperator {
+    public static void main(String[] args) {
+        int day = 4;
+        switch (day) {
+            case 6:
+                System.out.println("Today is Saturday");
+                break;
+            case 7:
+                System.out.println("Today is Sunday");
+                break;
+            default:
+                System.out.println("Looking forward to the Weekend");
+        }
+        // 输出 "Looking forward to the Weekend",因为都不匹配
+    }
+}
+
+```
+
+
+
+#### JavaWhile循环语句
+
+只要达到指定的条件，循环就可以执行代码块。
+
+循环很方便，因为它们节省时间，减少错误，并且使代码更具可读性。
+
+- 只要指定的条件为 真`True`，`while` 循环就会遍历代码块:
+
+```java
+while (condition) {
+  // 要执行的代码块
+}
+```
+
+![](https://www.w3ccoo.com/wp-content/uploads/java/java_while_loop.jpg)
+
+在下面的示例中，只要变量 **i** 小于5，循环中的代码就会反复运行:
+
+```java
+package org.code;
+
+public class WhileOperator {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i < 5){
+            System.out.println(i);
+            i++;
+        }
+    }
+}
+
+```
+
+
+
+#### Java Do/While循环语句
+
+`do/while`是`while`中的一个变体，在检查条件是否为真之前，这个循环将执行一次代码块，然后只要条件为真，他就会重复循环。
+
+```java
+do {
+  // 要执行的代码块
+}
+while (condition);
+```
+
+![](https://www.w3ccoo.com/wp-content/uploads/java/java_dowhile_loop.png)
+
+下面的示例使用`do/while`循环。即使条件为false，循环也将始终至少执行一次，因为代码块是在测试条件之前执行的:
+
+```java
+package org.code;
+
+public class WhileOperator {
+    public static void main(String[] args) {
+        int i = 0;
+        do {
+            System.out.println(i);
+            i++;
+        }
+        while (i < 5);
+    }
+}
+
+```
+
+
+
+#### JavaFor循环
+
+- 当确切地知道要在代码块中循环多少次时，请使用`for`循环而不是`while`循环:
+
+```java
+for (statement 1; statement 2; statement 3) {
+  // 要执行的代码块
+}
+```
+
+**语句 1** 在执行代码块之前执行（一次）。
+
+**语句 2** 定义执行代码块的条件。
+
+**语句 3** （每次）在代码块执行之后执行。
+
+下面的示例将打印数字0到4:
+
+```java
+package org.code;
+
+public class ForOperator {
+    public static void main(String[] args) {
+        for (int i = 0; i < 5;i++  ){
+            System.out.println(i);
+        };
+    }
+}
+
+```
+
+语句1在循环开始之前设置一个变量(`int i = 0`)。
+
+语句2定义了循环运行的条件（`i`必须小于`5`）。如果条件为真`true`，循环将重新开始，如果条件为假`false`，循环将结束。
+
+语句3每次执行循环中的代码块时都增加一个值(`i++`)。
+
+- 查找0~10中出现的偶数值
+
+```java
+for (int i = 0; i < 11; i = i + 2){
+    System.out.println(i);
+}
+```
+
+
+
+#### JavaFor-Each 循环
+
+`for-each`循环，它专门用于循环数组**array**中的元素:
+
+```java
+for (type variableName : arrayName) {
+  // 要执行的代码块
+}
+```
+
+以下示例使用`for-each`循环输出**cars** 数组中的所有元素:
+
+```java
+package org.code;
+
+public class ForEach {
+    public static void main(String[] args) {
+        String[] cas = {"MuGay","LaoMuGay","YoungMuGay","SiMuGay"};
+        for (String i : cas){
+            System.out.println(i);
+        }
+    }
+}
+
+```
+
+
+
+#### Java Break 和 Continue 语句
+
+`break` 语句也可以用于跳出循环。
+
+以下实例当i等于4时，跳出循环:
+
+```java
+package org.code;
+
+public class BreakIntroduce {
+    public static void main(String[] args) {
+        // 初始化循环变量i为0，循环条件是i小于10，每次循环后i自增1
+        for (int i = 0; i < 10; i++) {
+            // 当i等于4时
+            if (i == 4) {
+                // 跳出当前for循环
+                break;
+            }
+            // 输出变量i的值
+            System.out.println(i);
+        }
+    }
+}
+```
+
+如果指定的条件发生时， `continue` 语句将中断一个迭代（在循环中），并继续循环中的下一次迭代。
+
+此示例跳过值`4`:
+
+```java
+package org.code;
+
+public class JavaContinue {
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            if (i == 4) {
+                continue;
+            }
+            System.out.println(i);
+        }
+    }
+}
+
+```
+
+- 在While循环中使用 Break 和 Continue
+
+你也可以在while循环中使用 `break` 和`continue`:
+
+```java
+//Break 实例
+int i = 0;
+while (i < 10) {
+  System.out.println(i);
+  i++;
+  if (i == 4) {
+    break;
+  }
+}
+```
+
+```java
+//Continue 实例
+int i = 0;
+while (i < 10) {
+  if (i == 4) {
+    i++;
+    continue;
+  }
+  System.out.println(i);
+  i++;
+}
+```
+
+
+
+### Java数学方法
+
+```java
+        // Math.max (查找x和y的最大值)
+        System.out.println(Math.max(6,7));
+
+        // Math.min (查找x和y的最小值)
+        System.out.println(Math.min(4,3));
+
+        // Math.sqrt(x) 方法返回x的平方根
+        System.out.println(Math.sqrt(7));
+
+        //Math.abs(x) 方法返回 x 的绝对（正）值
+        System.out.println(Math.abs(-5.7));
+
+        //Random Numbers
+        //Math.random() 返回一个介于0.0（包括）和1.0（不包括）之间的随机数
+        System.out.println(Math.random());
+        //如何更好地利用随机数，例如，需要一个介于0和100之间的随机数，可以使用以下公式:
+        int randomNum = (int)(Math.random() * 101);
+        System.out.println(randomNum);
+```
+
+
+
+### Java布尔值
+
+- 通常，在编程中需要数据类型只能是两个值中间的一个，如：
+  - YES/NO
+  - ON/OFF
+  - TRUE/FALSE
+- 为此，Java有一个`boolean`数据类型，可以接受true或者false值
+
+```java
+package org.code;
+
+public class BooleanOperator {
+    public static void main(String[] args) {
+        boolean t = true;
+        boolean f = false;
+        System.out.println(t);
+        System.out.println(f);
+    }
+}
+```
+
+
+
+- 布尔表达式
+
+  - 布尔表达式 **Boolean expression** 是返回布尔值的 Java 表达式:: `true` or `false`.
+
+    可以使用比较运算符（如大于(`>`)运算符）来确定表达式（或变量）是否为真:
+
+```java
+int x = 10;
+int y = 9;
+System.out.println(x > y); // 返回 true，因为 10 高于 9
+```
+
+或者，使用`==`也可以表示对应的意思
+
+```java
+int x = 10;
+System.out.println(x == 10); // 返回 true，因为 x 的值等于 10
+```
+
+
+
+
+
+### Java数组
+
+- 数组用于在单个变量中存储多个值，而不是为每个值声明单独的变量
+- 声明数组的方式
+  - 使用**方括号**定义变量类型
+
+```java
+String[] cars;
+```
+
+
+
+- 如果需要向其插入值，可以使用数组文字-将值放在逗号分割的列表中，放在大括号内
+
+```java
+String[] cars = {"Gay","MuGuan"}
+```
+
+
+
+- 如果需要创建整数数组，可以这样子写
+
+```java
+int[] sum = {1,0,2,3,4,5}
+```
+
+
+
+##### 访问数组元素
+
+```java
+String[] cars = {"Gay","MuGuan"}
+System.out.println(cars[0])
+// 输出“Gay”
+// 注释: 数组索引从0开始，[0]开头是第一个元素，[1] 是第二个元素。
+```
+
+
+
+##### 更改数组元素
+
+- 如果需要更改特定元素的值，参考索引编号
+
+```java
+package org.code;
+
+public class ArrayTest01 {
+    public static void main(String[] args) {
+        String[] cars = {"Gay","MuGay","MuG","MuMu"};
+        
+        // 将数组中的第一个元素修改为“GayP”
+        cars[0] = "GayP";
+        System.out.println(cars[0]);
+    }
+}
+```
+
+
+
+##### 数组长度
+
+- 要了解一个数组中有多少个值，可以在println中使用.length方法
+
+```java
+package org.code;
+
+public class ArrayLength {
+    public static void main(String[] args) {
+        String[] cars = {"Gay","MuGay","MuG","MuMu"};
+        System.out.println(cars.length);
+        // 输出 4
+    }
+}
+```
+
+
+
+##### 使用For循环遍历数组
+
+- 可以使用for循环遍历数组元素，并使用Length属性执行循环运行次数
+- 输出`cars`数组中的所有元素
+
+```java
+package org.code;
+
+public class ArrayFor {
+    public static void main(String[] args) {
+        // 声明一个名为cars的字符串数组，并进行初始化，数组包含4个字符串元素
+        String[] cars = {"Gay", "MuGay", "MuG", "MuMu"};
+        // 使用for循环遍历cars数组
+        for (int i = 0; i < cars.length; i++) {
+            // 在控制台打印数组cars中索引为i的元素
+            System.out.println(cars[i]);
+        }
+    }
+}
+```
+
+
+
+##### 使用For-Each循环遍历数组
+
+- 还有一个"**for-each**"循环，专门用于循环数组中的元素:
+
+```java
+for (type variable : arrayname) {
+  ...
+}
+```
+
+
+
+- 使用`for-each`遍历循环输出**cars**数组中的所有元素:
+
+```java
+package org.code;
+
+public class ArrayForEach {
+    public static void main(String[] args) {
+        String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+        for (String i : cars) {
+            System.out.println(i);
+        }
+    }
+}
+```
+
+##### 多堆数组
+- 多堆数组是包含一个或多个数组的数组
+- 要创建二维数组，，将每个数组添加到其自己的**花括号**集中
+
+```java
+int[][] myNums = {{1,2,3,4},{5,6,7,8}}
+```
+
+myNums 现在是一个包含两个数组元素的数组。
+
+要访问myNums数组的元素，请指定两个索引:一个用于数组，另一个用于该数组内的元素。此示例访问MyNumber的第二个数组(1)中的第三个元素(2):
+
+```java
+public class Array2D {
+    public static void main(String[] args) {
+        int[][] MyNums = { {1, 2, 3, 4}, {5, 6, 7} };
+        int x = MyNums[1][2];
+        System.out.println(x);
+    }
+}
+```
+
+我们还可以在另一个for loop循环中使用for loop 循环来获取二维数组的元素（我们仍然必须指向两个索引）:
