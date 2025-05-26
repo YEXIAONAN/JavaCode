@@ -1079,7 +1079,8 @@ public class Array2D {
 
 我们还可以在另一个for loop循环中使用for loop 循环来获取二维数组的元素（我们仍然必须指向两个索引）:
 
-### Java方法
+## Java方法
+
 - `method`是一个代码块，只能在运行时调用。
 
 可以将数据（称为参数）传递到方法中
@@ -1357,6 +1358,154 @@ public class MyMethodTest6 {
 ```
 
 
+
 ### Java方法重载
 
+使用方法重载，多个方法可以具有相同的名称和不同的参数
+
+```java
+int myMethod(int x);
+float myMethod(float x);
+double myMethod(double x, double y);
+```
+
+思考一下，下面的实例，它有两种添加不同类型数字的方法
+
+```java
+package org.code.develop.Method;
+
+public class MyMethodTest7 {
+  // 计算两数之和（INT）
+  static int plusMethodInt (int x, int y){
+    return x + y;
+  }
+
+  // 计算两数之和（DOUBLE）
+  static double plusMethodDouble (Double x,Double y){
+    return x + y;
+  }
+
+  public static void main(String[] args) {
+    int myNum1 = plusMethodInt(8,5);
+    double myNum2 = plusMethodDouble(4.3,6.26);
+    System.out.println("int: " + myNum1);
+    System.out.println("double: " + myNum2);
+  }
+}
+```
+
+在上面的方法中，两个方法都是做同样的事情，为什么我们不重载呢？
+在下面的实例中，我们重载`PlusMethod`方法，使其同时适用于`int`,`double`类型
+
+```java
+package org.code.develop.Method;
+
+public class MyMethodTest8 {
+    static int plusMethod(int x, int y) {
+        return x + y;
+    }
+
+    static double plusMethod(double x, double y) {
+        return x + y;
+    }
+
+    public static void main(String[] args) {
+        int myNum1 = plusMethod(8, 5);
+        double myNum2 = plusMethod(4.3, 6.26);
+        System.out.println("int: " + myNum1);
+        System.out.println("double: " + myNum2);
+    }
+}
+
+```
+
+> 注释: 只要**参数的数量或类型不同**，多个方法就可以**具有相同的名称**。
+
+
+### Java作用域
+- 在Java中，变量只能在创建的区域内访问，这称为**作用域**
+
+##### 方法作用域
+直接在方法中声明的变量在方法中任何位置都可以使用，位于声明它们的代码行之后：
+
+```java
+package org.code.develop.test;
+
+public class MyScope {
+    public static void main(String[] args) {
+        // 此处的代码不能使用 x
+        int x = 100;
+
+        // 这里的代码可以使用 x
+        System.out.println(x);
+    }
+}
+```
+
+> 在 Java 方法里，变量只有在声明之后才能被使用，就像只有先给东西起好名字，后面才能喊它干活一样。
+
+##### 块作用域
+- 代码块是指大括号`{}`之间的所有代码。在代码块内声明的变量只能由大括号之间的代码访问，大括号在声明变量的那一行之后：
+
+```java
+public class MyClass {
+  public static void main(String[] args) {
+
+    // 此处的代码不能使用 x
+
+    { // 这是一个块
+
+      // 此处的代码不能使用 x
+
+      int x = 100;
+
+      // 这里的代码可以使用 x
+      System.out.println(x);
+
+   } // 区块到此结束
+  // 此处的代码不能使用 x
+  }
+}
+```
+
+> 代码块可以单独存在，也可以属于 if, while 或 for 语句。 对于 for 语句，语句本身中声明的变量在块的作用域也可用。
+
+
+
+### Java递归
+
+递归是进行函数调用本身的技术。这种技术提供了一种将复杂问题分解为更容易解决的简单问题的方法。
+
+递归可能有点难以理解。弄清楚它是如何工作的最好方法就是用它进行实验。
+
+##### 递归实例
+将两个数字相加很容易，但将一系列数字相加则更为复杂。在以下实例中，递归用于将一系列数字相加，方法是将其分解为两个数字相加的简单任务：
+
+```java
+package org.code.develop.test;
+
+// 定义一个名为MyRecursion的公共类
+public class MyRecursion {
+    // 程序的入口点，Java程序从main方法开始执行
+    public static void main(String[] args) {
+        // 调用sum方法计算1到10的累加和，并将结果赋值给result变量
+        int result = sum(10);
+        // 输出计算得到的累加和结果
+        System.out.println(result);
+    }
+
+    // 定义一个静态方法sum，用于计算从1到k的整数累加和，方法接收一个整数参数k
+    public static int sum(int k){
+        // 判断k是否大于0，如果是则执行递归计算
+        if (k > 0){
+            // 这里是递归调用，返回k加上k-1到1的累加和
+            // 即把当前的k值与比它小1的数的累加和相加
+            return k + sum(k - 1);
+        }else {
+            // 当k不大于0（即k为0或负数）时，作为递归的终止条件，返回0
+            return 0;
+        }
+    }
+}
+```
 
