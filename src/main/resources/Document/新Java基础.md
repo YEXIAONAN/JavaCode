@@ -524,20 +524,11 @@ public static void main(String[] args) {
 
 
 ### Java程序控制结构
-- 顺序控制
-- 分支控制（if,else,switch）
-- 循环控制（for,while,do...while,多重循环）
-- break
-- continue
-- return
 
-- 顺序控制介绍
-  - 程序从上到下逐行执行，中间没有任何判断和跳转.
-
-- 分支控制 if-else 介绍
-  - 让程序有选择的执行，分支控制有三种
+#### JavaIf判断语句
 
 1）单分支
+
 - 基本语法
 ```java
 public if01 {
@@ -580,6 +571,243 @@ if(条件表达式){
         }
 ```
 
+
+
+#### JavaSwitch语句
+
+- 从多个要执行的代码块中选择一个来执行，实例
+
+```java
+switch(expression) {
+  case x:
+    // 代码块
+    break;
+  case y:
+    // 代码块
+    break;
+  default:
+    // 代码块
+}
+```
+
+工作原理:
+
+- `switch` 表达式计算一次
+- `case` 将表达式的值与每种情况的值进行比较
+- 如果存在匹配项，则执行关联的代码块
+
+
+
+`break` 中断关键字：
+
+当Java 达到中断关键字时，它会脱离`break` 。
+
+这将停止在块内执行更多代码和案例测试。
+
+当找到匹配项，工作完成后就结束。没有必要进行更多的测试。
+
+>  `break` 中断可以节省大量执行时间，因为它忽略"switch"中所有其余代码的执行。
+
+
+
+`default` 关键字
+
+> `default` 关键字指定在没有大小写匹配时默认要运行的一些代码:
+
+```java
+package org.code;
+
+public class SwitchOperator {
+    public static void main(String[] args) {
+        int day = 4;
+        switch (day) {
+            case 6:
+                System.out.println("Today is Saturday");
+                break;
+            case 7:
+                System.out.println("Today is Sunday");
+                break;
+            default:
+                System.out.println("Looking forward to the Weekend");
+        }
+        // 输出 "Looking forward to the Weekend",因为都不匹配
+    }
+}
+
+```
+
+
+
+#### JavaWhile循环语句
+
+只要达到指定的条件，循环就可以执行代码块。
+
+循环很方便，因为它们节省时间，减少错误，并且使代码更具可读性。
+
+- 只要指定的条件为 真`True`，`while` 循环就会遍历代码块:
+
+```java
+while (condition) {
+  // 要执行的代码块
+}
+```
+
+![](https://www.w3ccoo.com/wp-content/uploads/java/java_while_loop.jpg)
+
+在下面的示例中，只要变量 **i** 小于5，循环中的代码就会反复运行:
+
+```java
+package org.code;
+
+public class WhileOperator {
+    public static void main(String[] args) {
+        int i = 0;
+        while (i < 5){
+            System.out.println(i);
+            i++;
+        }
+    }
+}
+
+```
+
+
+
+#### Java Do/While循环语句
+
+`do/while`是`while`中的一个变体，在检查条件是否为真之前，这个循环将执行一次代码块，然后只要条件为真，他就会重复循环。
+
+```java
+do {
+  // 要执行的代码块
+}
+while (condition);
+```
+
+![](https://www.w3ccoo.com/wp-content/uploads/java/java_dowhile_loop.png)
+
+下面的示例使用`do/while`循环。即使条件为false，循环也将始终至少执行一次，因为代码块是在测试条件之前执行的:
+
+```java
+package org.code;
+
+public class WhileOperator {
+    public static void main(String[] args) {
+        int i = 0;
+        do {
+            System.out.println(i);
+            i++;
+        }
+        while (i < 5);
+    }
+}
+
+```
+
+
+
+#### JavaFor循环
+
+- 当确切地知道要在代码块中循环多少次时，请使用`for`循环而不是`while`循环:
+
+```java
+for (statement 1; statement 2; statement 3) {
+  // 要执行的代码块
+}
+```
+
+**语句 1** 在执行代码块之前执行（一次）。
+
+**语句 2** 定义执行代码块的条件。
+
+**语句 3** （每次）在代码块执行之后执行。
+
+下面的示例将打印数字0到4:
+
+```java
+package org.code;
+
+public class ForOperator {
+    public static void main(String[] args) {
+        for (int i = 0; i < 5;i++  ){
+            System.out.println(i);
+        };
+    }
+}
+
+```
+
+语句1在循环开始之前设置一个变量(`int i = 0`)。
+
+语句2定义了循环运行的条件（`i`必须小于`5`）。如果条件为真`true`，循环将重新开始，如果条件为假`false`，循环将结束。
+
+语句3每次执行循环中的代码块时都增加一个值(`i++`)。
+
+- 查找0~10中出现的偶数值
+
+```java
+for (int i = 0; i < 11; i = i + 2){
+    System.out.println(i);
+}
+```
+
+
+
+#### JavaFor-Each 循环
+
+`for-each`循环，它专门用于循环数组**array**中的元素:
+
+```java
+for (type variableName : arrayName) {
+  // 要执行的代码块
+}
+```
+
+以下示例使用`for-each`循环输出**cars** 数组中的所有元素:
+
+```java
+package org.code;
+
+public class ForEach {
+    public static void main(String[] args) {
+        String[] cas = {"MuGay","LaoMuGay","YoungMuGay","SiMuGay"};
+        for (String i : cas){
+            System.out.println(i);
+        }
+    }
+}
+
+```
+
+
+
+#### Java Break 和 Continue 语句
+
+`break` 语句也可以用于跳出循环。
+
+以下实例当i等于4时，跳出循环:
+
+```java
+package org.code;
+
+public class BreakIntroduce {
+    public static void main(String[] args) {
+        // 初始化循环变量i为0，循环条件是i小于10，每次循环后i自增1
+        for (int i = 0; i < 10; i++) {
+            // 当i等于4时
+            if (i == 4) {
+                // 跳出当前for循环
+                break;
+            }
+            // 输出变量i的值
+            System.out.println(i);
+        }
+    }
+}
+```
+
+
+
 ### Java数学方法
 
 ```java
@@ -601,5 +829,49 @@ if(条件表达式){
         //如何更好地利用随机数，例如，需要一个介于0和100之间的随机数，可以使用以下公式:
         int randomNum = (int)(Math.random() * 101);
         System.out.println(randomNum);
+```
+
+
+
+### Java布尔值
+
+- 通常，在编程中需要数据类型只能是两个值中间的一个，如：
+  - YES/NO
+  - ON/OFF
+  - TRUE/FALSE
+- 为此，Java有一个`boolean`数据类型，可以接受true或者false值
+
+```java
+package org.code;
+
+public class BooleanOperator {
+    public static void main(String[] args) {
+        boolean t = true;
+        boolean f = false;
+        System.out.println(t);
+        System.out.println(f);
+    }
+}
+```
+
+
+
+- 布尔表达式
+
+  - 布尔表达式 **Boolean expression** 是返回布尔值的 Java 表达式:: `true` or `false`.
+
+    可以使用比较运算符（如大于(`>`)运算符）来确定表达式（或变量）是否为真:
+
+```java
+int x = 10;
+int y = 9;
+System.out.println(x > y); // 返回 true，因为 10 高于 9
+```
+
+或者，使用`==`也可以表示对应的意思
+
+```java
+int x = 10;
+System.out.println(x == 10); // 返回 true，因为 x 的值等于 10
 ```
 
