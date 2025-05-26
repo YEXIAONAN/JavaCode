@@ -30,5 +30,7 @@ public class if03 {
 
         // 关闭Scanner对象，释放相关资源
         sc.close();
+
+
     }
 }
