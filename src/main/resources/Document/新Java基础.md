@@ -806,6 +806,55 @@ public class BreakIntroduce {
 }
 ```
 
+如果指定的条件发生时， `continue` 语句将中断一个迭代（在循环中），并继续循环中的下一次迭代。
+
+此示例跳过值`4`:
+
+```java
+package org.code;
+
+public class JavaContinue {
+    public static void main(String[] args) {
+        for (int i = 0; i < 10; i++) {
+            if (i == 4) {
+                continue;
+            }
+            System.out.println(i);
+        }
+    }
+}
+
+```
+
+- 在While循环中使用 Break 和 Continue
+
+你也可以在while循环中使用 `break` 和`continue`:
+
+```java
+//Break 实例
+int i = 0;
+while (i < 10) {
+  System.out.println(i);
+  i++;
+  if (i == 4) {
+    break;
+  }
+}
+```
+
+```java
+//Continue 实例
+int i = 0;
+while (i < 10) {
+  if (i == 4) {
+    i++;
+    continue;
+  }
+  System.out.println(i);
+  i++;
+}
+```
+
 
 
 ### Java数学方法
@@ -873,5 +922,136 @@ System.out.println(x > y); // 返回 true，因为 10 高于 9
 ```java
 int x = 10;
 System.out.println(x == 10); // 返回 true，因为 x 的值等于 10
+```
+
+
+
+
+
+### Java数组
+
+- 数组用于在单个变量中存储多个值，而不是为每个值声明单独的变量
+- 声明数组的方式
+  - 使用**方括号**定义变量类型
+
+```java
+String[] cars;
+```
+
+
+
+- 如果需要向其插入值，可以使用数组文字-将值放在逗号分割的列表中，放在大括号内
+
+```java
+String[] cars = {"Gay","MuGuan"}
+```
+
+
+
+- 如果需要创建整数数组，可以这样子写
+
+```java
+int[] sum = {1,0,2,3,4,5}
+```
+
+
+
+##### 访问数组元素
+
+```java
+String[] cars = {"Gay","MuGuan"}
+System.out.println(cars[0])
+// 输出“Gay”
+// 注释: 数组索引从0开始，[0]开头是第一个元素，[1] 是第二个元素。
+```
+
+
+
+##### 更改数组元素
+
+- 如果需要更改特定元素的值，参考索引编号
+
+```java
+package org.code;
+
+public class ArrayTest01 {
+    public static void main(String[] args) {
+        String[] cars = {"Gay","MuGay","MuG","MuMu"};
+        
+        // 将数组中的第一个元素修改为“GayP”
+        cars[0] = "GayP";
+        System.out.println(cars[0]);
+    }
+}
+```
+
+
+
+##### 数组长度
+
+- 要了解一个数组中有多少个值，可以在println中使用.length方法
+
+```java
+package org.code;
+
+public class ArrayLength {
+    public static void main(String[] args) {
+        String[] cars = {"Gay","MuGay","MuG","MuMu"};
+        System.out.println(cars.length);
+        // 输出 4
+    }
+}
+```
+
+
+
+##### 使用For循环遍历数组
+
+- 可以使用for循环遍历数组元素，并使用Length属性执行循环运行次数
+- 输出`cars`数组中的所有元素
+
+```java
+package org.code;
+
+public class ArrayFor {
+    public static void main(String[] args) {
+        // 声明一个名为cars的字符串数组，并进行初始化，数组包含4个字符串元素
+        String[] cars = {"Gay", "MuGay", "MuG", "MuMu"};
+        // 使用for循环遍历cars数组
+        for (int i = 0; i < cars.length; i++) {
+            // 在控制台打印数组cars中索引为i的元素
+            System.out.println(cars[i]);
+        }
+    }
+}
+```
+
+
+
+##### 使用For-Each循环遍历数组
+
+- 还有一个"**for-each**"循环，专门用于循环数组中的元素:
+
+```java
+for (type variable : arrayname) {
+  ...
+}
+```
+
+
+
+- 使用`for-each`遍历循环输出**cars**数组中的所有元素:
+
+```java
+package org.code;
+
+public class ArrayForEach {
+    public static void main(String[] args) {
+        String[] cars = {"Volvo", "BMW", "Ford", "Mazda"};
+        for (String i : cars) {
+            System.out.println(i);
+        }
+    }
+}
 ```
 
