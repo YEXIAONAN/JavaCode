@@ -1060,7 +1060,7 @@ public class ArrayForEach {
 - 要创建二维数组，，将每个数组添加到其自己的**花括号**集中
 
 ```java
-int[][] myNums = {{1,2,3,4},{5,6,7,8}}
+int[][] myNums = {{1,2,3,4},{5,6,7,8}};
 ```
 
 myNums 现在是一个包含两个数组元素的数组。
@@ -1078,3 +1078,263 @@ public class Array2D {
 ```
 
 我们还可以在另一个for loop循环中使用for loop 循环来获取二维数组的元素（我们仍然必须指向两个索引）:
+
+### Java方法
+- `method`是一个代码块，只能在运行时调用。
+
+可以将数据（称为参数）传递到方法中
+方法用于执行某些操作，它们也被称为**函数**
+
+> 为什么使用方法？代码重复：定义一次性代码，然后多次使用
+
+#### 创建一个Java方法
+```java
+public class MyClass {
+  static void myMethod(){
+    // 要执行的代码
+  }
+}
+```
+
+**实例解析**
+- `myMethod()` 是方法的名称
+- `static` 意味着该方法属于MyClass类，而不是MyClass类的对象。
+- `void` 表示此方法没有返回值。
+
+
+
+##### 方法调用
+
+- 要在Java中调用方法，编写该方法的名称，后跟两个()和;
+- 下面实例，调用`myMethod()`用于打印文本操作
+
+```java
+package org.code;
+
+public class MyClass {
+    static void myMethod(){
+        System.out.println("I am MuGay!");
+    }
+
+    public static void main(String[] args) {
+        myMethod();
+    }
+}
+
+```
+
+输出：
+
+```bash
+D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=14760" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes org.code.MyClass
+I am MuGay!
+
+进程已结束，退出代码为 0
+```
+
+- 一个方法可以被多次调用:
+
+```java
+package org.code;
+
+public class MyClass {
+    static void myMethod(){
+        System.out.println("I am MuGay!");
+    }
+
+    public static void main(String[] args) {
+        myMethod();
+        myMethod();
+        myMethod();
+        myMethod();
+    }
+}
+
+```
+
+
+
+
+
+### Java方法中的参数
+
+**形参与实参**
+
+信息可以作为参数传递给方法。参数在方法中充当变量。
+
+它们在方法名称后的括号内指定。可以添加多个参数，只需用逗号分隔即可。
+
+下面的示例有一个方法，该方法将名为**fname**的`string`字符串作为参数。 调用方法时，我们传递一个名字，该名字在方法内部用于打印全名:
+
+```java
+package org.code;
+
+public class MyClass1 {
+    static void myMethod(String fname){
+        System.out.println(fname + " Refsnes");
+    }
+
+    public static void main(String[] args) {
+        myMethod("MyGay");
+        myMethod("LaoMuMu");
+        myMethod("Gay!");
+    }
+}
+
+// 简单理解
+package org.code;
+
+public class MyMethodTest {
+    // 定义一个方法（print）
+    static void print (String output){
+        // 指定这个方法中的用途
+        System.out.println(output);
+    }
+
+    // 编写Main入口
+    public static void main(String[] args) {
+        print("我是输出语句");
+    }
+}
+
+```
+
+
+
+> 当参数**parameter**被传递给方法时，它被称为实参（**argument**）。因此，从上面的例子来看:`fname`是一个参数，而`MuGay`, `LaoMuMu` 和 `Gay!` 是实参。
+
+
+
+##### 多个参数
+
+可以在传递参数时传递多个参数：
+
+```java
+package org.code.develop;
+
+/**
+ * 这是一个用于演示方法定义和调用的示例类。
+ * 该类包含一个静态方法t2，用于打印人员的姓名和年龄信息，
+ * 并在main方法中展示了如何调用该方法。
+ */
+public class MyMethodTest1 {
+    /**
+     * 静态方法t2用于打印人员的姓名和年龄信息。
+     * 该方法不返回任何值，直接将信息输出到控制台。
+     * 
+     * @param name 要打印的人员姓名，字符串类型
+     * @param age  要打印的人员年龄，整数类型
+     * 
+     * @示例
+     * t2("Alice", 25); // 控制台输出：姓名：Alice年龄：25
+     * 
+     * @注意
+     * 1. 该方法不会对输入的姓名和年龄进行有效性检查
+     * 2. 年龄参数应为合理的整数值，否则输出可能不符合预期
+     * 3. 输出格式中姓名和年龄之间没有分隔符，调用时需注意
+     */
+    static void t2 (String name, int age) {
+        System.out.println("姓名：" + name + "年龄：" + age);
+    }
+
+    /**
+     * 程序的主入口点。
+     * 创建并初始化对象，调用t2方法展示其功能。
+     * 
+     * @param args 命令行参数，在本程序中未使用
+     */
+    public static void main(String[] args) {
+        // 调用t2方法，传入姓名"MuMu"和年龄18
+        t2("MuMu", 18);
+    }
+}
+```
+
+
+
+> 请注意，使用多个参数时，方法调用的参数数必须与参数数相同，并且参数的传递顺序必须相同。
+>
+> 字面意思，很好理解(*^_^*)。
+
+
+
+##### 返回值
+
+上面示例中使用的`void`关键字表示该方法不应返回值。如果希望方法返回值，可以使用基本数据类型（如`int` 或`double`）而不是`void`，并在方法内使用`return`关键字:
+
+> 我们可以把 Java 中的方法想象成一个 “小工人”，这个 “小工人” 能帮你做一件特定的事情。而方法前面的返回类型（比如`void`、`int`、`double`），就像是你对这个 “小工人” 的要求：
+>
+> - **如果方法返回类型是`void`**：
+>   就相当于你对 “小工人” 说：“你去帮我做一件事（比如打扫房间、打印文件），做完就行，不用给我带任何东西回来。”
+>   所以`void`类型的方法不需要`return`返回值，它只负责执行任务。
+> - **如果方法返回类型是`int`、`double`等**：
+>   就相当于你对 “小工人” 说：“你去帮我做一件事（比如数苹果、算平均数），做完后把结果（比如苹果数量、平均数）带回来给我。”
+>   这时方法必须用`return`语句返回一个对应类型的值（比如`int`、`double`），否则就像 “小工人” 没完成你的要求，会报错。
+
+```java
+package org.code.develop.Method;
+
+// 这是一个用于演示自定义方法定义与调用的类
+public class MyMethodTest3 {
+    // 定义一个静态方法myMethon，接收一个int类型的参数x
+    // 该方法的功能是对传入的参数x进行简单运算，返回5加上x的结果
+    static int myMethon(int x) {
+        return 5 + x;
+    }
+
+    public static void main(String[] args) {
+        // 调用myMethon方法，并传入参数3
+        // 将方法调用的返回值作为参数传递给System.out.println方法，用于在控制台打印输出
+        System.out.println(myMethon(3));
+    }
+}
+```
+
+
+
+- 此示例返回方法的两个参数之和:
+
+```java
+package org.code.develop.Method;
+
+public class MethodSum {
+    static int count(int x,int y) {
+        return x + y;
+    }
+
+    public static void main(String[] args) {
+        System.out.println("计算两数之和");
+        System.out.println(count(10,20));
+    }
+}
+```
+
+
+
+- 还可以将结果存储在变量中（推荐，因为这样更易于读取和维护）:
+
+```java
+package org.code.develop.Method;
+
+public class MyMethod4 {
+    static int Sum (int x,int y){
+        return  x + y;
+    }
+
+    public static void main(String[] args) {
+        int z = Sum(7,8);
+
+        System.out.println(z);
+    }
+}
+```
+
+
+
+##### 使用IF......Else的方法
+
+- 通常在方法中可以使用`if...else`
+
+```java
+```
+
