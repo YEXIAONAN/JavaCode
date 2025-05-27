@@ -1,6 +1,6 @@
 package org.code.develop.Method;
 
-public class MyMethonTest5 {
+public class MyMethodTest5 {
     static void CheckAge (int age) {
 
         // 如果年龄小于十八岁，则打印“拒绝”
