@@ -1905,21 +1905,21 @@ Java中构造函数是一种用于初始化对象的**特殊方法**。在创建
 - 创建构造函数
 
 ```java
-package org.code.function;
+package org.code.develop.function;
 
 public class MyClass {
-    int x; // 创建类属性
+  int x; // 创建类属性
 
-    // 为MyClass类创建一个类构造函数
-    public MyClass(){
-        // 设置类属性x初始值为5
-        x = 5;
-    }
+  // 为MyClass类创建一个类构造函数
+  public MyClass() {
+    // 设置类属性x初始值为5
+    x = 5;
+  }
 
-    public static void main(String[] args) {
-        MyClass myObj = new MyClass(); //创建一个 MyClass 类的对象（这将调用构造函数）
-        System.out.println(myObj.x); // 打印x的值
-    }
+  public static void main(String[] args) {
+    org.code.develop.MyClass myObj = new org.code.develop.MyClass(); //创建一个 MyClass 类的对象（这将调用构造函数）
+    System.out.println(myObj.x); // 打印x的值
+  }
 }
 ```
 

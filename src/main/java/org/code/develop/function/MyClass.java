@@ -1,4 +1,4 @@
-package org.code.function;
+package org.code.develop.function;
 
 public class MyClass {
     int x; // 创建类属性
