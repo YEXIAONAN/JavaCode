@@ -1779,4 +1779,152 @@ public class Person {
 
 
 
+### Java类方法
+- 方法是在类中声明的，他们用于执行某些操作
 
+```java
+package org.code.develop.test;
+
+public class MyClass {
+    static void myMethod(){
+        System.out.println("Hello,World!");
+    }
+}
+```
+
+- `myMethod()`在调用时打印文本。要调用一个方法，请写出该方法的名称，后跟两个`()`和分号`;`
+
+下面，在`Main`中调用`myMethod()`
+```java
+package org.code.develop.test;
+
+public class MyClass {
+    static void myMethod(){
+        System.out.println("Hello,World!");
+    }
+
+    public static void main(String[] args) {
+        myMethod();
+    }
+
+    // 输出"Hello,World!"
+}
+
+```
+
+
+#### 静态与非静态
+经常会看见，具有`static`静态或`public`公共属性和方法的Java程序
+在上面的示例中，我们创建了一个`static`静态方法，这意味着可以在不创建类的对象下访问该方法，而`public`只能由对象访问
+
+- `static` 决定“是否需要通过对象来访问”；
+
+- `public` 决定“是否可以在其他类中访问”。
+
+你可以把它们看作是分别控制 `“方式”` 和 `“权限”` 的两个维度。
+
+下面，演示`static`静态或`public`公共方法之间的差异
+```java
+package org.code.develop.test;
+
+public class MyClassTest1 {
+  // Static 方法
+  static void myStaticMethod() {
+    System.out.println("Static methods can be called without creating objects");
+  }
+
+  // Public 方法
+  public void myPublicMethod() {
+    System.out.println("Public methods must be called by creating objects");
+  }
+
+  // Main 方法
+  public static void main(String[] args) {
+    myStaticMethod(); // 调用静态方法
+    // myPublicMethod(); 这会编译一个错误
+
+    MyClassTest1 myObj = new MyClassTest1(); // 创建一个 MyClass 的对象
+    myObj.myPublicMethod(); // 调用对象的公共方法
+  }
+}
+```
+
+
+#### Java对象的访问方法
+```java
+// 创建一个名为myCar的汽车对象。对myCar对象调用fullThrottle()和speed()方法，然后运行程序:
+package org.code;
+
+// 创建Car类
+public class Car {
+    // 创建一个 fullThrottle() 方法
+    public void fullThrottle() {
+        System.out.println("这辆车正在尽力以最快的速度行驶！");
+    }
+
+    // 创建speed() 方法，并添加一个参数
+    public void speed(int maxSpeed) {
+        System.out.println("最大速度为： " + maxSpeed);
+    }
+
+    // 在Main中调用上方的方法
+    public static void main(String[] args) {
+        Car myCay = new Car(); // 创建对象
+        myCay.fullThrottle(); // 调用方法
+        myCay.speed(120); // 调用speed方法，传入参数
+    }
+}
+```
+
+**解析**
+1. 我们在`class`关键字创建了一个`car`类
+2. 我们在`Car`类中创建了`fullThrottle()`方法和`speed()`方法
+3. `fullThrottle()`方法和`speed()`方法在调用时将打印出一些文本
+4. `speed()`方法接受一个名为`maxSpeed`的`int`类型参数
+5. 为了使用`Car`方法，我们需要创建`Car`类的**对象**
+6. 然后转到`main()方法`知道其是一个运行程序的入口
+7. 通过`new`关键字，我们创建了一个名为`myCar`的`Car`对象
+8. 然后我们调用了这两个方法，在第二个方法中进行了传参，设置速度为120最大
+
+> 记住..
+> 点 (.) 用于访问对象的属性和方法。
+> 
+> 要在Java中调用方法，请编写方法名称，后跟一组括号()，后跟分号(;)
+> 
+> 类必须具有匹配的文件名(Car 和 Car.java).
+
+
+#### 使用多个类
+就像我们在之前中指定的那样，创建一个类的对象并在另一个类中访问它是一种很好的做法。
+
+请记住，java文件的名称应该与类名匹配。
+
+### Java构造函数
+Java中构造函数是一种用于初始化对象的**特殊方法**。在创建类的对象时调用构造函数。它可用于设置对象属性的初始值。
+
+- 创建构造函数
+
+```java
+package org.code.function;
+
+public class MyClass {
+    int x; // 创建类属性
+
+    // 为MyClass类创建一个类构造函数
+    public MyClass(){
+        // 设置类属性x初始值为5
+        x = 5;
+    }
+
+    public static void main(String[] args) {
+        MyClass myObj = new MyClass(); //创建一个 MyClass 类的对象（这将调用构造函数）
+        System.out.println(myObj.x); // 打印x的值
+    }
+}
+```
+
+> 请注意，构造函数名称必须与类名匹配，并且不能有返回类型(如 void).
+> 
+> 还要注意，在创建对象时会调用构造函数。
+> 
+> 默认情况下，所有类都有构造函数:如果您自己不创建类构造函数，Java会为您创建一个。但是，您无法设置对象属性的初始值。
