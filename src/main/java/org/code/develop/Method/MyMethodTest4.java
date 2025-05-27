@@ -10,4 +10,5 @@ public class MyMethodTest4 {
 
         System.out.println(z);
     }
+
 }
