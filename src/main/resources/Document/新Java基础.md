@@ -1931,9 +1931,10 @@ public class MyClass {
 
 
 ##### 构造函数参数
+
 构造函数还可以用于获取参数，初始化属性
 
-下面将演示`int i `参数添加到构造函数中。在构造函数找那个，我们将 x 设置为 y （x = y） 。调用构造函时，我们向构造函数(5)传递一个参数，将参数x的值设置为5.
+下面将演示`int i`参数添加到构造函数中。在构造函数找那个，我们将 x 设置为 y （x = y） 。调用构造函时，我们向构造函数(5)传递一个参数，将参数x的值设置为5.
 
 ```java
 package org.code.develop.function;
@@ -2020,5 +2021,146 @@ public class MultiParameterFunction {
 }
 ```
 
-
 ### Java修饰符
+
+到这里，你几乎看到所有示例中出现的关键字了
+
+```java
+public class MyClass
+```
+
+`public`关键字是一个**访问修饰符**，这表示它用于设置类，属性，方法和构造函数级别的访问。
+
+我们将修饰符分为两组
+
+- 访问修饰符 - 控制访问级别
+- 非访问修饰符 - 不控制访问级别，但提供其他功能
+
+#### 访问修饰符
+对于classes，可以使用`public`或**default**:
+
+| 修饰符  | 描述                                                   |
+| ------- | ------------------------------------------------------ |
+| public  | 该类可以由任何其他类访问                               |
+| default | 该类只能由同一包中的类访问。在不指定修改器时使用此选项 |
+
+对于**属性，方法和构造函数**，可以使用以下选项之一：
+
+| 修饰符    | 描述                                                   |
+| --------- | ------------------------------------------------------ |
+| public    | 所有类都可以访问该代码                                 |
+| private   | 代码只能在声明的类中访问                               |
+| default   | 该类只能由同一包中的类访问。在不指定修改器时使用此选项 |
+| protected | 代码可以在相同的包和子类中访问                         |
+
+#### 非访问修饰符
+
+对于**类**，可以使用`final`或`abstract`:
+
+|修饰符|描述|
+|----|----|
+|final|该类不能被其他类继承|
+|abstract|该类不能用于创建对象（要访问抽象类，他必须从另一个类继承）|
+
+对于属性和方法，可以使用以下选项之一：
+
+|修饰符|描述|
+|----|----|
+|**final**|无法覆盖/修改属性和方法|
+|**static**|属性和方法术语类，而不是对象|
+|**abstract**|只能在抽象类中使用，并且只能在方法中使用。该方法没用主体，例如抽象abstract void run();。主体由子类（继承自）提供。|
+|**transient**|序列化包含属性和方法对象时，将跳过属性和方法|
+|**synchronized**|方法一次只能由一个线程访问|
+|**volatile**|属性值不是本地缓存的线程，总是从"主内存"中读取|
+
+#### Final
+
+- 如果不希望覆盖现有属性值，将属性声明为`final`
+
+```java
+package org.code.Modifier;
+
+public class MyFinal {
+  final String name = "MuGay";
+  final int x = 91;
+
+  public static void main(String[] args) {
+    MyFinal MF = new MyFinal();
+
+    // 如果尝试重新定义一个本来就是final类型的变量，编译器会报错
+    //MF.x =50;
+    System.out.println(MF.name);
+    System.out.println(MF.x);
+  }
+}
+```
+
+#### Static
+
+- `static`静态方法意味着可以在不创建类对象的情况下访问它，这与`pubic`不同
+
+```java
+package org.code.Modifier;
+
+public class MyStatic {
+  // 静态方法
+  static void myStaticMethod() {
+    System.out.println("Static methods can be called without creating objects");
+  }
+
+  // 公共方法
+  public void myPublicMethod() {
+    System.out.println("Public methods must be called by creating objects");
+  }
+
+  // Main方法
+  public static void main(String[] args) {
+    // 调用静态方法
+    myStaticMethod();
+    
+    // 创建一个对象
+    MyStatic MS = new MyStatic();
+    MS.myPublicMethod();
+  }
+}
+```
+
+#### Abstract
+
+abstract 抽象方法属于abstract抽象类，它没有主体。主体由子类提供:
+
+```java
+package org.code.Modifier;
+
+// Code from filename: Person.java
+// 抽象类
+abstract class Person {
+  public String fname = "John";
+  public int age = 24;
+  public abstract void study(); // 抽象方法
+}
+
+// 子类（从 Person 继承）
+class Student extends Person {
+  public int graduationYear = 2018;
+  public void study() { // 此处提供了抽象方法的主体
+    System.out.println("Studying all day long");
+  }
+}
+// End code from filename: Person.java
+
+// Code from filename: MyClass.java
+class MyClass {
+  public static void main(String[] args) {
+    // 创建 Student 类的对象（从 Person 继承属性和方法）
+    Student myObj = new Student();
+
+    System.out.println("Name: " + myObj.fname);
+    System.out.println("Age: " + myObj.age);
+    System.out.println("Graduation Year: " + myObj.graduationYear);
+    myObj.study(); // 调用抽象方法
+  }
+}
+```
+
+### Java封装
