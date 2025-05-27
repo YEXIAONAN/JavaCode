@@ -1902,7 +1902,7 @@ public class Car {
 ### Java构造函数
 Java中构造函数是一种用于初始化对象的**特殊方法**。在创建类的对象时调用构造函数。它可用于设置对象属性的初始值。
 
-- 创建构造函数
+#### 创建构造函数
 
 ```java
 package org.code.develop.function;
@@ -1928,3 +1928,97 @@ public class MyClass {
 > 还要注意，在创建对象时会调用构造函数。
 > 
 > 默认情况下，所有类都有构造函数:如果您自己不创建类构造函数，Java会为您创建一个。但是，您无法设置对象属性的初始值。
+
+
+##### 构造函数参数
+构造函数还可以用于获取参数，初始化属性
+
+下面将演示`int i `参数添加到构造函数中。在构造函数找那个，我们将 x 设置为 y （x = y） 。调用构造函时，我们向构造函数(5)传递一个参数，将参数x的值设置为5.
+
+```java
+package org.code.develop.function;
+
+/**
+ * 这是一个演示Java类和构造函数用法的示例类。
+ * 该类包含一个实例变量和一个带参数的构造函数，
+ * 并在main方法中展示了如何创建对象和访问实例变量。
+ */
+public class MyClass1 {
+    // 声明一个名为x的整型实例变量，用于存储对象的状态
+    int x;
+
+    /**
+     * 构造函数：用于初始化MyClass1对象
+     * @param y 用于初始化实例变量x的值
+     */
+    public MyClass1(int y) {
+        // 将参数y的值赋给当前对象的实例变量x
+        x = y;
+    }
+
+    /**
+     * 程序入口点
+     * @param args 命令行参数数组
+     */
+    public static void main(String[] args) {
+        // 创建MyClass1类的一个实例（对象），并通过构造函数传递初始值5
+        MyClass1 myObj = new MyClass1(5);
+
+        // 访问对象的实例变量x并打印其值到控制台
+        System.out.println(myObj.x); // 输出结果：5
+    }
+}
+```
+
+也可以有任意多个参数
+
+```java
+package org.code.develop.function;
+
+/**
+ * MultiParameterFunction 类用于演示如何通过构造函数传递多个参数
+ * 并将这些参数赋值给类的成员变量，以实现对象属性的初始化。
+ */
+public class MultiParameterFunction {
+
+    // 成员变量：记录年份（可以理解为出生年份或其他年份信息）
+    int PersonYear;
+
+    // 成员变量：记录名字
+    String PersonName;
+
+    /**
+     * 构造函数：
+     * 在创建对象时被自动调用，用于初始化对象的成员变量。
+     * 构造函数名称必须与类名一致。
+     *
+     * @param Year  初始化年份的参数，赋值给成员变量 PersonYear
+     * @param Name  初始化姓名的参数，赋值给成员变量 PersonName
+     */
+    public MultiParameterFunction(int Year, String Name) {
+        // 将传入的参数 Year 赋值给成员变量 PersonYear
+        PersonYear = Year;
+
+        // 将传入的参数 Name 赋值给成员变量 PersonName
+        PersonName = Name;
+    }
+
+    /**
+     * 主方法（程序入口）：
+     * Java 程序从 main 方法开始执行。
+     *
+     * @param args  命令行参数（此示例未使用）
+     */
+    public static void main(String[] args) {
+        // 使用构造函数创建 MultiParameterFunction 类的实例
+        // 并传入两个参数：年份 2007 和姓名 "MuGay"
+        MultiParameterFunction MPF = new MultiParameterFunction(2007, "MuGay");
+
+        // 打印对象的成员变量，输出格式为：2007 MuGay
+        System.out.println(MPF.PersonYear + " " + MPF.PersonName);
+    }
+}
+```
+
+
+### Java修饰符
