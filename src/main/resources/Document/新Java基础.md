@@ -1509,3 +1509,274 @@ public class MyRecursion {
 }
 ```
 
+
+实例解析
+
+调用sum()函数时，它将参数k添加到小于k的所有数字的和中，并返回结果。 当k变为0时，函数只返回0。运行时，程序遵循以下步骤:
+
+10 + sum(9)
+
+10 + ( 9 + sum(8) )
+
+10 + ( 9 + ( 8 + sum(7) ) )
+
+...
+
+10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 + sum(0)
+
+10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 + 0
+
+由于函数在k为0时不调用自身，因此程序停止并返回结果。
+
+##### 停止状态
+正如循环会遇到无限循环的问题一样，递归函数也会遇到无限递归的问题。 无限递归是指函数从不停止调用自身。每个递归函数都应该有一个停止条件，即函数停止调用自身的条件。 在前面的示例中，停止条件是当参数k变为0时。
+
+看到各种不同的例子有助于更好地理解这个概念。在本例中，函数在起点和终点之间添加一系列数字。 此递归函数的停止条件为end不大于start时:
+
+```java
+// 使用递归将5到10之间的所有数字相加。
+public class MyClass {
+  public static void main(String[] args) {
+    int result = sum(5, 10);
+    System.out.println(result);
+  }
+  public static int sum(int start, int end) {
+    if (end > start) {
+      return end + sum(start, end - 1);
+    } else {
+      return end;
+    }
+  }
+}
+```
+
+## JavaOOP面向对象编程
+
+**Java - 什么是OOP?**
+> OOP代表面向对象编程。
+
+过程编程是关于编写对数据执行操作的过程或函数，而面向对象编程是创建同时包含数据和函数的对象。
+
+与过程编程相比，面向对象编程有几个优点:
+
+- OOP 更快更容易执行
+- OOP 为程序提供了清晰的结构
+- OOP 有助于保持C#代码"不重复自己"，并使代码更易于维护、修改和调试。
+- OOP 使得用更少的代码和更短的开发时间创建完全可重用的应用程序成为可能
+
+提示: "不要重复你自己 "（DRY）原则是关于减少代码的重复。您应该提取出应用程序通用的代码，并将它们放在一个地方，然后重用它们，而不是重复使用它们。
+
+ 
+
+**Java - 什么是类和对象?**
+类和对象是面向对象编程的两个主要方面。
+
+请看下图以了解类和对象之间的区别:
+
+![image](https://img.dexbug.com/i/2025/05/27/gnqp6l.png)
+
+
+
+### Java 对象和类
+
+- Java是一种面向对象的编程语言
+
+- Java中的一切都与类和对象及其属性方法相关联。
+
+- 例如:在现实生活中，汽车是一个物体。汽车有**属性**，比如重量和颜色，还有**方法**，比如驱动和刹车。
+
+  类类似于对象构造函数，或用于创建对象的"蓝图"。
+
+
+
+#### 创建一个类
+
+创建一个类，使用`class`关键字
+
+```java
+public class MyClass {
+  int x = 5;
+}
+```
+
+
+
+#### 创建一个对象
+
+在Java中，对象是从类创建的。我们已经创建了名为`MyClass` 的类，因此现在可以使用它来创建对象。
+
+要创建`MyClass`的对象，请指定类名，后跟对象名，并使用`new`关键字:
+
+```java
+public class MyClass {
+  int x = 5;
+
+  public static void main(String[] args) {
+    MyClass myObj = new MyClass();
+    System.out.println(myObj.x);
+  }
+}
+```
+
+
+
+#### 多个对象
+
+可以创建一个类的多个对象
+
+```java
+public class MyClass {
+  int x = 5;
+
+  public static void main(String[] args) {
+    MyClass myObj1 = new MyClass();  // 对象 1
+    MyClass myObj2 = new MyClass();  // 对象 2
+    System.out.println(myObj1.x);
+    System.out.println(myObj2.x);
+  }
+}
+```
+
+
+
+#### 使用多个类
+
+可以创建一个类的对象并在另一个类中访问它。这通常用于更好地组织类（一个类拥有所有属性和方法，而另一个类拥有`main()`方法（要执行的代码））。
+
+
+
+### Java类属性
+
+我们在示例中使用了`x`的术语"变量"（如下所示）。它实际上是类的一个属性。或者可以说类属性是类中的变量:
+
+```java
+public class MyClass {
+  int x = 5;
+  int y = 3;
+}
+```
+
+
+
+> 类属性的另一个术语是**字段**。
+
+
+
+
+
+#### 访问属性
+
+可以通过创建类的对象和使用点语法(`.`)来访问属性:
+
+下面的示例将创建`MyClass`类的对象，名称为`myObj`。我们使用对象上的`x`属性打印其值:
+
+
+
+```java
+public class MyClass {
+  int x = 5;
+
+  public static void main(String[] args) {
+    MyClass myObj = new MyClass();
+    System.out.println(myObj.x);
+  }
+}
+```
+
+
+
+
+
+#### 修改属性
+
+```java
+public class MyClass {
+  int x;
+
+  public static void main(String[] args) {
+    MyClass myObj = new MyClass();
+    // 指定大小
+    myObj.x = 40;
+    System.out.println(myObj.x);
+  }
+}
+```
+
+或者替代现有
+
+```java
+public class MyClass {
+  int x = 10;
+
+  public static void main(String[] args) {
+    MyClass myObj = new MyClass();
+    myObj.x = 25; // x 现在是 25
+    System.out.println(myObj.x);
+  }
+}
+```
+
+如果不希望覆盖现有值，请将该属性声明为 `final`:
+
+```java
+public class MyClass {
+  final int x = 10;
+  public static void main(String[] args) {
+    MyClass myObj = new MyClass();
+    myObj.x = 25; // 将产生错误:无法为 final 变量赋值
+    System.out.println(myObj.x);
+  }
+}
+```
+
+
+
+> 如果希望变量始终存储相同的值，如PI（3.14159…），则 `final`关键字非常有用。
+>
+> `final` 关键字称为"修饰符"。
+
+
+
+#### 多个对象
+
+如果创建一个类的多个对象，可以在更改一个对象中的属性值时，而不会影响另一个对象中的属性值:
+
+```java
+public class MyClass {
+  int x = 5;
+  public static void main(String[] args) {
+    MyClass myObj1 = new MyClass();  // 对象 1
+    MyClass myObj2 = new MyClass();  // 对象 2
+    // 这里之更改了myObj2的值为25
+    myObj2.x = 25;
+    System.out.println(myObj1.x);  // 输出 5
+    System.out.println(myObj2.x);  // 输出 25
+  }
+}
+```
+
+
+
+#### 多属性
+
+可以指定任意数量的属性:
+
+```java
+public class Person {
+  String fname = "John";
+  String lname = "Doe";
+  int age = 24;
+    
+  public static void main(String[] args) {
+    Person myObj = new Person();
+      
+    System.out.println("Name: " + myObj.fname + " " + myObj.lname);
+    System.out.println("Age: " + myObj.age);
+  }
+}
+```
+
+
+
+
+
