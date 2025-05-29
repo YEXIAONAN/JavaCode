@@ -2164,3 +2164,75 @@ class MyClass {
 ```
 
 ### Java封装
+
+- 封装的意义是确保对用户隐藏"敏感"数据。要实现这一点
+  - 将变量/属性声明为`private`
+  - 提供公共**get**和**set**方法来访问和更新`private`私有变量的值
+
+#### Get和Set
+
+- 从上一章中了解到，只能在同一个类内访问 `private`私有变量（外部类无权访问它）。但是，如果我们提供公共get和set方法，就可以访问它们。
+
+**get**方法返回变量值，**set**方法设置值。
+
+两者的语法都是以 **get** 或 **set**开头，后跟变量名，第一个字母大写:
+
+```java
+package org.code.develop.encapsulation;
+
+// Person类，用于表示一个人的信息
+// 这里体现了封装的概念，将数据（如name）隐藏起来，通过公共的方法（getter和setter）来访问和修改
+public class Person {
+    // 私有属性name，用于存储人的名字
+    // 使用private修饰符，将其封装起来，外部类不能直接访问
+    private String name;
+
+    // Getter方法，用于获取name属性的值
+    // 外部类可以通过调用这个方法来获取name的值，而不是直接访问私有属性
+    public String getName() {
+        return name;
+    }
+
+    // Setter方法，用于设置name属性的值
+    // 外部类可以通过调用这个方法来设置name的值，并且可以在方法内部添加一些逻辑来验证或处理新的值
+    // 例如，可以在这里添加对新名字的长度限制等验证逻辑
+    public void setName(String newName) {
+        this.name = newName;
+    }
+}
+```
+
+> 解析：
+> ``get``方法返回变量`name`的值
+> ``set``方法接受一个参数(`newName`)并将其分配给`name`变量。`this`关键字用于引用当前对象。
+> 但是由于`name`变量声明为`private`,因此我们无法从此类外部访问它
+
+为什么要封装?
+- 更好地控制类属性和方法
+- 类属性可以设置为只读（如果只使用get方法），也可以设置为只写（如果只使用set方法）
+- 灵活:程序员可以在不影响其他部分的情况下更改代码的一部分
+- 提高数据的安全性
+
+### Java 包(Packages)
+- Java包与API
+Java中的包用于对相关类进行分组。可将其视为文件目录中的文件夹。我们使用包来规避名称冲突，并编写更好的可维护代码。软件包分为两类：
+  - 内置包（来自JavaAPI的包）
+  - 用户自定包（创建自己的包）
+
+#### 内置软件包
+
+JavaAPI 是 Java开发环境中包含的一个预编写类库，可以直接使用。
+
+该库用于管理输入，数据库编程等组件。完整列表可以在Oracles网站上找到:https://docs.oracle.com/javase/8/docs/api/
+
+该库分为包和类，这意味着可以导入单个类（及其方法和属性）也可以导入包含属于指定包的所有类的整个包。
+
+如果需要使用该库中的类或者包，需要使用`import`关键字
+
+```java
+import package.name.Class;   // 导入 single 类
+import package.name.*;   // 导入整个包
+```
+
+#### 导入类
+如果需要找到使用的类，例如获取用户输入的`Scanner`类，请编写以下代码
