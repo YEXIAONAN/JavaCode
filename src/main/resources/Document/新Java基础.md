@@ -2236,3 +2236,106 @@ import package.name.*;   // 导入整个包
 
 #### 导入类
 如果需要找到使用的类，例如获取用户输入的`Scanner`类，请编写以下代码
+```java
+import java.util.Scanner;
+```
+
+在上面的实例中，`java.util`是一个包，而`Scanner`是`java.util`包的一个类。
+要使用`Scanner`类，请创建该类的对象，即可使用`Scanner`类文档中的任何可用方法。
+
+- 示例：使用Scanner获取用户输入
+
+```java
+import java.util.Scanner;
+
+class MyClass {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    System.out.println("Enter username");
+
+    String userName = myObj.nextLine();
+    System.out.println("Username is: " + userName);
+  }
+}
+```
+
+#### 导入包
+有许多软件包可供选择。在前面的示例中，我们使用了`java.util`包中的`Scanner`类。该软件包还包含日期和时间工具，随机数生成器和其他使用程序类。
+要导入整个软件包，请在句子末尾加上星号（*）。以下示例将导入`java.util`包中的所有类：
+
+```java
+import java.util.*;
+```
+
+#### 用户定义包
+要创建包，请使用`package`关键字
+
+
+### Java继承
+- 子类和超类
+Java中可以将属性和方法从一个类继承到另一个类。我们将"继承概念"分为两种
+
+- 子类 (Subclass) - 子，从另一个类继承的类
+- 超类 (Superclass) - 父，被继承的类
+
+要从类继承，请使用`extends`关键字。
+
+在下面的示例中，`Car`类（子类）继承了`Vehicle`类（超类）的属性和方法：
+
+```java
+class Vehicle {
+  protected String brand = "Ford";        // Vehicle 属性
+  public void honk() {                    // Vehicle 方法
+    System.out.println("Tuut, tuut!");
+  }
+}
+
+class Car extends Vehicle {
+  private String modelName = "Mustang";    // Car 属性
+  public static void main(String[] args) {
+
+    // 创建一个 myCar 对象
+    Car myCar = new Car();
+
+    // 在 myCar 对象上调用 honk() 方法（来自 Vehicle 类）
+    myCar.honk();
+
+    // 显示 brand 属性的值（来自 Vehicle 类）和来自 Car 类的 modelName 值
+    System.out.println(myCar.brand + " " + myCar.modelName);
+  }
+}
+```
+
+你是否注意到Vehicle中的protected修饰符?
+
+我们将Vehicle中的brand属性设置为protected受保护的访问修饰符。 如果设置为private，则Car类将无法访问它。
+
+为什么使用继承?
+- 因为它对于代码的可重用性很有用:在创建新类时重用现有类的属性和方法。
+
+### Java多态
+多态意味着“多种形式”，当我们有许多通过继承相互关联的类时，就会产生多态性。
+
+**继承**允许我们从另一个类继承属性和方法。多态使用这些方法来执行不同的任务。这允许我们以不同的方式执行单个操作。
+
+例如。考虑一个名为`Animal`的超类，它有一个名为`animalSound()`的方法。动物的亚类可以是猪，猫，狗，鸟，他们也有自己的动物声音（猪叫，猫叫等）：
+
+```java
+class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+```
