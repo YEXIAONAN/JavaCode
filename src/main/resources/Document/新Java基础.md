@@ -2339,3 +2339,44 @@ class Dog extends Animal {
   }
 }
 ```
+
+> 请记住，我们使用**extends**关键字从类继承。
+
+现在，我们可以创建`pig`和`Dog`对象，并对它们调用`animalSound()`方法
+
+```java
+class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+class MyMainClass {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();  // 创建一个 Animal 对象
+    Animal myPig = new Pig();  // 创建 Pig 对象
+    Animal myDog = new Dog();  // 创建一个 Dog 对象
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+}
+```
+
+为什么要使用"继承"和"多态性"?
+- 因为它对于代码的可重用性很有用:在创建新类时可以重用现有类的属性和方法。
+
+
+### Java 内部类 (嵌套类)

@@ -23,6 +23,5 @@ public class StudentTrain {
         System.out.println(ST.getAge());
 
 
-
     }
 }
