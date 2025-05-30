@@ -2566,3 +2566,65 @@ class AbstractClass {
 
 
 ### Java接口
+Java中实现**abstraction**抽象的另一种方法是使用接口。
+
+An ``interface``接口是一个完全“抽象类”，用于将相关方法与空实体分组：
+
+```java
+package org.code.develop.Interface;
+
+interface Animal {
+    // 接口方法
+    public void animalSound();
+
+    // 接口方法
+    public void run();
+}
+```
+
+要访问接口方法，接口必须由另一个具有`implements`关键字（而不是`extends`）的类“实现”（类似于继承）。接口方法的主体由“implements”类提供：
+
+```java
+package org.code.develop.Interface;
+
+interface Animal{
+    public void animalSound();
+    public void sleep();
+}
+
+// Pig “实现” Animal 接口
+class Pig implements Animal {
+    public void animalSound(){
+        // 这里提供 animalSound() 主体
+        System.out.println("I am Pig");
+    }
+    public void sleep() {
+        System.out.println("Zzz...");
+    }
+}
+
+
+// Main方法入口
+class MyMainClass {
+    public static void main(String[] args) {
+        // 创建Pig对象
+        Pig myPig = new Pig();
+
+        myPig.animalSound();
+        myPig.sleep();
+    }
+}
+```
+
+> 关于接口的说明：
+> - 与抽象类一样，**接口不能用于创建对象**（在上面的示例中，不可能在Main方法中创建“Animal”对象）
+> - 接口方法没有主体-主体由“implement”类提供
+> - 在实现接口时，必须重写其所有方法
+> - 默认情况下，接口方法是`abstract`抽象的和`public`公共的
+> - I接口属性默认为`public`,`static`,`final`
+> - 接口不能包含构造函数（因为其不能用于创建对象）
+> 
+> 为什么以及何时使用接口？
+> 1）为了实现安全性-隐藏某些细节，只显示对象（接口）的重要细节
+> 2）Java不支持“多重继承”（一个类只能从一个超类继承）。但是，它可以通过接口实现，因为该类可以实现多个接口。
+> **注释：**要实现多个接口，请用逗号分隔它们
