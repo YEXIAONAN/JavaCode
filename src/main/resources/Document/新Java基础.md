@@ -2380,3 +2380,110 @@ class MyMainClass {
 
 
 ### Java 内部类 (嵌套类)
+在Java中，也可以嵌套类（类中的类）。嵌套类的目的是将属于同一类的类分组，这使代码更具有可读性和维护性。
+
+要访问内部类，请创建外部类的对象，然后创建内部类的对象：
+
+```java
+package org.code.develop.inheritance;
+
+class OuterClass {
+    int x = 10;
+    class InnerClass {
+        int y = 5;
+    }
+}
+
+public class MyNestedClass {
+    public static void main(String[] args) {
+        OuterClass myOuter = new OuterClass();
+        OuterClass.InnerClass myInner = myOuter.new InnerClass();
+        System.out.println(myInner.y + myOuter.x);
+    }
+}
+```
+
+
+#### 私有的内部类
+与“常规”类不同，内部类可以是`private`私有的或`protected`受保护的。
+
+如果不希望外部对象访问内部类，请将该类声明为`private`
+
+```java
+package org.code.develop.inheritance;
+
+class OutClass {
+    int x = 9;
+    private class InnerClass {
+        int y = 1;
+    }
+}
+
+public class PrivateInnerClass {
+    public static void main(String[] args) {
+        OutClass out = new OutClass();
+
+        // 将上方的内部类修改为`private`编译器会立即报错，因为无法访问到
+        OutClass.InnerClass outInner = out.new InnerClass();
+
+        System.out.println(out.x + outInner.y);
+    }
+}
+```
+
+#### Static内部类
+内部类也可以是`static`静态的，这意味着可以在不创建外部类的对象的情况下访问它。
+
+```java
+package org.code.develop.inheritance;
+
+class MyOutClass {
+    int x = 8;
+    static class MyInnerClass {
+        int y = 2;
+    }
+}
+
+
+public class StaticInnerClass {
+    public static void main(String[] args) {
+        MyOutClass.MyInnerClass MyInner = new MyOutClass.MyInnerClass();
+
+        System.out.println(MyInner.y);
+    }
+}
+```
+
+> 注释: 与 static静态属性和方法一样，static静态内部类无权访问外部类的成员。
+
+
+#### 从内部类访问外部类
+
+内部类的一个优点是，它们可以访问外部类的属性和方法。
+
+```java
+package org.code.develop.inheritance;
+
+class OClass {
+  int x = 10;
+  class IClass {
+    public int myInnerMethod(){
+      return x;
+    }
+  }
+}
+
+public class MainClass {
+  public static void main(String[] args) {
+    // 创建外部类的访问对象
+    OClass OC = new OClass();
+
+    // 引用新对象再创建一个内部对象
+    OClass.IClass OI = OC.new IClass();
+
+    // 引用内部对象的方法输出
+    System.out.println(OI.myInnerMethod());
+  }
+}
+```
+
