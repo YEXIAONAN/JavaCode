@@ -2215,7 +2215,7 @@ public class Person {
 
 ### Java 包(Packages)
 - Java包与API
-Java中的包用于对相关类进行分组。可将其视为文件目录中的文件夹。我们使用包来规避名称冲突，并编写更好的可维护代码。软件包分为两类：
+  Java中的包用于对相关类进行分组。可将其视为文件目录中的文件夹。我们使用包来规避名称冲突，并编写更好的可维护代码。软件包分为两类：
   - 内置包（来自JavaAPI的包）
   - 用户自定包（创建自己的包）
 
@@ -2487,3 +2487,82 @@ public class MainClass {
 }
 ```
 
+
+
+### Java抽象类
+
+数据**抽象**是隐藏某些细节并仅向用户显示基本信息的过程。
+
+抽象可以通过**abstract classes**抽象类或`interfaces`接口实现
+
+
+
+`abstract `关键字是非访问修饰符，用于类和方法：
+
+- 抽象类：是一个不能用于创建对象的受限类（要访问它，必须从另一个类继承）
+- 抽象方法：只能在抽象类中使用，并且它没有主体。主体由子类（继承自）提供
+
+
+
+抽象类可以由抽象方法和常规方法：
+
+```java
+abstract class Animal {
+  public abstract void animalSound();
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
+```
+
+
+
+根据上面的示例，不可能创建 Animal动物类的对象：
+
+```java
+Animal myObj = new Animal(); // 会产生错误
+```
+
+
+
+要访问抽象类，他必须从另一个类继承。（使用extends关键字继承）
+
+```java
+package org.code;
+
+// 抽象类
+abstract class Animal{
+    // 抽象方法（没主体）
+    public abstract void animalSound();
+
+    // 常规方法
+    public void sleep() {
+        System.out.println("I am sleep~~~");
+    }
+}
+
+// 子类，继承自（Animal）
+class Pig extends Animal {
+    public void animalSound(){
+        // 这里提供 animalSound() 的主体
+        System.out.println("I am Pig!");
+    }
+}
+
+class AbstractClass {
+    public static void main(String[] args) {
+        Pig myPig = new Pig();
+        myPig.animalSound();
+        myPig.sleep();
+    }
+}
+```
+
+> **为什么以及何时使用抽象类和方法?**
+>
+> 因为要实现安全性，要隐藏某些细节并仅显示对象的重要细节。
+>
+> **注释:** 抽象也可以通过接口实现
+
+
+### Java接口
