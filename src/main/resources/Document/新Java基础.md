@@ -2627,4 +2627,236 @@ class MyMainClass {
 > 为什么以及何时使用接口？
 > 1）为了实现安全性-隐藏某些细节，只显示对象（接口）的重要细节
 > 2）Java不支持“多重继承”（一个类只能从一个超类继承）。但是，它可以通过接口实现，因为该类可以实现多个接口。
-> **注释：**要实现多个接口，请用逗号分隔它们
+> **注释：**要实现多个接口，请用逗号分隔它们 
+
+#### 多个接口
+要实现多个接口，用逗号分隔：
+
+```java
+package org.code.develop.Interface;
+
+interface FirstInterface {
+    // 接口方法
+    public void myMethod();
+}
+
+interface SecondInterface {
+    public void myOtherMethod();
+}
+
+class DemoClass implements FirstInterface,SecondInterface {
+    public void myMethod() {
+        System.out.println("Some text...");
+    }
+
+    public void myOtherMethod() {
+        System.out.println("some other text...");
+    }
+}
+
+class MainClass {
+    public static void main(String[] args) {
+        DemoClass myObj = new DemoClass();
+
+        myObj.myMethod();
+        myObj.myOtherMethod();
+    }
+}
+```
+
+### Java枚举
+`enum`枚举是一个特殊的“类”，它用于表示一组**常量**（不可更改的变量，如`final`变量）
+要创建`enum`，请使用`enum`关键字（而不是类或者接口），并用逗号分隔常量。请注意，其应为大写字母
+
+```java
+package org.code.develop.Enums;
+
+enum Level {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+```
+
+可以使用.语法访问`enum`枚举常量，如：
+```java
+package org.code;
+
+public class enums {
+    public static void main(String[] args) {
+        enum size{
+            LONG,
+            SMALL,
+        }
+//   ----------------------------  
+        size myVar = size.LONG; // 访问常量
+//   ----------------------------   
+        System.out.println(myVar);
+    }
+}
+```
+
+> Enum 是"enumerations"的缩写，意思是"特别列出"。
+
+#### 类内枚举
+还可以在类中具有enum枚举：
+
+```java
+package org.code.develop.Enums;
+
+public class MyClass {
+    enum Level {
+        LOW,
+        MEDIUM,
+        HIGH
+    }
+
+    public static void main(String[] args) {
+        Level myVar = Level.HIGH;
+        System.out.println(myVar);
+    }
+}
+```
+
+#### Switch语句中的枚举
+枚举通常用于`switch`语句中检查相应的值：
+
+```java
+package org.code.develop.Enums;
+
+enum Size {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+
+public class SwitchEnum {
+    public static void main(String[] args) {
+        Size mySize = Size.HIGH;
+
+        switch (mySize){
+            case LOW :
+                System.out.println("Low Size");
+                break;
+            case MEDIUM:
+                System.out.println("MEDIUM Size");
+                break;
+            case HIGH:
+                System.out.println("you are so high!");
+                break;
+        }
+    }
+}
+```
+
+输出：
+> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=10292" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.develop.Enums.SwitchEnum
+> you are so high!
+> 
+> 进程已结束，退出代码为 0
+
+#### 循环遍历枚举
+枚举中有一个`values()`方法，该方法返回所有枚举常量的数组。如果要循环遍历枚举常量，此方法非常有效：
+
+```java
+package org.code.develop.Enums;
+
+public class LoopThroughTheEnumeration {
+    public static void main(String[] args) {
+        for (Size mySize : Size.values()) {
+            System.out.println(mySize);
+        }
+    }
+}
+```
+
+
+输出：
+> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=13276" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.develop.Enums.LoopThroughTheEnumeration
+> LOW
+> MEDIUM
+> HIGH
+> 
+> 进程已结束，退出代码为 0
+
+
+
+枚举和类之间的差异
+
+enum枚举可以像class类一样具有属性和方法。唯一的区别是枚举常量是public, static 和 final（不可更改-无法重写）。
+
+enum 枚举不能用于创建对象，也不能扩展其他类（但可以实现接口）。
+
+为什么以及何时使用枚举?
+当您知道值不会更改时，如月日期、星期、颜色等，请使用枚举。
+
+### Java用户输入
+Scanner 类用于获取用户输入，它位于 java.util包中。
+
+要使用 Scanner 类，请创建该类的对象，并使用 Scanner 类文档中的任何可用方法。 在我们的示例中，我们将使用nextLine()方法，该方法用于读取字符串:
+
+```java
+package org.code;
+
+import java.util.Scanner;
+
+public class Userinput {
+    public static void main(String[] args) {
+        // 导入Scanner
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("请输入内容");
+        String userinput =  sc.next();
+
+        System.out.println("你输入了： " + userinput);
+    }
+}
+```
+
+#### 输入类型
+在上面的示例中，我们使用了 next()方法，该方法用于读取字符串。要阅读其他类型，请查看下表:
+
+|方法	          |描述|
+|----|----|
+|nextBoolean()	  |从用户处读取boolean布尔值|
+|nextByte()	      |从用户处读取byte字节值|
+|nextDouble()     |从用户处读取double双精度值|
+|nextFloat()      |从用户处读取float浮点值|
+|nextInt()	      |从用户处读取int值|
+|nextLine()	      |从用户处读取String字符串值|
+|nextLong()	      |从用户处读取long值|
+|nextShort()	  |从用户处读取short值|
+
+
+在下面的示例中，我们使用不同的方法读取各种类型的数据:
+
+```java
+package org.code;
+
+import java.util.Scanner;
+
+class AllMethod {
+    public static void main(String[] args) {
+        Scanner myObj = new Scanner(System.in);
+
+        System.out.println("Enter name, age and salary:");
+
+        // 字符串输入
+        String name = myObj.nextLine();
+
+        // 数字输入
+        int age = myObj.nextInt();
+        double salary = myObj.nextDouble();
+
+        // 输出用户输入
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Salary: " + salary);
+    }
+}
+```
+
+> 注释: 如果输入错误（例如数字输入中的文本），将收到异常/错误消息 (如 "InputMismatchException").
+
+
+### Java日期和时间
