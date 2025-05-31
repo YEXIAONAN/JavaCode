@@ -3270,5 +3270,217 @@ LinkedList 将其项目存储在"容器"中。该列表有一个指向第一个�
 |getFirst()|获取列表开头的项目|
 |getLast()|获取列表末尾的项目|
 
-
 ### JavaHashMap
+
+在ArayList中，我们知道了数组将项目存储为有序集合，并且必须使用索引号（`int`类型）来访问他们。然而，`HashMap`将项目存储在"key/value"对中，可以通过另一种类型的索引，（例如`String`）访问它们。
+
+一个对象作用的另一个对象（值）的键（索引）。它们可以存储不同的类型：`String`字符串键和`Integer`整数值，或者相同类型，例如`String`字符串键和`String`字符串值：
+
+在下方，我们创建一个名为"CapitalCities"的`HashMap`对象，它将存储字符键和字符串值：
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // HashMap 对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+  }
+}
+```
+
+#### 添加项目
+
+`HashMap`类由很多有用的方法。例如，要强其中添加项目，请使用`put()`方法：
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC");
+
+    System.out.println(CapitalCities);
+  }
+}
+```
+
+**输出**
+> {USA=Washington DC, Norway=Oslo, England=London, Germany=Berlin}
+
+#### 访问项目
+
+如果需要访问`HashMap`中的值，请使用`get()`方法引用其键：
+
+```java
+capitalCities.get("England");
+```
+
+#### 移除项目
+
+要删除一个项目，使用`remove()`方法：
+
+```java
+capitalCities.remove("England");
+```
+
+要删除所有项目，使用`clear()`方法：
+
+```java
+capitalCities.clear();
+```
+
+#### HashMap大小
+
+要找出有多少项目，使用`size()`方法
+
+```java
+capitalCities.size();
+```
+
+#### 循环遍历 HashMap
+
+使用For-each循环遍历`HashMap`项目。
+
+注释：如果只需要使用键，请使用`keySet()`方法，如果只需要值，请使用`values()`方法：
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC");
+// --------
+// 打印 keys
+    for (String i : CapitalCities.keySet()) {
+      System.out.println(i);
+    }
+// --------
+  }
+}
+```
+
+**输出**
+> USA
+> Norway
+> England
+> Germany
+
+下面演示打印 values
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC");
+// --------
+// 打印 values
+    for (String i : CapitalCities.values()) {
+      System.out.println(i);
+    }
+// --------
+  }
+}
+```
+
+**输出**
+> Washington DC
+> Oslo
+> London
+> Berlin
+
+下面演示打印键和值
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC"); 
+    
+    // 打印键和值 
+    for(String i : CapitalCities.keySet()){
+      System.out.println("Key: " + i + "Value: " + CapitalCities.values());
+    }
+  }
+}
+```
+
+**输出**
+> Key: USAValue: [Washington DC, Oslo, London, Berlin]
+> Key: NorwayValue: [Washington DC, Oslo, London, Berlin]
+> Key: EnglandValue: [Washington DC, Oslo, London, Berlin]
+> Key: GermanyValue: [Washington DC, Oslo, London, Berlin]
+
+#### 其他类型
+HashMap中的键和值实际上是对象。在上面的实例中，我们使用了“String”类型的对象。请记住，Java中的String是一个对象（不是原始类型）要使用其他类型，例如int，则必须指定一个等效的包装类：Integer。对于其他原始类型，请使用: Boolean 用于 boolean, Character 用于 char, Double 用于 double 等:
+
+下面演示，创建一个HashMap对象，存储String类型键和Integer值
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+public class MyHashMapPeople {
+  public static void main(String[] args) {
+    
+    // 创建HashMap对象
+    HashMap<String,Integer> people = new HashMap<String,Integer>();
+    
+    // 添加键和值（Name，Age）
+    people.put("John", 32);
+    people.put("Steve", 30);
+    people.put("Angie", 33);
+
+    for(String i : people.keySet()){
+      System.out.println("Key: " + i + "Value: " + people.get(i));
+    }
+  }
+}
+```
+
+### JavaHaspSet 集合
