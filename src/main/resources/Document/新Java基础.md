@@ -3484,3 +3484,198 @@ public class MyHashMapPeople {
 ```
 
 ### JavaHaspSet 集合
+是项目的集合，其中每个项目都是唯一的，可以在`java.util`包中找到：
+
+下面演示，创建一个名为cars的HashSet对象，该对象用于存储字符串：
+
+```java
+package org.code;
+
+import java.util.HashSet;
+
+public class MyHashSet {
+    public static void main(String[] args) {
+        HashSet<String> cars = new HashSet<String>();
+    }
+}
+```
+
+#### 添加项目
+`HashSet`类有很多有用的方法。例如，要想其中添加项目，使用`add()`方法：
+
+```java
+package org.code;
+
+import java.util.HashSet;
+
+public class MyHashSet {
+    public static void main(String[] args) {
+        HashSet<String> cars = new HashSet<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("BMW");
+        cars.add("Mazda");
+
+        System.out.println(cars);
+    }
+}
+```
+
+> 注释：注释: 在上面的示例中，即使 BMW 被添加了两次，但它在集合中只出现一次，因为集合中的每个项目都必须是唯一的。
+
+#### 检查项目是否存在
+要检查某个项目是否存在于HashSet中，请使用`contains()`方法
+
+```java
+cars.contains("BWM");
+```
+
+#### 删除项目
+如果需要删除项目，请使用`remove()`方法
+
+```java
+cars.remove("Volvo");
+```
+
+要删除所有项目，使用`clear()`方法
+
+```java
+cars.clear();
+```
+
+#### HashSet大小
+要找出有多少项目，请使用`size`方法
+
+```java
+cars.size();
+```
+
+#### 遍历一个
+使用for-each循环遍历`HashSet`的项目：
+
+```java
+for (String i : cars) {
+    System.out.println(i);
+}
+```
+
+#### 其他类型
+HashSet 中的项目实际上是对象。 在上面的示例中，我们创建了"String"类型的项目（对象）。 请记住，Java 中的 String 是一个对象（不是原始类型）。 要使用其他类型，例如 int，必须指定一个等效的 包装类: Integer。 对于其他原始类型，请使用: Boolean 用于 boolean, Character 用于 char, Double 用于 double 等:
+
+```java
+package org.code;
+
+import java.util.HashSet;
+
+public class MyHashSetClass {
+    public static void main(String[] args) {
+        // 创建一个名为 numbers 的 HashSet 对象
+        HashSet<Integer> numbers = new HashSet<Integer>();
+
+        // 将值添加到集合
+        numbers.add(4);
+        numbers.add(7);
+        numbers.add(8);
+
+        // 显示 1 到 10 之间的数字在集合中
+        for(int i = 1; i <= 10; i++) {
+            if(numbers.contains(i)) {
+                System.out.println(i + " was found in the set.");
+            } else {
+                System.out.println(i + " was not found in the set.");
+            }
+        }
+    }
+}
+```
+
+### Java迭代器
+`Iterator`是一个可用于循环遍历集合的对象，例如`ArrayList`和`HashSet`。他被称为“迭代器”，因为**迭代**是指循环的技术术语。
+
+要使用迭代器，必须要从`java.util`中导入
+
+#### 获取迭代器
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class IteratorOperator {
+    public static void main(String[] args) {
+
+        // 创建一个集合
+        ArrayList<String> cars = new ArrayList<String>();
+
+        // 向集合中添加数据
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+
+        // 获取迭代器
+        Iterator<String> it = cars.iterator();
+
+        // 打印第一项
+        System.out.println(it.next());
+    }
+}
+```
+
+**输出**
+> Volvo
+
+#### 循环遍历集合
+要遍历集合，请使用迭代器的`hasNext()`和`next()`方法：
+
+```java
+while(it.hashNext()) {
+    System.out.println(it.next())    
+}
+```
+
+#### 从集合中删除项目
+迭代器旨在轻松更改它们循环的集合。`remove()`方法可以在循环时从集合中删除项目。
+
+下面演示，使用迭代器从集合中删除小于10的数字：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class DeleteItemsFromSet {
+    public static void main(String[] args) {
+        // 创建集合
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        // 向集合中添加数据
+        numbers.add(12);
+        numbers.add(8);
+        numbers.add(2);
+        numbers.add(23);
+
+        // 创建迭代器
+        Iterator<Integer> it = numbers.iterator();
+
+        // 使用while删除数据
+        while (it.hasNext()){
+            Integer i = it.next();
+            if (i < 10) {
+                it.remove();
+            }
+        }
+
+        System.out.println(numbers);
+
+    }
+}
+```
+
+> 注释：尝试使用 for 循环或 for-each 循环删除项目将无法正常工作，因为集合在代码尝试循环的同时改变大小。
+
+### Java包装类
+包装类
