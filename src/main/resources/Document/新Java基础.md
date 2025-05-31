@@ -2860,3 +2860,129 @@ class AllMethod {
 
 
 ### Java日期和时间
+Java没有内置的Date类，但是我们可以导入`java.time`包来使用Date和time API。该包包括许多日期类和时间类。例如：
+
+
+|类	|描述|
+|----|----|
+|LocalDate|	表示日期（年、月、日（yyyy-MM-dd））|
+|LocalTime|	表示时间（小时、分钟、秒和纳秒（HH-mm-ss-ns））|
+|LocalDateTime|	表示日期和时间（yyyy-MM-dd-HH-MM-ss-ns）|
+|DateTimeFormatter|	格式化显示日期时间|
+
+#### 显示当前日期
+如果需要显示当前日期，请导入`java.time.LocalDate`类，并使用其`now()`方法：
+
+```java
+package org.code;
+
+import java.time.LocalDate;
+
+public class ShowLoaclDate {
+    public static void main(String[] args) {
+        LocalDate LD = LocalDate.now(); // 创建日期对象
+        System.out.println("当前日期: " + LD);
+    }
+}
+```
+
+**输出将是**
+
+> 当前日期: 2025-05-31
+
+#### 显示当前日期
+要显示当前时间（小时，分钟，秒和纳秒）请导入`java.time.LocalTime`类，并使用其`now()`方法：
+
+```java
+package org.code;
+
+import java.time.LocalTime;
+
+public class ShowLocalTime {
+    public static void main(String[] args) {
+        LocalTime NowTime = LocalTime.now();  // 创建获取当前时间的对象
+        System.out.println("当前时间： " + NowTime);
+    }
+}
+```
+
+**输出将是**
+
+> 当前时间： 13:16:38.722713700
+
+#### 显示当前时间和日期
+要实现当前时间和日期，请导入 java.time.LocalDateTime 类，并使用其now()方法:
+
+```java
+package org.code;
+
+import java.time.LocalDateTime;
+
+public class ShowLocalDateTime {
+    public static void main(String[] args) {
+        LocalDateTime LDateTime = LocalDateTime.now(); // 创建获取对象
+        System.out.println(LDateTime);
+    }
+}
+```
+
+**输出将是**
+
+> 2025-05-31T13:22:05.367890900
+
+#### 格式化日期和时间
+上列中的“T”用于将时间和日期分开。可以在同一个包中使用`DateTimeFormatter`类和`ofPattern()`方法格式化或者解析日期时间对象。
+
+下面示例展示从日期时间中删除"T"和纳秒
+
+```java
+package org.code;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+/**
+ * 演示Java 8+中LocalDateTime类的日期时间格式化功能
+ */
+public class FormatDateTime {
+    public static void main(String[] args) {
+        // 1. 创建当前系统时间的LocalDateTime对象
+        // LocalDateTime是Java 8引入的不可变类，用于表示不含时区的日期时间
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // 2. 打印未格式化的日期时间（默认格式：ISO-8601）
+        System.out.println("未格式化 ： " + currentDateTime);
+
+        // 3. 定义自定义日期时间格式
+        // 使用DateTimeFormatter模式：
+        // dd - 两位日(01-31)
+        // MM - 两位月(01-12)
+        // yyyy - 四位年
+        // HH - 24小时制小时(00-23)
+        // mm - 分钟(00-59)
+        // ss - 秒(00-59)
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        // 4. 执行格式化并打印结果
+        // format()方法将LocalDateTime按照指定格式转换为字符串
+        String formattedDateTime = currentDateTime.format(customFormatter);
+        System.out.println("格式化 ： " + formattedDateTime);
+    }
+}
+```
+**输出**
+
+> 未格式化 ： 2025-05-31T13:50:15.037500300
+> 格式化 ： 31-05-2025 13:50:15
+
+如果希望以不同的格式显示日期和时间，则``ofPattern()`方法接受所有类型的值，例如：
+
+|值|实例|
+|----|----|
+|yyyy-MM-dd|"1988-09-29"|
+|dd/MM/yyyy|"29/09/1988"|
+|dd-MMM-yyyy|"29-Sep-1988"|
+|E, MMM dd yyyy|"Thu, Sep 29 1988"|
+
+
+### JavaArrayList数组列表
