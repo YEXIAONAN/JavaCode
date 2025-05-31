@@ -3678,4 +3678,88 @@ public class DeleteItemsFromSet {
 > 注释：尝试使用 for 循环或 for-each 循环删除项目将无法正常工作，因为集合在代码尝试循环的同时改变大小。
 
 ### Java包装类
-包装类
+包装类提供了一种将原始数据类型（int,boolean等）用作对象的方法。
+
+下表显示了原始类型和等效的包装类：
+
+|原始数据类型|包装类|
+|----|----|
+|byte|Byte|
+|short|Short|
+|int|Integer|
+|long|Long|
+|float|Float|
+|double|Double|
+|boolean|Boolean|
+|char|Character|
+
+有时您必须使用包装类，例如在使用 Collection 对象时，例如 ArrayList，其中不能使用原始类型（列表只能存储对象）:
+
+```java
+ArrayList<int> myNumbers = new ArrayList<int>(); // 无效的
+```
+
+```java
+ArrayList<Integer> myNumbers = new ArrayList<Integer>(); // 有效的
+```
+
+#### 创建包装对象
+要创建包装器对象，请使用包装器类而不是原始类型。要获取值，只需要打印对象：
+
+```java
+public class MyClass {
+  public static void main(String[] args) {
+    Integer myInt = 5;
+    Double myDouble = 5.99;
+    Character myChar = 'A';
+    System.out.println(myInt);
+    System.out.println(myDouble);
+    System.out.println(myChar);
+  }
+}
+```
+
+由于您现在正在处理对象，因此您可以使用某些方法来获取有关特定对象的信息。
+
+例如，以下方法用于获取与对应包装对象关联的值: intValue(), byteValue(), shortValue(), longValue(), floatValue(), doubleValue(), charValue(),
+booleanValue().
+
+此示例将输出与上例相同的结果:
+
+```java
+public class MyClass {
+  public static void main(String[] args) {
+    Integer myInt = 5;
+    Double myDouble = 5.99;
+    Character myChar = 'A';
+    System.out.println(myInt.intValue());
+    System.out.println(myDouble.doubleValue());
+    System.out.println(myChar.charValue());
+  }
+}
+```
+
+> 输出：
+> 5
+> 5.99
+> A
+
+另一个有用的方法时`toString()`方法，它用于将包装对象转换为字符串
+
+在下面的例子中，我们将Integer转换为String，并使用String类的length()方法输出"字符串"的长度：
+
+```java
+package org.code;
+
+public class IntegerToString {
+    public static void main(String[] args) {
+        Integer myInt =10;
+
+        String myString = myInt.toString();
+
+        System.out.println(myString.length());
+    }
+}
+```
+
+### Java一场 - Try...Catch
