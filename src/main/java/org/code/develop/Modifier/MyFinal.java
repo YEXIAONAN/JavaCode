@@ -1,4 +1,4 @@
-package org.code.Modifier;
+package org.code.develop.Modifier;
 
 public class MyFinal {
   final String name = "MuGay";

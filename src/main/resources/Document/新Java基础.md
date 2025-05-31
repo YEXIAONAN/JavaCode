@@ -1183,8 +1183,6 @@ public class MyClass1 {
 }
 
 // 简单理解
-package org.code;
-
 public class MyMethodTest {
     // 定义一个方法（print）
     static void print (String output){
@@ -2078,7 +2076,7 @@ public class MyClass
 - 如果不希望覆盖现有属性值，将属性声明为`final`
 
 ```java
-package org.code.Modifier;
+package org.code.develop.Modifier;
 
 public class MyFinal {
   final String name = "MuGay";
@@ -2100,7 +2098,7 @@ public class MyFinal {
 - `static`静态方法意味着可以在不创建类对象的情况下访问它，这与`pubic`不同
 
 ```java
-package org.code.Modifier;
+package org.code.develop.Modifier;
 
 public class MyStatic {
   // 静态方法
@@ -2117,7 +2115,7 @@ public class MyStatic {
   public static void main(String[] args) {
     // 调用静态方法
     myStaticMethod();
-    
+
     // 创建一个对象
     MyStatic MS = new MyStatic();
     MS.myPublicMethod();
@@ -2130,19 +2128,21 @@ public class MyStatic {
 abstract 抽象方法属于abstract抽象类，它没有主体。主体由子类提供:
 
 ```java
-package org.code.Modifier;
+package org.code.develop.Modifier;
 
 // Code from filename: Person.java
 // 抽象类
 abstract class Person {
   public String fname = "John";
   public int age = 24;
+
   public abstract void study(); // 抽象方法
 }
 
 // 子类（从 Person 继承）
 class Student extends Person {
   public int graduationYear = 2018;
+
   public void study() { // 此处提供了抽象方法的主体
     System.out.println("Studying all day long");
   }
@@ -2986,3 +2986,289 @@ public class FormatDateTime {
 
 
 ### JavaArrayList数组列表
+`ArrayList`类是一个可调整大小的**array**数组，可以在`java.util`包中找到。
+Java中内置数组和`ArrayList`的区别在于数组的大小不能修改（如果需要向数组中添加或者删除元素，必须创建一个新的数组）而可以随时从`ArrayList`中添加和删除元素。语法也略有不同：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class AList {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>(); // 创建一个 ArrayList 对象
+    }
+}
+```
+
+#### 添加元素
+`ArrayList`类提供了很多有用的方法，添加元素到`ArrayList`可以使用`add()`方法
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class ArrayListAdd {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+
+        cars.add("MuGay");
+        cars.add("XiaoBa");
+        cars.add("High");
+        cars.add("SmallGay");
+        System.out.println(cars);
+    }
+}
+```
+
+**输出**
+> [MuGay, XiaoBa, High, SmallGay]
+
+
+#### 访问元素
+访问`ArrayList`中的元素可以使用`get()`方法：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class AccessArrayListElements {
+  public static void main(String[] args) {
+    ArrayList<String> i = new ArrayList<String >();
+
+    // 添加元素
+    i.add("MUMu");
+
+    // 访问元素
+    System.out.println(i.get(0));
+  }
+}
+```
+
+> 注意：
+> 数组索引从0开始，[0]是第一个元素，[1]是第二个元素
+
+#### 修改元素
+如果需要修改ArrayList中的元素可以使用`set()`方法
+
+```java
+i.set(0,"需要修改的内容");
+```
+
+#### 删除元素
+如果需要删除ArrayList中的元素，可以使用`remove()`方法
+
+```java
+i.remove();
+```
+
+如果需要删除数组中的所有元素，请使用`clear()`方法
+```java
+i.clear();
+```
+
+#### 计算大小
+如果需要计算ArrayList数组中元素的书香，可以使用`size.()`方法
+```java
+i.size();
+```
+
+#### 遍历数组列表
+我们可以使用for循环遍历ArrayList中的元素，并使用siez.()方法指定循环应运行的次数：
+
+```java
+package org.code.develop;
+
+import java.util.ArrayList;
+
+public class ArrayListFor {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+
+        cars.add("MuGay");
+        cars.add("XiaoBa");
+        cars.add("High");
+        cars.add("SmallGay");
+
+        for (int i = 0; i < cars.size();i++){
+            System.out.println(cars.get(i));
+        }
+
+    }
+}
+```
+
+
+**输出**
+> MuGay
+> XiaoBa
+> High
+> SmallGay
+
+还可以使用for-each循环遍历：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class ForEachArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+
+        cars.add("MuGay");
+        cars.add("XiaoBa");
+        cars.add("High");
+        cars.add("SmallGay");
+
+        for (String i : cars){
+            System.out.println(i);
+        }
+    }
+}
+```
+
+
+**输出**
+> MuGay
+> XiaoBa
+> High
+> SmallGay
+
+#### 其他类型
+ArrayList的元素实际上是对象。在上面的示例中，我们创建了类型为“String”的元素（对象。）请记住。Java的字符串是对象（而不是基元类型）。要使用其他类型，如int则必须指定一个等效的**包装类**：Integer。对于其他基本类型，请使用Boolean,Character,Double等等：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class ArrayListOtherTypes {
+    public static void main(String[] args) {
+        ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+        myNumbers.add(10);
+        myNumbers.add(15);
+        myNumbers.add(20);
+        myNumbers.add(25);
+        for (int i : myNumbers) {
+            System.out.println(i);
+        }
+    }
+}
+```
+
+#### ArrayList排序
+`java.util`包中另一个有用的类是`Collections`类，它包括用于按字母或者数字排序列表的`sort()`方法
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayListSort {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+
+        Collections.sort(cars); // 排序 cars
+
+        // 遍历输出
+        for (String i : cars){
+            System.out.println(i);
+        }
+    }
+}
+```
+
+> 以此类推，我们也可以进行整数类型的排序
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;  // 导入集合类
+
+public class MyClass {
+  public static void main(String[] args) {
+    ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+    myNumbers.add(33);
+    myNumbers.add(15);
+    myNumbers.add(20);
+    myNumbers.add(34);
+    myNumbers.add(8);
+    myNumbers.add(12);
+
+    Collections.sort(myNumbers);  // 排序 myNumbers
+
+    for (int i : myNumbers) {
+      System.out.println(i);
+    }
+  }
+}
+```
+
+
+### Java链表
+在上面中，我们了解了ArrayList类，LinkedList类与ArrayList几乎相同：
+
+```java
+package org.code;
+
+import java.util.LinkedList;
+
+public class LinkedListClass {
+    public static void main(String[] args) {
+        LinkedList<String> cars = new LinkedList<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+        System.out.println(cars);
+    }
+}
+```
+
+ArrayList与LinkedList
+LinkedList 类是一个集合，可以包含许多相同类型的对象，就像 ArrayList 一样。
+
+LinkedList 类具有与 ArrayList 类相同的所有方法，因为它们都实现了 List 接口。这意味着您可以以相同的方式添加项目、更改项目、删除项目和清除列表。
+
+然而，虽然 ArrayList 类和 LinkedList 类可以以相同的方式使用，但它们的构建方式却大不相同。
+
+**ArrayList 的工作原理**
+ArrayList 类内部有一个常规数组。添加元素时，会将其放入数组中。如果阵列不够大，则会创建一个更大的新阵列来替换旧阵列，并移除旧阵列。
+
+**LinkedList 的工作原理**
+LinkedList 将其项目存储在"容器"中。该列表有一个指向第一个容器的链接，每个容器都有一个指向列表中下一个容器的链接。要将元素添加到列表中，将该元素放入一个新容器中，并且该容器链接到列表中的其他容器之一。
+
+何时使用
+
+在以下情况下最好使用 **ArrayList**:
+
+- 想经常访问随机项目
+- 只需要在列表末尾添加或删除元素
+
+在以下情况下最好使用 **LinkedList**:
+
+- 只能通过循环使用列表而不是访问随机项目
+- 经常需要从开头或中间添加和删除项目
+
+
+
+#### LinkedList 链表方法
+在许多情况下，ArrayList 更有效，因为通常需要访问列表中的随机项，但 LinkedList 提供了几种方法来更有效地执行某些操作:
+
+|方法|描述|
+|----|----|
+|addFirst()|将一个项目添加到列表的开头。|
+|addLast()|将项目添加到列表末尾|
+|removeFirst()|从列表的开头删除一个项目|
+|removeLast()|从列表末尾删除一个项目|
+|getFirst()|获取列表开头的项目|
+|getLast()|获取列表末尾的项目|
+
+
+### JavaHashMap

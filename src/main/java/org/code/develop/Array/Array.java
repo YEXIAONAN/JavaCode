@@ -2,7 +2,7 @@ package org.code.develop.Array;
 
 import java.util.Arrays;
 
-public class ArrayList {
+public class Array {
     public static void main(String[] args) {
         String[] mugay = {"Gay","My","Olay"};
 
