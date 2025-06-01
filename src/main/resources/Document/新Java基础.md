@@ -4020,3 +4020,144 @@ matcher() 方法用于搜索字符串中的模式。它返回一个 Matcher 对�
 > 注释: 如果您的表达式需要搜索其中一个特殊字符，您可以使用反斜杠 (\) 对其进行转义。在Java中，字符串中的反斜杠需要自己转义，所以需要两个反斜杠来转义特殊字符。例如，要搜索一个或多个问号，您可以使用以下表达式:"\\?"
 
 ### Java线程
+
+线程允许程序通过同时执行多项操作来更有效地运行。
+
+线程可以用来在后台执行复杂的任务而不中断主程序。
+
+#### 创建线程
+创建线程有两种方法。
+
+它可以通过扩展`Thread`类并覆盖其`run()`方法来创建：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread1 extends Thread {
+  public void run() {
+    System.out.println("This code is running in a thread");
+  }
+}
+```
+
+另一种创建线程的方法是实现`Runnable`接口：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread2 implements Runnable {
+  public void run() {
+    System.out.println("This code is running in a thread");
+  }
+}
+```
+
+#### 运行线程
+
+如果该类扩展了`Thread`类，则可以通过创建该类的实例并调用其`start()`方法来运行线程：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread3 extends Thread{ 
+  public static void main(String[] args) {
+    MyThread3 thread = new MyThread3();
+
+    thread.start();
+    System.out.println("This code is outside of the thread");
+  }
+
+  public void run () {
+    System.out.println("This code is outside of the thread");
+  }
+}
+
+```
+
+如果该类实现了`Runnable`接口，则可以通过将类的实例传递给`Thread`对象的构造函数，然后调用线程的`start()`方法来运行线程:
+
+```java
+package org.code.develop.threading;
+
+public class MyThread4 implements Runnable{
+  public static void main(String[] args) {
+    MyThread4 obj = new MyThread4();
+    Thread thread = new Thread(obj);
+    thread.start();
+    System.out.println("This code is outside of the thread");
+  }
+
+  public void run () {
+    System.out.println("This code is outside of the thread");
+  }
+}
+```
+
+> "extending"和"implementing"线程之间的区别
+> 主要区别在于，当一个类扩展Thread类时，不能扩展任何其他类，但通过实现Runnable接口，也可以从另一个类中扩展，例如：`MyClass extends OtherClass implements Runnable`
+
+#### 并发问题
+
+因为线程与程序的其他部分同时运行，所以无法知道代码将以何种顺序运行。当线程和主程序同时读取和写入相同的变量时，其值是不可预测的。由此产生的问题称为并发问题
+
+下面演示变量数值的值不可预测的代码实例：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread5 extends Thread{
+  public static int amount = 0;
+
+  public static void main(String[] args) {
+    MyThread5 thread  = new MyThread5();
+
+    thread.start();
+
+    System.out.println(amount);
+
+    amount++;
+
+    System.out.println(amount);
+  }
+
+  public void run() {
+    amount++;
+  }
+}
+```
+
+为了避免并发问题，最好在线程之间共享尽可能少的属性。如果需要共享属性，一种可能的解决方案是在使用线程可以更改的任何属性之前，使用线程的`isAlive()`方法检查线程是否已完成运行：
+
+下面演示使用`isAlive()`来防止并发问题：
+
+```java
+package org.code.develop.threading;
+
+public class MyClass extends Thread {
+  public static int amount = 0;
+
+  public static void main(String[] args) {
+    MyClass thread = new MyClass();
+    thread.start();
+    // 等待线程完成
+    while(thread.isAlive()) {
+    System.out.println("Waiting...");
+  }
+  // 更新 amount 并打印其值
+  System.out.println("Main: " + amount);
+  amount++;
+  System.out.println("Main: " + amount);
+  }
+  public void run() {
+    amount++;
+  }
+}
+```
+
+### JavaLambda表达式
+
+Lambda表达式是在Java9中添加的。
+
+Lambda表达式时一段小代码，他接受参数返回一个值。Lambda表达式类似于方法，但他们不需要名称，并且可以直接在方法题体中实现。
+
+#### 语法
