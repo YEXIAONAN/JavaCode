@@ -3763,3 +3763,160 @@ public class IntegerToString {
 ```
 
 ### Java异常 - Try...Catch
+
+在执行Java代码时，可能会出现不同的错误：程序员编写的编码错误，错误输入导致的错误或者其他无法预料的事情。
+
+发生错误时，Java通常回停止并生成错误信息。对此的技术术语是：Java将抛出异常
+
+#### Java Try 和 Catch
+
+try 语句允许定义一个代码块，以便在执行时对其进行错误测试。
+
+如果 try 块中发生错误， catch 语句允许您定义要执行的代码块。
+
+try 和 catch 关键字成对出现:
+
+```java
+try {
+  //  要尝试的代码块
+}
+catch(Exception e) {
+  //  处理错误的代码块
+}
+```
+
+我们可以使用下面的示例来捕获错误信息
+
+```java
+package org.code;
+
+public class MyTryCatch {
+  public static void main(String[ ] args) {
+    try {
+      int[] myNumbers = {1, 2, 3};
+      System.out.println(myNumbers[10]);
+    } catch (Exception e) {
+      System.out.println("Something went wrong.");
+    }
+  }
+}
+```
+
+**输出**
+
+> Something went wrong.
+
+
+#### Finally
+`finally`语句运行在`try...catch`之后执行代码，而不管结果如何：
+
+```java
+package org.code;
+
+public class MyFinally {
+  public static void main(String[] args) {
+    try {
+      int[] myNumbers = {1,2,3};
+      System.out.println(myNumbers[10]);
+    }catch(Exception e){
+      System.out.println("Something went wrong.");
+    }finally {
+      System.out.println("The 'try catch' is finished.");
+    }
+  }
+}
+```
+
+**输出**
+
+> Something went wrong.
+> The 'try catch' is finished.
+
+#### throw 关键字
+
+`throw`语句允许创建自定义错误
+
+`throw`语句与**异常类型**一起使用。Java中许多异常类型可用：ArithmeticException, FileNotFoundException, ArrayIndexOutOfBoundsException, SecurityException, etc:
+
+| 异常类型                         | 运行时异常 | 所属包                     | 简要说明                                                                 |
+|----------------------------------|------------|----------------------------|--------------------------------------------------------------------------|
+| ArithmeticException              | 是         | java.lang                  | 算术运算异常，如除以0                                                   |
+| ArrayIndexOutOfBoundsException   | 是         | java.lang                  | 数组下标越界                                                             |
+| NullPointerException             | 是         | java.lang                  | 访问 null 引用对象的方法或属性                                          |
+| ClassCastException               | 是         | java.lang                  | 类型强制转换错误                                                         |
+| IllegalArgumentException         | 是         | java.lang                  | 传递非法参数给方法                                                       |
+| NumberFormatException            | 是         | java.lang                  | 字符串转换为数字时格式不正确                                             |
+| IllegalStateException            | 是         | java.lang                  | 在不适合当前状态下调用方法                                               |
+| IndexOutOfBoundsException        | 是         | java.lang                  | 索引越界（如 List、字符串等）                                            |
+| SecurityException                | 是         | java.lang                  | 安全管理器检测到安全违规                                                |
+| UnsupportedOperationException    | 是         | java.lang                  | 对象不支持调用的操作                                                     |
+| FileNotFoundException            | 否         | java.io                    | 文件未找到                                                              |
+| IOException                      | 否         | java.io                    | 输入/输出操作异常                                                       |
+| EOFException                     | 否         | java.io                    | 输入流已到达文件结尾                                                    |
+| ClassNotFoundException           | 否         | java.lang                  | 找不到指定类                                                            |
+| NoSuchMethodException            | 否         | java.lang                  | 访问的类中不存在某方法                                                  |
+| InterruptedException             | 否         | java.lang                  | 线程被中断                                                              |
+| SQLException                     | 否         | java.sql                   | JDBC 操作数据库时发生异常                                               |
+| InvocationTargetException        | 否         | java.lang.reflect          | 调用通过反射机制执行的方法时抛出的异常                                   |
+| InstantiationException           | 否         | java.lang                  | 尝试创建抽象类或接口的实例时抛出                                        |
+| MalformedURLException            | 否         | java.net                   | URL 格式不正确                                                           |
+
+> **备注**：
+>
+> - 运行时异常（RuntimeException 及其子类）不强制捕获，可选 try-catch
+> - 非运行时异常（Checked Exception）必须通过 try-catch 或 throws 显式处理。
+
+下面演示如果年龄低于 18 岁，则抛出异常（打印"访问被拒绝"）。如果年龄为 18 岁或以上，请打印"访问权限":
+
+```java
+package org.code;
+
+public class IfThrow {
+  static void checkAge(int age) {
+    if (age < 18) {
+      throw new ArithmeticException("访问拒绝 - 未满18岁！");
+    } else {
+      System.out.println("访问允许！");
+    }
+  }
+
+  public static void main(String[] args) {
+    checkAge(1);
+  }
+}
+```
+
+输出
+
+> Exception in thread "main" java.lang.ArithmeticException: 访问拒绝 - 未满18岁！
+> at org.code.IfThrow.checkAge(IfThrow.java:6)
+> at org.code.IfThrow.main(IfThrow.java:13)
+
+如果年龄为20岁，则不会抛出异常
+
+```java
+checkAge(20);
+```
+
+输出将是:
+
+> Access granted - You are old enough!
+
+### Java正则表达式
+
+Q&A
+
+Q：什么是正则表达式？
+A：正则表达式是形成搜索模式的字符序列。当在文本中搜索数据时，可以使用此搜索模式来描述需要搜索的内容
+
+A：正则表达式可以是单个字符，也可以是更复杂的模式
+
+A：正则表达式可以用于执行所有类型的文本搜索和文本替换操作
+
+- Java中没有内置的正则表达式类，但我们可以导入`java.util.regex`包来使用正则表达式。该软件包包括以下类：
+  - `Pattern`类 - 定义模式（用于搜索）
+  - `Matcher`类 - 用于搜索模式
+  - `PatternSyntaxException`类 - 指示正则表达式模式中的语法错误
+
+下面演示，从句中找出是否出现 “MuGay” 这个词：
+
