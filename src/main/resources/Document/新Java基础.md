@@ -1127,7 +1127,7 @@ public class MyClass {
 输出：
 
 ```bash
-D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=14760" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes org.code.MyClass
+D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=14760" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes org.code.general.MyClass
 I am MuGay!
 
 进程已结束，退出代码为 0
@@ -1849,28 +1849,29 @@ public class MyClassTest1 {
 
 
 #### Java对象的访问方法
+
 ```java
 // 创建一个名为myCar的汽车对象。对myCar对象调用fullThrottle()和speed()方法，然后运行程序:
 package org.code;
 
 // 创建Car类
 public class Car {
-    // 创建一个 fullThrottle() 方法
-    public void fullThrottle() {
-        System.out.println("这辆车正在尽力以最快的速度行驶！");
-    }
+  // 创建一个 fullThrottle() 方法
+  public void fullThrottle() {
+    System.out.println("这辆车正在尽力以最快的速度行驶！");
+  }
 
-    // 创建speed() 方法，并添加一个参数
-    public void speed(int maxSpeed) {
-        System.out.println("最大速度为： " + maxSpeed);
-    }
+  // 创建speed() 方法，并添加一个参数
+  public void speed(int maxSpeed) {
+    System.out.println("最大速度为： " + maxSpeed);
+  }
 
-    // 在Main中调用上方的方法
-    public static void main(String[] args) {
-        Car myCay = new Car(); // 创建对象
-        myCay.fullThrottle(); // 调用方法
-        myCay.speed(120); // 调用speed方法，传入参数
-    }
+  // 在Main中调用上方的方法
+  public static void main(String[] args) {
+    org.code.general.Car myCay = new org.code.general.Car(); // 创建对象
+    myCay.fullThrottle(); // 调用方法
+    myCay.speed(120); // 调用speed方法，传入参数
+  }
 }
 ```
 
@@ -3889,8 +3890,8 @@ public class IfThrow {
 输出
 
 > Exception in thread "main" java.lang.ArithmeticException: 访问拒绝 - 未满18岁！
-> at org.code.IfThrow.checkAge(IfThrow.java:6)
-> at org.code.IfThrow.main(IfThrow.java:13)
+> at org.code.general.IfThrow.checkAge(IfThrow.java:6)
+> at org.code.general.IfThrow.main(IfThrow.java:13)
 
 如果年龄为20岁，则不会抛出异常
 
