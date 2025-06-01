@@ -3920,3 +3920,103 @@ A：正则表达式可以用于执行所有类型的文本搜索和文本替换�
 
 下面演示，从句中找出是否出现 “MuGay” 这个词：
 
+```java
+// 声明包名，表示该类属于 org.code.develop.RegularExpression 包
+package org.code.develop.RegularExpression;
+
+// 导入 Java 正则表达式相关的类
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * FindMuGay 类用于演示如何使用 Java 正则表达式
+ * 来在字符串中查找是否存在指定的模式。
+ */
+public class FindMuGay {
+
+  // 主方法：程序入口点
+  public static void main(String[] args) {
+    
+    // 创建一个正则表达式模式对象，匹配字符串 "MuGay"，忽略大小写
+    Pattern pattern = Pattern.compile("MuGay", Pattern.CASE_INSENSITIVE);
+
+    // 创建一个匹配器对象，用于在指定字符串中搜索 pattern 所定义的正则表达式
+    Matcher matcher = pattern.matcher("I am MuGay!");
+
+    // 尝试在字符串中查找是否存在匹配项
+    boolean matchFound = matcher.find();
+
+    // 根据查找结果输出匹配是否成功的信息
+    if (matchFound) {
+      System.out.println("Match Found!");  // 如果找到了匹配项，输出此信息
+    } else {
+      System.out.println("Match not Found!");  // 如果没有找到匹配项，输出此信息
+    }
+  }
+}
+```
+
+输出：
+
+> Match Found!
+
+**实例解析**
+
+在此示例中，正在一个句子中搜索单词 "MuGay" 。
+
+首先，使用 Pattern.compile() 方法创建模式。第一个参数指示正在搜索的模式，第二个参数有一个标志来指示搜索应该不区分大小写。第二个参数是可选的。
+
+matcher() 方法用于搜索字符串中的模式。它返回一个 Matcher 对象，其中包含有关已执行搜索的信息。
+
+如果在字符串中找到模式，find() 方法返回 true，如果没有找到，则返回 false。
+
+#### Flags标志
+`compile()`方法中的标志改变了搜索的执行方式，这里有几个：
+- `Pattern.CASE_INSENSITIVE` - 执行搜索时将忽略字母的大小写
+- `Pattern.LITERAL` - 模式中的特殊字符没有任何特殊含义，在执行搜索时将被视为普通字符
+- `Pattern.UNICODE_CASE` - 将它与 `CASE_INSENSITIVE` 标志一起使用，也可以忽略英文字母之外的字母的大小写
+
+#### 正则表达式模式
+`Pattern.compile()方法的第一个参数是模式。他描述了正在搜索的内容`
+
+括号用于查找一系列字符：
+
+|表达式|描述|
+|----|----|
+|[abc]|从括号内的选项中查找一个字符|
+|[^abc]|找到一个不在括号内的字符|
+|[0-9]|从 0 到 9 范围内查找一个字符|
+
+#### 元字符
+
+元字符是具有特殊含义的字符：
+
+|元字符|描述|
+|----|----|
+| I | 查找由 I 分隔的任意一种模式的匹配项如: cat dog fish |
+|.|只查找任何字符的一个实例|
+|^|查找作为字符串开头的匹配项，如: ^Hello|
+|$|在字符串末尾查找匹配项，如: World$|
+|\d|找一个数字|
+|\s|查找空白字符|
+|\b|在这样的单词开头查找匹配项: \bWORD，或在这样的单词结尾处查找匹配项: WORD\b|
+|\uxxxx|查找十六进制数 xxxx 指定的 Unicode 字符|
+
+> 元字符第一个 “I” 严格意义上来说是 " | " 制表符的这个符号，但是由于Markdown格式无法写入，所以只能用I替代，在实际开发时，请使用 " | "!
+
+#### 量词
+
+量词定义数量：
+
+|量词|描述|
+|----|----|
+|n+|匹配任何至少包含一个 n 的字符串|
+|n*|匹配包含零次或多次出现 n 的任何字符串|
+|n?|匹配包含零次或一次出现 n 的任何字符串|
+|n{x}|匹配任何包含一系列 X n 的字符串|
+|n{x,y}|匹配任何包含 X 到 Y n 序列的字符串|
+|n{x,}|匹配任何包含至少 X n 的序列的字符串|
+
+> 注释: 如果您的表达式需要搜索其中一个特殊字符，您可以使用反斜杠 (\) 对其进行转义。在Java中，字符串中的反斜杠需要自己转义，所以需要两个反斜杠来转义特殊字符。例如，要搜索一个或多个问号，您可以使用以下表达式:"\\?"
+
+### Java线程
