@@ -4256,3 +4256,202 @@ public class MyLambdaClass {
 ```
 
 ## Java文件处理
+
+文件处理是任何应用程序的组成部分。
+Java有多种创建，读取，更新和删除文件的方法
+
+#### Java文件处理
+
+`java.io`包中的`File`文件类允许我们处理文件
+要使用`File`类，须创建该类的对象，并指定文件吗或者目录名
+
+```java
+package org.code;
+
+import java.io.File; // 导入包
+
+public class JavaFileOperator {
+  public static void main(String[] args) {
+    File myObj = new File("filename.txt"); // 指定文件名
+  }
+}
+```
+
+File 类有许多有用的方法来创建和获取有关文件的信息。 例如:
+
+|方法|类型|描述|
+|---|---|---|
+|canRead()|Boolean|测试文件是否可读|
+|canWrite()|Boolean|测试文件是否可写|
+|createNewFile()|Boolean|创建一个空文件|
+|delete()|Boolean|删除文件|
+|exists()|Boolean|测试文件是否存在|
+|getName()|String|返回文件名|
+|getAbsolutePath()|String|返回文件的绝对路径名|
+|length()|Long|返回文件的大小（以字节为单位）|
+|list()|String[]|返回目录中文件的数组|
+|mkdir()|Boolean|创建目录|
+
+### Java创建文件和写入文件
+
+要在Java中创建文件，可以使用`createNewFile()`方法。此方法返回一个布尔值：如果文件创建成功，则返回：`true`，如果文件已存在，则返回：`false`。请注意，该方法包含在`try...catch`块中。这是必要的，因为如果发生错误（如某种原因无法创建文件）它会抛出`IOException`:
+
+```java
+package org.code.develop.FileOperations; // 定义包名，用于组织类文件
+
+import java.io.File;      // 导入 File 类，用于文件操作
+import java.io.IOException; // 导入 IOException 异常类，用于处理文件操作可能抛出的异常
+
+/**
+ * CreateFile 类用于在当前工作目录下创建一个名为 test.txt 的文件
+ */
+public class CreateFile {
+  public static void main(String[] args) {
+    try {
+      // 创建 File 对象，指定要创建的文件名（在当前工作目录下）
+      File myObj = new File("test.txt");
+
+      // 调用 createNewFile() 方法尝试创建文件
+      // 如果文件不存在，将创建并返回 true；如果文件已存在，则返回 false
+      if (myObj.createNewFile()) {
+        System.out.println("文件创建成功：" + myObj.getName()); // 打印成功消息
+      } else {
+        System.out.println("文件创建失败，已存在"); // 打印文件已存在的提示
+      }
+
+    } catch (IOException e) {
+      // 如果在创建文件过程中发生 I/O 异常，则输出错误信息并打印堆栈跟踪
+      System.out.println("发生错误！");
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+要在特定目录中创建文件（需要权限），请指定文件的路径并使用双反斜杠转义 "\" 字符（对于 Windows）。 在 Mac 和 Linux 上，您可以只写路径，例如: /Users/name/filename.txt
+
+```java
+File myObj = new File("C:\\Users\\MyName\\filename.txt");
+```
+
+#### 写入文件
+
+在下面的示例中，我们使用`FileWriter`类及其`write()`方法将一些文本写入我们在上面示例中创建的文件。请注意，当您完成对文件的写入后，应该使用`close()`方法关闭它：
+
+```java
+package org.code.develop.FileOperations;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteToFile {
+  public static void main(String[] args) {
+    try {
+      FileWriter myWriter = new FileWriter("Text1.txt");
+      myWriter.write("我是木棍");
+      myWriter.close();
+    }catch(IOException exception){
+      System.out.println("Error!");
+      exception.printStackTrace();
+    }
+  }
+}
+```
+
+### Java读取文件
+
+在下面的示例中，我们使用`Scanner`类来读取我们在上一张中撞见的文本文件的内容：
+
+```java
+package org.code.develop.FileOperations;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ReadFile {
+  public static void main(String[] args) {
+    try {
+      File myObj = new File("Text1.txt");
+      Scanner myReader = new Scanner(myObj);
+      while (myReader.hasNextLine()) {
+        String data = myReader.nextLine();
+        System.out.println(data);
+      }
+      myReader.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### 获取文件信息
+
+如果需要获取有关文件的更多信息，请使用任何`File`方法：
+
+```java
+import java.io.File;  // 导入 File 文件类
+
+public class GetFileInfo { 
+  public static void main(String[] args) {
+    File myObj = new File("filename.txt");
+    if (myObj.exists()) {
+      System.out.println("File name: " + myObj.getName());
+      System.out.println("Absolute path: " + myObj.getAbsolutePath());
+      System.out.println("Writeable: " + myObj.canWrite());
+      System.out.println("Readable " + myObj.canRead());
+      System.out.println("File size in bytes " + myObj.length());
+    } else {
+      System.out.println("The file does not exist.");
+    }
+  }
+}
+```
+
+> 注释: Java API 中有许多可用类可用于在 Java 中读取和写入文件: FileReader, BufferedReader, Files, Scanner, FileInputStream, FileWriter, BufferedWriter, FileOutputStream 等。使用哪一个取决于 Java 版本 您正在使用以及是否需要读取字节或字符，以及文件/行的大小等。
+
+### Java删除文件
+
+要在Java中删除文件，请使用`delete()`方法：
+
+```java
+import java.io.File;  // 导入 File 文件类
+
+public class DeleteFile {
+  public static void main(String[] args) { 
+    File myObj = new File("filename.txt"); 
+    if (myObj.delete()) { 
+      System.out.println("Deleted the file: " + myObj.getName());
+    } else {
+      System.out.println("Failed to delete the file.");
+    } 
+  } 
+}
+```
+
+输出将是:
+> Deleted the file: filename.txt
+
+#### 删除文件夹
+
+也可以删除文件夹。 但是，它必须为空:
+
+```java
+import java.io.File; 
+
+public class DeleteFolder {
+  public static void main(String[] args) { 
+    File myObj = new File("C:\\Users\\MyName\\Test"); 
+    if (myObj.delete()) { 
+      System.out.println("Deleted the folder: " + myObj.getName());
+    } else {
+      System.out.println("Failed to delete the folder.");
+    } 
+  } 
+}
+```
+
+输出：
+> Deleted the folder: Test
