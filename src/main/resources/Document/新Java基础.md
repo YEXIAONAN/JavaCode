@@ -4161,3 +4161,98 @@ Lambda表达式是在Java9中添加的。
 Lambda表达式时一段小代码，他接受参数返回一个值。Lambda表达式类似于方法，但他们不需要名称，并且可以直接在方法题体中实现。
 
 #### 语法
+
+最简单的Lambda表达式包含一个参数和一个表达式：
+
+```java
+parameter -> expression;
+```
+
+要使用多个参数，请将它们括在括号中：
+
+```java
+(parameter1,parameter2) -> expression;
+```
+
+表达方式有限。它们必须立即返回一个值，并且它们不能包含变量，赋值或者语句，例如if或for。为了进行更复杂的操作，可以使用带有花括号的代码块。如果 Lambda 表达式需要返回一个值，那么代码块应该有一个 `return` 语句
+
+```java
+(parameter1, parameter2) -> { code block }
+```
+
+#### 使用 Lambda 表达式
+
+Lambda表达式通常作为参数传递给函数：
+
+下面演示在ArrayList的ForEach() 方法中使用一个 Lambda 表达式来打印列表中的每个项目：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class Lambda1 {
+  public static void main(String[] args) {
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+    numbers.add(5);
+    numbers.add(9);
+    numbers.add(8);
+    numbers.add(1);
+
+    numbers.forEach((n) -> {System.out.println(n);});
+  }
+}
+```
+
+如果变量的类型只是一个方法的接口，则Lambda表达式可以存储在变量中。Lambda表达式应具有与该方法相同数量的参数和相同的返回类型。Java中内置了许多此类接口，例如列表使用的`Consumer`接口（在`java.util`包中）
+
+下面演示使用Java的`Consumer`接口将 Lambda 表达式存储在变量中：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.function.Consumer;
+
+public class LambdaConsumer {
+  public static void main(String[] args) {
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+    numbers.add(5);
+    numbers.add(9);
+    numbers.add(8);
+    numbers.add(1);
+
+    Consumer<Integer> method = (n) -> {System.out.println(n);};
+    numbers.forEach(method);
+  }
+}
+```
+
+要在方法中使用 Lambda 表达式，该方法应该有一个参数，其类型为单方法接口。调用接口的方法将运行 `Lambda` 表达式
+
+下面演示创建一个Lambda表达式作为参数的方法：
+
+```java
+package org.code;
+
+interface StringFunction {
+  String run(String str);
+  
+}
+
+public class MyLambdaClass {
+  public static void main(String[] args) {
+    StringFunction exclaim = (s) -> s + "!";
+    StringFunction ask = (s) -> s + "?";
+  }
+
+  public static void printFormatted(String str,StringFunction format) {
+    String result = format.run(str);
+    System.out.println(result);
+  }
+}
+```
+
+## Java文件处理
