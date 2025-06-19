@@ -1127,7 +1127,7 @@ public class MyClass {
 输出：
 
 ```bash
-D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=14760" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes org.code.MyClass
+D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=14760" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes org.code.general.MyClass
 I am MuGay!
 
 进程已结束，退出代码为 0
@@ -1183,8 +1183,6 @@ public class MyClass1 {
 }
 
 // 简单理解
-package org.code;
-
 public class MyMethodTest {
     // 定义一个方法（print）
     static void print (String output){
@@ -1779,4 +1777,2682 @@ public class Person {
 
 
 
+### Java类方法
+- 方法是在类中声明的，他们用于执行某些操作
 
+```java
+package org.code.develop.test;
+
+public class MyClass {
+    static void myMethod(){
+        System.out.println("Hello,World!");
+    }
+}
+```
+
+- `myMethod()`在调用时打印文本。要调用一个方法，请写出该方法的名称，后跟两个`()`和分号`;`
+
+下面，在`Main`中调用`myMethod()`
+```java
+package org.code.develop.test;
+
+public class MyClass {
+    static void myMethod(){
+        System.out.println("Hello,World!");
+    }
+
+    public static void main(String[] args) {
+        myMethod();
+    }
+
+    // 输出"Hello,World!"
+}
+
+```
+
+
+#### 静态与非静态
+经常会看见，具有`static`静态或`public`公共属性和方法的Java程序
+在上面的示例中，我们创建了一个`static`静态方法，这意味着可以在不创建类的对象下访问该方法，而`public`只能由对象访问
+
+- `static` 决定“是否需要通过对象来访问”；
+
+- `public` 决定“是否可以在其他类中访问”。
+
+你可以把它们看作是分别控制 `“方式”` 和 `“权限”` 的两个维度。
+
+下面，演示`static`静态或`public`公共方法之间的差异
+```java
+package org.code.develop.test;
+
+public class MyClassTest1 {
+  // Static 方法
+  static void myStaticMethod() {
+    System.out.println("Static methods can be called without creating objects");
+  }
+
+  // Public 方法
+  public void myPublicMethod() {
+    System.out.println("Public methods must be called by creating objects");
+  }
+
+  // Main 方法
+  public static void main(String[] args) {
+    myStaticMethod(); // 调用静态方法
+    // myPublicMethod(); 这会编译一个错误
+
+    MyClassTest1 myObj = new MyClassTest1(); // 创建一个 MyClass 的对象
+    myObj.myPublicMethod(); // 调用对象的公共方法
+  }
+}
+```
+
+
+#### Java对象的访问方法
+
+```java
+// 创建一个名为myCar的汽车对象。对myCar对象调用fullThrottle()和speed()方法，然后运行程序:
+package org.code;
+
+// 创建Car类
+public class Car {
+  // 创建一个 fullThrottle() 方法
+  public void fullThrottle() {
+    System.out.println("这辆车正在尽力以最快的速度行驶！");
+  }
+
+  // 创建speed() 方法，并添加一个参数
+  public void speed(int maxSpeed) {
+    System.out.println("最大速度为： " + maxSpeed);
+  }
+
+  // 在Main中调用上方的方法
+  public static void main(String[] args) {
+    org.code.general.Car myCay = new org.code.general.Car(); // 创建对象
+    myCay.fullThrottle(); // 调用方法
+    myCay.speed(120); // 调用speed方法，传入参数
+  }
+}
+```
+
+**解析**
+1. 我们在`class`关键字创建了一个`car`类
+2. 我们在`Car`类中创建了`fullThrottle()`方法和`speed()`方法
+3. `fullThrottle()`方法和`speed()`方法在调用时将打印出一些文本
+4. `speed()`方法接受一个名为`maxSpeed`的`int`类型参数
+5. 为了使用`Car`方法，我们需要创建`Car`类的**对象**
+6. 然后转到`main()方法`知道其是一个运行程序的入口
+7. 通过`new`关键字，我们创建了一个名为`myCar`的`Car`对象
+8. 然后我们调用了这两个方法，在第二个方法中进行了传参，设置速度为120最大
+
+> 记住..
+> 点 (.) 用于访问对象的属性和方法。
+> 
+> 要在Java中调用方法，请编写方法名称，后跟一组括号()，后跟分号(;)
+> 
+> 类必须具有匹配的文件名(Car 和 Car.java).
+
+
+#### 使用多个类
+就像我们在之前中指定的那样，创建一个类的对象并在另一个类中访问它是一种很好的做法。
+
+请记住，java文件的名称应该与类名匹配。
+
+### Java构造函数
+Java中构造函数是一种用于初始化对象的**特殊方法**。在创建类的对象时调用构造函数。它可用于设置对象属性的初始值。
+
+#### 创建构造函数
+
+```java
+package org.code.develop.function;
+
+public class MyClass {
+  int x; // 创建类属性
+
+  // 为MyClass类创建一个类构造函数
+  public MyClass() {
+    // 设置类属性x初始值为5
+    x = 5;
+  }
+
+  public static void main(String[] args) {
+    org.code.develop.MyClass myObj = new org.code.develop.MyClass(); //创建一个 MyClass 类的对象（这将调用构造函数）
+    System.out.println(myObj.x); // 打印x的值
+  }
+}
+```
+
+> 请注意，构造函数名称必须与类名匹配，并且不能有返回类型(如 void).
+> 
+> 还要注意，在创建对象时会调用构造函数。
+> 
+> 默认情况下，所有类都有构造函数:如果您自己不创建类构造函数，Java会为您创建一个。但是，您无法设置对象属性的初始值。
+
+
+##### 构造函数参数
+
+构造函数还可以用于获取参数，初始化属性
+
+下面将演示`int i`参数添加到构造函数中。在构造函数找那个，我们将 x 设置为 y （x = y） 。调用构造函时，我们向构造函数(5)传递一个参数，将参数x的值设置为5.
+
+```java
+package org.code.develop.function;
+
+/**
+ * 这是一个演示Java类和构造函数用法的示例类。
+ * 该类包含一个实例变量和一个带参数的构造函数，
+ * 并在main方法中展示了如何创建对象和访问实例变量。
+ */
+public class MyClass1 {
+    // 声明一个名为x的整型实例变量，用于存储对象的状态
+    int x;
+
+    /**
+     * 构造函数：用于初始化MyClass1对象
+     * @param y 用于初始化实例变量x的值
+     */
+    public MyClass1(int y) {
+        // 将参数y的值赋给当前对象的实例变量x
+        x = y;
+    }
+
+    /**
+     * 程序入口点
+     * @param args 命令行参数数组
+     */
+    public static void main(String[] args) {
+        // 创建MyClass1类的一个实例（对象），并通过构造函数传递初始值5
+        MyClass1 myObj = new MyClass1(5);
+
+        // 访问对象的实例变量x并打印其值到控制台
+        System.out.println(myObj.x); // 输出结果：5
+    }
+}
+```
+
+也可以有任意多个参数
+
+```java
+package org.code.develop.function;
+
+/**
+ * MultiParameterFunction 类用于演示如何通过构造函数传递多个参数
+ * 并将这些参数赋值给类的成员变量，以实现对象属性的初始化。
+ */
+public class MultiParameterFunction {
+
+    // 成员变量：记录年份（可以理解为出生年份或其他年份信息）
+    int PersonYear;
+
+    // 成员变量：记录名字
+    String PersonName;
+
+    /**
+     * 构造函数：
+     * 在创建对象时被自动调用，用于初始化对象的成员变量。
+     * 构造函数名称必须与类名一致。
+     *
+     * @param Year  初始化年份的参数，赋值给成员变量 PersonYear
+     * @param Name  初始化姓名的参数，赋值给成员变量 PersonName
+     */
+    public MultiParameterFunction(int Year, String Name) {
+        // 将传入的参数 Year 赋值给成员变量 PersonYear
+        PersonYear = Year;
+
+        // 将传入的参数 Name 赋值给成员变量 PersonName
+        PersonName = Name;
+    }
+
+    /**
+     * 主方法（程序入口）：
+     * Java 程序从 main 方法开始执行。
+     *
+     * @param args  命令行参数（此示例未使用）
+     */
+    public static void main(String[] args) {
+        // 使用构造函数创建 MultiParameterFunction 类的实例
+        // 并传入两个参数：年份 2007 和姓名 "MuGay"
+        MultiParameterFunction MPF = new MultiParameterFunction(2007, "MuGay");
+
+        // 打印对象的成员变量，输出格式为：2007 MuGay
+        System.out.println(MPF.PersonYear + " " + MPF.PersonName);
+    }
+}
+```
+
+### Java修饰符
+
+到这里，你几乎看到所有示例中出现的关键字了
+
+```java
+public class MyClass
+```
+
+`public`关键字是一个**访问修饰符**，这表示它用于设置类，属性，方法和构造函数级别的访问。
+
+我们将修饰符分为两组
+
+- 访问修饰符 - 控制访问级别
+- 非访问修饰符 - 不控制访问级别，但提供其他功能
+
+#### 访问修饰符
+对于classes，可以使用`public`或**default**:
+
+| 修饰符  | 描述                                                   |
+| ------- | ------------------------------------------------------ |
+| public  | 该类可以由任何其他类访问                               |
+| default | 该类只能由同一包中的类访问。在不指定修改器时使用此选项 |
+
+对于**属性，方法和构造函数**，可以使用以下选项之一：
+
+| 修饰符    | 描述                                                   |
+| --------- | ------------------------------------------------------ |
+| public    | 所有类都可以访问该代码                                 |
+| private   | 代码只能在声明的类中访问                               |
+| default   | 该类只能由同一包中的类访问。在不指定修改器时使用此选项 |
+| protected | 代码可以在相同的包和子类中访问                         |
+
+#### 非访问修饰符
+
+对于**类**，可以使用`final`或`abstract`:
+
+|修饰符|描述|
+|----|----|
+|final|该类不能被其他类继承|
+|abstract|该类不能用于创建对象（要访问抽象类，他必须从另一个类继承）|
+
+对于属性和方法，可以使用以下选项之一：
+
+|修饰符|描述|
+|----|----|
+|**final**|无法覆盖/修改属性和方法|
+|**static**|属性和方法术语类，而不是对象|
+|**abstract**|只能在抽象类中使用，并且只能在方法中使用。该方法没用主体，例如抽象abstract void run();。主体由子类（继承自）提供。|
+|**transient**|序列化包含属性和方法对象时，将跳过属性和方法|
+|**synchronized**|方法一次只能由一个线程访问|
+|**volatile**|属性值不是本地缓存的线程，总是从"主内存"中读取|
+
+#### Final
+
+- 如果不希望覆盖现有属性值，将属性声明为`final`
+
+```java
+package org.code.develop.Modifier;
+
+public class MyFinal {
+  final String name = "MuGay";
+  final int x = 91;
+
+  public static void main(String[] args) {
+    MyFinal MF = new MyFinal();
+
+    // 如果尝试重新定义一个本来就是final类型的变量，编译器会报错
+    //MF.x =50;
+    System.out.println(MF.name);
+    System.out.println(MF.x);
+  }
+}
+```
+
+#### Static
+
+- `static`静态方法意味着可以在不创建类对象的情况下访问它，这与`pubic`不同
+
+```java
+package org.code.develop.Modifier;
+
+public class MyStatic {
+  // 静态方法
+  static void myStaticMethod() {
+    System.out.println("Static methods can be called without creating objects");
+  }
+
+  // 公共方法
+  public void myPublicMethod() {
+    System.out.println("Public methods must be called by creating objects");
+  }
+
+  // Main方法
+  public static void main(String[] args) {
+    // 调用静态方法
+    myStaticMethod();
+
+    // 创建一个对象
+    MyStatic MS = new MyStatic();
+    MS.myPublicMethod();
+  }
+}
+```
+
+#### Abstract
+
+abstract 抽象方法属于abstract抽象类，它没有主体。主体由子类提供:
+
+```java
+package org.code.develop.Modifier;
+
+// Code from filename: Person.java
+// 抽象类
+abstract class Person {
+  public String fname = "John";
+  public int age = 24;
+
+  public abstract void study(); // 抽象方法
+}
+
+// 子类（从 Person 继承）
+class Student extends Person {
+  public int graduationYear = 2018;
+
+  public void study() { // 此处提供了抽象方法的主体
+    System.out.println("Studying all day long");
+  }
+}
+// End code from filename: Person.java
+
+// Code from filename: MyClass.java
+class MyClass {
+  public static void main(String[] args) {
+    // 创建 Student 类的对象（从 Person 继承属性和方法）
+    Student myObj = new Student();
+
+    System.out.println("Name: " + myObj.fname);
+    System.out.println("Age: " + myObj.age);
+    System.out.println("Graduation Year: " + myObj.graduationYear);
+    myObj.study(); // 调用抽象方法
+  }
+}
+```
+
+### Java封装
+
+- 封装的意义是确保对用户隐藏"敏感"数据。要实现这一点
+  - 将变量/属性声明为`private`
+  - 提供公共**get**和**set**方法来访问和更新`private`私有变量的值
+
+#### Get和Set
+
+- 从上一章中了解到，只能在同一个类内访问 `private`私有变量（外部类无权访问它）。但是，如果我们提供公共get和set方法，就可以访问它们。
+
+**get**方法返回变量值，**set**方法设置值。
+
+两者的语法都是以 **get** 或 **set**开头，后跟变量名，第一个字母大写:
+
+```java
+package org.code.develop.encapsulation;
+
+// Person类，用于表示一个人的信息
+// 这里体现了封装的概念，将数据（如name）隐藏起来，通过公共的方法（getter和setter）来访问和修改
+public class Person {
+    // 私有属性name，用于存储人的名字
+    // 使用private修饰符，将其封装起来，外部类不能直接访问
+    private String name;
+
+    // Getter方法，用于获取name属性的值
+    // 外部类可以通过调用这个方法来获取name的值，而不是直接访问私有属性
+    public String getName() {
+        return name;
+    }
+
+    // Setter方法，用于设置name属性的值
+    // 外部类可以通过调用这个方法来设置name的值，并且可以在方法内部添加一些逻辑来验证或处理新的值
+    // 例如，可以在这里添加对新名字的长度限制等验证逻辑
+    public void setName(String newName) {
+        this.name = newName;
+    }
+}
+```
+
+> 解析：
+> ``get``方法返回变量`name`的值
+> ``set``方法接受一个参数(`newName`)并将其分配给`name`变量。`this`关键字用于引用当前对象。
+> 但是由于`name`变量声明为`private`,因此我们无法从此类外部访问它
+
+为什么要封装?
+- 更好地控制类属性和方法
+- 类属性可以设置为只读（如果只使用get方法），也可以设置为只写（如果只使用set方法）
+- 灵活:程序员可以在不影响其他部分的情况下更改代码的一部分
+- 提高数据的安全性
+
+### Java 包(Packages)
+- Java包与API
+  Java中的包用于对相关类进行分组。可将其视为文件目录中的文件夹。我们使用包来规避名称冲突，并编写更好的可维护代码。软件包分为两类：
+  - 内置包（来自JavaAPI的包）
+  - 用户自定包（创建自己的包）
+
+#### 内置软件包
+
+JavaAPI 是 Java开发环境中包含的一个预编写类库，可以直接使用。
+
+该库用于管理输入，数据库编程等组件。完整列表可以在Oracles网站上找到:https://docs.oracle.com/javase/8/docs/api/
+
+该库分为包和类，这意味着可以导入单个类（及其方法和属性）也可以导入包含属于指定包的所有类的整个包。
+
+如果需要使用该库中的类或者包，需要使用`import`关键字
+
+```java
+import package.name.Class;   // 导入 single 类
+import package.name.*;   // 导入整个包
+```
+
+#### 导入类
+如果需要找到使用的类，例如获取用户输入的`Scanner`类，请编写以下代码
+```java
+import java.util.Scanner;
+```
+
+在上面的实例中，`java.util`是一个包，而`Scanner`是`java.util`包的一个类。
+要使用`Scanner`类，请创建该类的对象，即可使用`Scanner`类文档中的任何可用方法。
+
+- 示例：使用Scanner获取用户输入
+
+```java
+import java.util.Scanner;
+
+class MyClass {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    System.out.println("Enter username");
+
+    String userName = myObj.nextLine();
+    System.out.println("Username is: " + userName);
+  }
+}
+```
+
+#### 导入包
+有许多软件包可供选择。在前面的示例中，我们使用了`java.util`包中的`Scanner`类。该软件包还包含日期和时间工具，随机数生成器和其他使用程序类。
+要导入整个软件包，请在句子末尾加上星号（*）。以下示例将导入`java.util`包中的所有类：
+
+```java
+import java.util.*;
+```
+
+#### 用户定义包
+要创建包，请使用`package`关键字
+
+
+### Java继承
+- 子类和超类
+Java中可以将属性和方法从一个类继承到另一个类。我们将"继承概念"分为两种
+
+- 子类 (Subclass) - 子，从另一个类继承的类
+- 超类 (Superclass) - 父，被继承的类
+
+要从类继承，请使用`extends`关键字。
+
+在下面的示例中，`Car`类（子类）继承了`Vehicle`类（超类）的属性和方法：
+
+```java
+class Vehicle {
+  protected String brand = "Ford";        // Vehicle 属性
+  public void honk() {                    // Vehicle 方法
+    System.out.println("Tuut, tuut!");
+  }
+}
+
+class Car extends Vehicle {
+  private String modelName = "Mustang";    // Car 属性
+  public static void main(String[] args) {
+
+    // 创建一个 myCar 对象
+    Car myCar = new Car();
+
+    // 在 myCar 对象上调用 honk() 方法（来自 Vehicle 类）
+    myCar.honk();
+
+    // 显示 brand 属性的值（来自 Vehicle 类）和来自 Car 类的 modelName 值
+    System.out.println(myCar.brand + " " + myCar.modelName);
+  }
+}
+```
+
+你是否注意到Vehicle中的protected修饰符?
+
+我们将Vehicle中的brand属性设置为protected受保护的访问修饰符。 如果设置为private，则Car类将无法访问它。
+
+为什么使用继承?
+- 因为它对于代码的可重用性很有用:在创建新类时重用现有类的属性和方法。
+
+### Java多态
+多态意味着“多种形式”，当我们有许多通过继承相互关联的类时，就会产生多态性。
+
+**继承**允许我们从另一个类继承属性和方法。多态使用这些方法来执行不同的任务。这允许我们以不同的方式执行单个操作。
+
+例如。考虑一个名为`Animal`的超类，它有一个名为`animalSound()`的方法。动物的亚类可以是猪，猫，狗，鸟，他们也有自己的动物声音（猪叫，猫叫等）：
+
+```java
+class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+```
+
+> 请记住，我们使用**extends**关键字从类继承。
+
+现在，我们可以创建`pig`和`Dog`对象，并对它们调用`animalSound()`方法
+
+```java
+class Animal {
+  public void animalSound() {
+    System.out.println("The animal makes a sound");
+  }
+}
+
+class Pig extends Animal {
+  public void animalSound() {
+    System.out.println("The pig says: wee wee");
+  }
+}
+
+class Dog extends Animal {
+  public void animalSound() {
+    System.out.println("The dog says: bow wow");
+  }
+}
+
+class MyMainClass {
+  public static void main(String[] args) {
+    Animal myAnimal = new Animal();  // 创建一个 Animal 对象
+    Animal myPig = new Pig();  // 创建 Pig 对象
+    Animal myDog = new Dog();  // 创建一个 Dog 对象
+    myAnimal.animalSound();
+    myPig.animalSound();
+    myDog.animalSound();
+  }
+}
+```
+
+为什么要使用"继承"和"多态性"?
+- 因为它对于代码的可重用性很有用:在创建新类时可以重用现有类的属性和方法。
+
+
+### Java 内部类 (嵌套类)
+在Java中，也可以嵌套类（类中的类）。嵌套类的目的是将属于同一类的类分组，这使代码更具有可读性和维护性。
+
+要访问内部类，请创建外部类的对象，然后创建内部类的对象：
+
+```java
+package org.code.develop.inheritance;
+
+class OuterClass {
+    int x = 10;
+    class InnerClass {
+        int y = 5;
+    }
+}
+
+public class MyNestedClass {
+    public static void main(String[] args) {
+        OuterClass myOuter = new OuterClass();
+        OuterClass.InnerClass myInner = myOuter.new InnerClass();
+        System.out.println(myInner.y + myOuter.x);
+    }
+}
+```
+
+
+#### 私有的内部类
+与“常规”类不同，内部类可以是`private`私有的或`protected`受保护的。
+
+如果不希望外部对象访问内部类，请将该类声明为`private`
+
+```java
+package org.code.develop.inheritance;
+
+class OutClass {
+    int x = 9;
+    private class InnerClass {
+        int y = 1;
+    }
+}
+
+public class PrivateInnerClass {
+    public static void main(String[] args) {
+        OutClass out = new OutClass();
+
+        // 将上方的内部类修改为`private`编译器会立即报错，因为无法访问到
+        OutClass.InnerClass outInner = out.new InnerClass();
+
+        System.out.println(out.x + outInner.y);
+    }
+}
+```
+
+#### Static内部类
+内部类也可以是`static`静态的，这意味着可以在不创建外部类的对象的情况下访问它。
+
+```java
+package org.code.develop.inheritance;
+
+class MyOutClass {
+    int x = 8;
+    static class MyInnerClass {
+        int y = 2;
+    }
+}
+
+
+public class StaticInnerClass {
+    public static void main(String[] args) {
+        MyOutClass.MyInnerClass MyInner = new MyOutClass.MyInnerClass();
+
+        System.out.println(MyInner.y);
+    }
+}
+```
+
+> 注释: 与 static静态属性和方法一样，static静态内部类无权访问外部类的成员。
+
+
+#### 从内部类访问外部类
+
+内部类的一个优点是，它们可以访问外部类的属性和方法。
+
+```java
+package org.code.develop.inheritance;
+
+class OClass {
+  int x = 10;
+  class IClass {
+    public int myInnerMethod(){
+      return x;
+    }
+  }
+}
+
+public class MainClass {
+  public static void main(String[] args) {
+    // 创建外部类的访问对象
+    OClass OC = new OClass();
+
+    // 引用新对象再创建一个内部对象
+    OClass.IClass OI = OC.new IClass();
+
+    // 引用内部对象的方法输出
+    System.out.println(OI.myInnerMethod());
+  }
+}
+```
+
+
+
+### Java抽象类
+
+数据**抽象**是隐藏某些细节并仅向用户显示基本信息的过程。
+
+抽象可以通过**abstract classes**抽象类或`interfaces`接口实现
+
+
+
+`abstract `关键字是非访问修饰符，用于类和方法：
+
+- 抽象类：是一个不能用于创建对象的受限类（要访问它，必须从另一个类继承）
+- 抽象方法：只能在抽象类中使用，并且它没有主体。主体由子类（继承自）提供
+
+
+
+抽象类可以由抽象方法和常规方法：
+
+```java
+abstract class Animal {
+  public abstract void animalSound();
+  public void sleep() {
+    System.out.println("Zzz");
+  }
+}
+```
+
+
+
+根据上面的示例，不可能创建 Animal动物类的对象：
+
+```java
+Animal myObj = new Animal(); // 会产生错误
+```
+
+
+
+要访问抽象类，他必须从另一个类继承。（使用extends关键字继承）
+
+```java
+package org.code;
+
+// 抽象类
+abstract class Animal{
+    // 抽象方法（没主体）
+    public abstract void animalSound();
+
+    // 常规方法
+    public void sleep() {
+        System.out.println("I am sleep~~~");
+    }
+}
+
+// 子类，继承自（Animal）
+class Pig extends Animal {
+    public void animalSound(){
+        // 这里提供 animalSound() 的主体
+        System.out.println("I am Pig!");
+    }
+}
+
+class AbstractClass {
+    public static void main(String[] args) {
+        Pig myPig = new Pig();
+        myPig.animalSound();
+        myPig.sleep();
+    }
+}
+```
+
+> **为什么以及何时使用抽象类和方法?**
+>
+> 因为要实现安全性，要隐藏某些细节并仅显示对象的重要细节。
+>
+> **注释:** 抽象也可以通过接口实现
+
+
+### Java接口
+Java中实现**abstraction**抽象的另一种方法是使用接口。
+
+An ``interface``接口是一个完全“抽象类”，用于将相关方法与空实体分组：
+
+```java
+package org.code.develop.Interface;
+
+interface Animal {
+    // 接口方法
+    public void animalSound();
+
+    // 接口方法
+    public void run();
+}
+```
+
+要访问接口方法，接口必须由另一个具有`implements`关键字（而不是`extends`）的类“实现”（类似于继承）。接口方法的主体由“implements”类提供：
+
+```java
+package org.code.develop.Interface;
+
+interface Animal{
+    public void animalSound();
+    public void sleep();
+}
+
+// Pig “实现” Animal 接口
+class Pig implements Animal {
+    public void animalSound(){
+        // 这里提供 animalSound() 主体
+        System.out.println("I am Pig");
+    }
+    public void sleep() {
+        System.out.println("Zzz...");
+    }
+}
+
+
+// Main方法入口
+class MyMainClass {
+    public static void main(String[] args) {
+        // 创建Pig对象
+        Pig myPig = new Pig();
+
+        myPig.animalSound();
+        myPig.sleep();
+    }
+}
+```
+
+> 关于接口的说明：
+> - 与抽象类一样，**接口不能用于创建对象**（在上面的示例中，不可能在Main方法中创建“Animal”对象）
+> - 接口方法没有主体-主体由“implement”类提供
+> - 在实现接口时，必须重写其所有方法
+> - 默认情况下，接口方法是`abstract`抽象的和`public`公共的
+> - I接口属性默认为`public`,`static`,`final`
+> - 接口不能包含构造函数（因为其不能用于创建对象）
+> 
+> 为什么以及何时使用接口？
+> 1）为了实现安全性-隐藏某些细节，只显示对象（接口）的重要细节
+> 2）Java不支持“多重继承”（一个类只能从一个超类继承）。但是，它可以通过接口实现，因为该类可以实现多个接口。
+> **注释：**要实现多个接口，请用逗号分隔它们 
+
+#### 多个接口
+要实现多个接口，用逗号分隔：
+
+```java
+package org.code.develop.Interface;
+
+interface FirstInterface {
+    // 接口方法
+    public void myMethod();
+}
+
+interface SecondInterface {
+    public void myOtherMethod();
+}
+
+class DemoClass implements FirstInterface,SecondInterface {
+    public void myMethod() {
+        System.out.println("Some text...");
+    }
+
+    public void myOtherMethod() {
+        System.out.println("some other text...");
+    }
+}
+
+class MainClass {
+    public static void main(String[] args) {
+        DemoClass myObj = new DemoClass();
+
+        myObj.myMethod();
+        myObj.myOtherMethod();
+    }
+}
+```
+
+### Java枚举
+`enum`枚举是一个特殊的“类”，它用于表示一组**常量**（不可更改的变量，如`final`变量）
+要创建`enum`，请使用`enum`关键字（而不是类或者接口），并用逗号分隔常量。请注意，其应为大写字母
+
+```java
+package org.code.develop.Enums;
+
+enum Level {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+```
+
+可以使用.语法访问`enum`枚举常量，如：
+```java
+package org.code;
+
+public class enums {
+    public static void main(String[] args) {
+        enum size{
+            LONG,
+            SMALL,
+        }
+//   ----------------------------  
+        size myVar = size.LONG; // 访问常量
+//   ----------------------------   
+        System.out.println(myVar);
+    }
+}
+```
+
+> Enum 是"enumerations"的缩写，意思是"特别列出"。
+
+#### 类内枚举
+还可以在类中具有enum枚举：
+
+```java
+package org.code.develop.Enums;
+
+public class MyClass {
+    enum Level {
+        LOW,
+        MEDIUM,
+        HIGH
+    }
+
+    public static void main(String[] args) {
+        Level myVar = Level.HIGH;
+        System.out.println(myVar);
+    }
+}
+```
+
+#### Switch语句中的枚举
+枚举通常用于`switch`语句中检查相应的值：
+
+```java
+package org.code.develop.Enums;
+
+enum Size {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+
+public class SwitchEnum {
+    public static void main(String[] args) {
+        Size mySize = Size.HIGH;
+
+        switch (mySize){
+            case LOW :
+                System.out.println("Low Size");
+                break;
+            case MEDIUM:
+                System.out.println("MEDIUM Size");
+                break;
+            case HIGH:
+                System.out.println("you are so high!");
+                break;
+        }
+    }
+}
+```
+
+输出：
+> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=10292" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.develop.Enums.SwitchEnum
+> you are so high!
+> 
+> 进程已结束，退出代码为 0
+
+#### 循环遍历枚举
+枚举中有一个`values()`方法，该方法返回所有枚举常量的数组。如果要循环遍历枚举常量，此方法非常有效：
+
+```java
+package org.code.develop.Enums;
+
+public class LoopThroughTheEnumeration {
+    public static void main(String[] args) {
+        for (Size mySize : Size.values()) {
+            System.out.println(mySize);
+        }
+    }
+}
+```
+
+
+输出：
+> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=13276" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.develop.Enums.LoopThroughTheEnumeration
+> LOW
+> MEDIUM
+> HIGH
+> 
+> 进程已结束，退出代码为 0
+
+
+
+枚举和类之间的差异
+
+enum枚举可以像class类一样具有属性和方法。唯一的区别是枚举常量是public, static 和 final（不可更改-无法重写）。
+
+enum 枚举不能用于创建对象，也不能扩展其他类（但可以实现接口）。
+
+为什么以及何时使用枚举?
+当您知道值不会更改时，如月日期、星期、颜色等，请使用枚举。
+
+### Java用户输入
+Scanner 类用于获取用户输入，它位于 java.util包中。
+
+要使用 Scanner 类，请创建该类的对象，并使用 Scanner 类文档中的任何可用方法。 在我们的示例中，我们将使用nextLine()方法，该方法用于读取字符串:
+
+```java
+package org.code;
+
+import java.util.Scanner;
+
+public class Userinput {
+    public static void main(String[] args) {
+        // 导入Scanner
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("请输入内容");
+        String userinput =  sc.next();
+
+        System.out.println("你输入了： " + userinput);
+    }
+}
+```
+
+#### 输入类型
+在上面的示例中，我们使用了 next()方法，该方法用于读取字符串。要阅读其他类型，请查看下表:
+
+|方法	          |描述|
+|----|----|
+|nextBoolean()	  |从用户处读取boolean布尔值|
+|nextByte()	      |从用户处读取byte字节值|
+|nextDouble()     |从用户处读取double双精度值|
+|nextFloat()      |从用户处读取float浮点值|
+|nextInt()	      |从用户处读取int值|
+|nextLine()	      |从用户处读取String字符串值|
+|nextLong()	      |从用户处读取long值|
+|nextShort()	  |从用户处读取short值|
+
+
+在下面的示例中，我们使用不同的方法读取各种类型的数据:
+
+```java
+package org.code;
+
+import java.util.Scanner;
+
+class AllMethod {
+    public static void main(String[] args) {
+        Scanner myObj = new Scanner(System.in);
+
+        System.out.println("Enter name, age and salary:");
+
+        // 字符串输入
+        String name = myObj.nextLine();
+
+        // 数字输入
+        int age = myObj.nextInt();
+        double salary = myObj.nextDouble();
+
+        // 输出用户输入
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+        System.out.println("Salary: " + salary);
+    }
+}
+```
+
+> 注释: 如果输入错误（例如数字输入中的文本），将收到异常/错误消息 (如 "InputMismatchException").
+
+
+### Java日期和时间
+Java没有内置的Date类，但是我们可以导入`java.time`包来使用Date和time API。该包包括许多日期类和时间类。例如：
+
+
+|类	|描述|
+|----|----|
+|LocalDate|	表示日期（年、月、日（yyyy-MM-dd））|
+|LocalTime|	表示时间（小时、分钟、秒和纳秒（HH-mm-ss-ns））|
+|LocalDateTime|	表示日期和时间（yyyy-MM-dd-HH-MM-ss-ns）|
+|DateTimeFormatter|	格式化显示日期时间|
+
+#### 显示当前日期
+如果需要显示当前日期，请导入`java.time.LocalDate`类，并使用其`now()`方法：
+
+```java
+package org.code;
+
+import java.time.LocalDate;
+
+public class ShowLoaclDate {
+    public static void main(String[] args) {
+        LocalDate LD = LocalDate.now(); // 创建日期对象
+        System.out.println("当前日期: " + LD);
+    }
+}
+```
+
+**输出将是**
+
+> 当前日期: 2025-05-31
+
+#### 显示当前日期
+要显示当前时间（小时，分钟，秒和纳秒）请导入`java.time.LocalTime`类，并使用其`now()`方法：
+
+```java
+package org.code;
+
+import java.time.LocalTime;
+
+public class ShowLocalTime {
+    public static void main(String[] args) {
+        LocalTime NowTime = LocalTime.now();  // 创建获取当前时间的对象
+        System.out.println("当前时间： " + NowTime);
+    }
+}
+```
+
+**输出将是**
+
+> 当前时间： 13:16:38.722713700
+
+#### 显示当前时间和日期
+要实现当前时间和日期，请导入 java.time.LocalDateTime 类，并使用其now()方法:
+
+```java
+package org.code;
+
+import java.time.LocalDateTime;
+
+public class ShowLocalDateTime {
+    public static void main(String[] args) {
+        LocalDateTime LDateTime = LocalDateTime.now(); // 创建获取对象
+        System.out.println(LDateTime);
+    }
+}
+```
+
+**输出将是**
+
+> 2025-05-31T13:22:05.367890900
+
+#### 格式化日期和时间
+上列中的“T”用于将时间和日期分开。可以在同一个包中使用`DateTimeFormatter`类和`ofPattern()`方法格式化或者解析日期时间对象。
+
+下面示例展示从日期时间中删除"T"和纳秒
+
+```java
+package org.code;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+/**
+ * 演示Java 8+中LocalDateTime类的日期时间格式化功能
+ */
+public class FormatDateTime {
+    public static void main(String[] args) {
+        // 1. 创建当前系统时间的LocalDateTime对象
+        // LocalDateTime是Java 8引入的不可变类，用于表示不含时区的日期时间
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // 2. 打印未格式化的日期时间（默认格式：ISO-8601）
+        System.out.println("未格式化 ： " + currentDateTime);
+
+        // 3. 定义自定义日期时间格式
+        // 使用DateTimeFormatter模式：
+        // dd - 两位日(01-31)
+        // MM - 两位月(01-12)
+        // yyyy - 四位年
+        // HH - 24小时制小时(00-23)
+        // mm - 分钟(00-59)
+        // ss - 秒(00-59)
+        DateTimeFormatter customFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        // 4. 执行格式化并打印结果
+        // format()方法将LocalDateTime按照指定格式转换为字符串
+        String formattedDateTime = currentDateTime.format(customFormatter);
+        System.out.println("格式化 ： " + formattedDateTime);
+    }
+}
+```
+**输出**
+
+> 未格式化 ： 2025-05-31T13:50:15.037500300
+> 格式化 ： 31-05-2025 13:50:15
+
+如果希望以不同的格式显示日期和时间，则``ofPattern()`方法接受所有类型的值，例如：
+
+|值|实例|
+|----|----|
+|yyyy-MM-dd|"1988-09-29"|
+|dd/MM/yyyy|"29/09/1988"|
+|dd-MMM-yyyy|"29-Sep-1988"|
+|E, MMM dd yyyy|"Thu, Sep 29 1988"|
+
+
+### JavaArrayList数组列表
+`ArrayList`类是一个可调整大小的**array**数组，可以在`java.util`包中找到。
+Java中内置数组和`ArrayList`的区别在于数组的大小不能修改（如果需要向数组中添加或者删除元素，必须创建一个新的数组）而可以随时从`ArrayList`中添加和删除元素。语法也略有不同：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class AList {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>(); // 创建一个 ArrayList 对象
+    }
+}
+```
+
+#### 添加元素
+`ArrayList`类提供了很多有用的方法，添加元素到`ArrayList`可以使用`add()`方法
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class ArrayListAdd {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+
+        cars.add("MuGay");
+        cars.add("XiaoBa");
+        cars.add("High");
+        cars.add("SmallGay");
+        System.out.println(cars);
+    }
+}
+```
+
+**输出**
+> [MuGay, XiaoBa, High, SmallGay]
+
+
+#### 访问元素
+访问`ArrayList`中的元素可以使用`get()`方法：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class AccessArrayListElements {
+  public static void main(String[] args) {
+    ArrayList<String> i = new ArrayList<String >();
+
+    // 添加元素
+    i.add("MUMu");
+
+    // 访问元素
+    System.out.println(i.get(0));
+  }
+}
+```
+
+> 注意：
+> 数组索引从0开始，[0]是第一个元素，[1]是第二个元素
+
+#### 修改元素
+如果需要修改ArrayList中的元素可以使用`set()`方法
+
+```java
+i.set(0,"需要修改的内容");
+```
+
+#### 删除元素
+如果需要删除ArrayList中的元素，可以使用`remove()`方法
+
+```java
+i.remove();
+```
+
+如果需要删除数组中的所有元素，请使用`clear()`方法
+```java
+i.clear();
+```
+
+#### 计算大小
+如果需要计算ArrayList数组中元素的书香，可以使用`size.()`方法
+```java
+i.size();
+```
+
+#### 遍历数组列表
+我们可以使用for循环遍历ArrayList中的元素，并使用siez.()方法指定循环应运行的次数：
+
+```java
+package org.code.develop;
+
+import java.util.ArrayList;
+
+public class ArrayListFor {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+
+        cars.add("MuGay");
+        cars.add("XiaoBa");
+        cars.add("High");
+        cars.add("SmallGay");
+
+        for (int i = 0; i < cars.size();i++){
+            System.out.println(cars.get(i));
+        }
+
+    }
+}
+```
+
+
+**输出**
+> MuGay
+> XiaoBa
+> High
+> SmallGay
+
+还可以使用for-each循环遍历：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class ForEachArrayList {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+
+        cars.add("MuGay");
+        cars.add("XiaoBa");
+        cars.add("High");
+        cars.add("SmallGay");
+
+        for (String i : cars){
+            System.out.println(i);
+        }
+    }
+}
+```
+
+
+**输出**
+> MuGay
+> XiaoBa
+> High
+> SmallGay
+
+#### 其他类型
+ArrayList的元素实际上是对象。在上面的示例中，我们创建了类型为“String”的元素（对象。）请记住。Java的字符串是对象（而不是基元类型）。要使用其他类型，如int则必须指定一个等效的**包装类**：Integer。对于其他基本类型，请使用Boolean,Character,Double等等：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class ArrayListOtherTypes {
+    public static void main(String[] args) {
+        ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+        myNumbers.add(10);
+        myNumbers.add(15);
+        myNumbers.add(20);
+        myNumbers.add(25);
+        for (int i : myNumbers) {
+            System.out.println(i);
+        }
+    }
+}
+```
+
+#### ArrayList排序
+`java.util`包中另一个有用的类是`Collections`类，它包括用于按字母或者数字排序列表的`sort()`方法
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class ArrayListSort {
+    public static void main(String[] args) {
+        ArrayList<String> cars = new ArrayList<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+
+        Collections.sort(cars); // 排序 cars
+
+        // 遍历输出
+        for (String i : cars){
+            System.out.println(i);
+        }
+    }
+}
+```
+
+> 以此类推，我们也可以进行整数类型的排序
+
+```java
+import java.util.ArrayList;
+import java.util.Collections;  // 导入集合类
+
+public class MyClass {
+  public static void main(String[] args) {
+    ArrayList<Integer> myNumbers = new ArrayList<Integer>();
+    myNumbers.add(33);
+    myNumbers.add(15);
+    myNumbers.add(20);
+    myNumbers.add(34);
+    myNumbers.add(8);
+    myNumbers.add(12);
+
+    Collections.sort(myNumbers);  // 排序 myNumbers
+
+    for (int i : myNumbers) {
+      System.out.println(i);
+    }
+  }
+}
+```
+
+
+### Java链表
+在上面中，我们了解了ArrayList类，LinkedList类与ArrayList几乎相同：
+
+```java
+package org.code;
+
+import java.util.LinkedList;
+
+public class LinkedListClass {
+    public static void main(String[] args) {
+        LinkedList<String> cars = new LinkedList<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+        System.out.println(cars);
+    }
+}
+```
+
+ArrayList与LinkedList
+LinkedList 类是一个集合，可以包含许多相同类型的对象，就像 ArrayList 一样。
+
+LinkedList 类具有与 ArrayList 类相同的所有方法，因为它们都实现了 List 接口。这意味着您可以以相同的方式添加项目、更改项目、删除项目和清除列表。
+
+然而，虽然 ArrayList 类和 LinkedList 类可以以相同的方式使用，但它们的构建方式却大不相同。
+
+**ArrayList 的工作原理**
+ArrayList 类内部有一个常规数组。添加元素时，会将其放入数组中。如果阵列不够大，则会创建一个更大的新阵列来替换旧阵列，并移除旧阵列。
+
+**LinkedList 的工作原理**
+LinkedList 将其项目存储在"容器"中。该列表有一个指向第一个容器的链接，每个容器都有一个指向列表中下一个容器的链接。要将元素添加到列表中，将该元素放入一个新容器中，并且该容器链接到列表中的其他容器之一。
+
+何时使用
+
+在以下情况下最好使用 **ArrayList**:
+
+- 想经常访问随机项目
+- 只需要在列表末尾添加或删除元素
+
+在以下情况下最好使用 **LinkedList**:
+
+- 只能通过循环使用列表而不是访问随机项目
+- 经常需要从开头或中间添加和删除项目
+
+
+
+#### LinkedList 链表方法
+在许多情况下，ArrayList 更有效，因为通常需要访问列表中的随机项，但 LinkedList 提供了几种方法来更有效地执行某些操作:
+
+|方法|描述|
+|----|----|
+|addFirst()|将一个项目添加到列表的开头。|
+|addLast()|将项目添加到列表末尾|
+|removeFirst()|从列表的开头删除一个项目|
+|removeLast()|从列表末尾删除一个项目|
+|getFirst()|获取列表开头的项目|
+|getLast()|获取列表末尾的项目|
+
+### JavaHashMap
+
+在ArayList中，我们知道了数组将项目存储为有序集合，并且必须使用索引号（`int`类型）来访问他们。然而，`HashMap`将项目存储在"key/value"对中，可以通过另一种类型的索引，（例如`String`）访问它们。
+
+一个对象作用的另一个对象（值）的键（索引）。它们可以存储不同的类型：`String`字符串键和`Integer`整数值，或者相同类型，例如`String`字符串键和`String`字符串值：
+
+在下方，我们创建一个名为"CapitalCities"的`HashMap`对象，它将存储字符键和字符串值：
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // HashMap 对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+  }
+}
+```
+
+#### 添加项目
+
+`HashMap`类由很多有用的方法。例如，要强其中添加项目，请使用`put()`方法：
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC");
+
+    System.out.println(CapitalCities);
+  }
+}
+```
+
+**输出**
+> {USA=Washington DC, Norway=Oslo, England=London, Germany=Berlin}
+
+#### 访问项目
+
+如果需要访问`HashMap`中的值，请使用`get()`方法引用其键：
+
+```java
+capitalCities.get("England");
+```
+
+#### 移除项目
+
+要删除一个项目，使用`remove()`方法：
+
+```java
+capitalCities.remove("England");
+```
+
+要删除所有项目，使用`clear()`方法：
+
+```java
+capitalCities.clear();
+```
+
+#### HashMap大小
+
+要找出有多少项目，使用`size()`方法
+
+```java
+capitalCities.size();
+```
+
+#### 循环遍历 HashMap
+
+使用For-each循环遍历`HashMap`项目。
+
+注释：如果只需要使用键，请使用`keySet()`方法，如果只需要值，请使用`values()`方法：
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC");
+// --------
+// 打印 keys
+    for (String i : CapitalCities.keySet()) {
+      System.out.println(i);
+    }
+// --------
+  }
+}
+```
+
+**输出**
+> USA
+> Norway
+> England
+> Germany
+
+下面演示打印 values
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC");
+// --------
+// 打印 values
+    for (String i : CapitalCities.values()) {
+      System.out.println(i);
+    }
+// --------
+  }
+}
+```
+
+**输出**
+> Washington DC
+> Oslo
+> London
+> Berlin
+
+下面演示打印键和值
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+
+public class CapitalCitiesClass {
+  public static void main(String[] args) {
+    // 创建HashMap对象
+    HashMap<String,String> CapitalCities = new HashMap<String,String>();
+
+    // 添加键和值 (Country, City)
+    CapitalCities.put("England", "London");
+    CapitalCities.put("Germany", "Berlin");
+    CapitalCities.put("Norway", "Oslo");
+    CapitalCities.put("USA", "Washington DC"); 
+    
+    // 打印键和值 
+    for(String i : CapitalCities.keySet()){
+      System.out.println("Key: " + i + "Value: " + CapitalCities.values());
+    }
+  }
+}
+```
+
+**输出**
+> Key: USAValue: [Washington DC, Oslo, London, Berlin]
+> Key: NorwayValue: [Washington DC, Oslo, London, Berlin]
+> Key: EnglandValue: [Washington DC, Oslo, London, Berlin]
+> Key: GermanyValue: [Washington DC, Oslo, London, Berlin]
+
+#### 其他类型
+HashMap中的键和值实际上是对象。在上面的实例中，我们使用了“String”类型的对象。请记住，Java中的String是一个对象（不是原始类型）要使用其他类型，例如int，则必须指定一个等效的包装类：Integer。对于其他原始类型，请使用: Boolean 用于 boolean, Character 用于 char, Double 用于 double 等:
+
+下面演示，创建一个HashMap对象，存储String类型键和Integer值
+
+```java
+package org.code;
+
+import java.util.HashMap;
+
+public class MyHashMapPeople {
+  public static void main(String[] args) {
+    
+    // 创建HashMap对象
+    HashMap<String,Integer> people = new HashMap<String,Integer>();
+    
+    // 添加键和值（Name，Age）
+    people.put("John", 32);
+    people.put("Steve", 30);
+    people.put("Angie", 33);
+
+    for(String i : people.keySet()){
+      System.out.println("Key: " + i + "Value: " + people.get(i));
+    }
+  }
+}
+```
+
+### JavaHaspSet 集合
+是项目的集合，其中每个项目都是唯一的，可以在`java.util`包中找到：
+
+下面演示，创建一个名为cars的HashSet对象，该对象用于存储字符串：
+
+```java
+package org.code;
+
+import java.util.HashSet;
+
+public class MyHashSet {
+    public static void main(String[] args) {
+        HashSet<String> cars = new HashSet<String>();
+    }
+}
+```
+
+#### 添加项目
+`HashSet`类有很多有用的方法。例如，要想其中添加项目，使用`add()`方法：
+
+```java
+package org.code;
+
+import java.util.HashSet;
+
+public class MyHashSet {
+    public static void main(String[] args) {
+        HashSet<String> cars = new HashSet<String>();
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("BMW");
+        cars.add("Mazda");
+
+        System.out.println(cars);
+    }
+}
+```
+
+> 注释：注释: 在上面的示例中，即使 BMW 被添加了两次，但它在集合中只出现一次，因为集合中的每个项目都必须是唯一的。
+
+#### 检查项目是否存在
+要检查某个项目是否存在于HashSet中，请使用`contains()`方法
+
+```java
+cars.contains("BWM");
+```
+
+#### 删除项目
+如果需要删除项目，请使用`remove()`方法
+
+```java
+cars.remove("Volvo");
+```
+
+要删除所有项目，使用`clear()`方法
+
+```java
+cars.clear();
+```
+
+#### HashSet大小
+要找出有多少项目，请使用`size`方法
+
+```java
+cars.size();
+```
+
+#### 遍历一个
+使用for-each循环遍历`HashSet`的项目：
+
+```java
+for (String i : cars) {
+    System.out.println(i);
+}
+```
+
+#### 其他类型
+HashSet 中的项目实际上是对象。 在上面的示例中，我们创建了"String"类型的项目（对象）。 请记住，Java 中的 String 是一个对象（不是原始类型）。 要使用其他类型，例如 int，必须指定一个等效的 包装类: Integer。 对于其他原始类型，请使用: Boolean 用于 boolean, Character 用于 char, Double 用于 double 等:
+
+```java
+package org.code;
+
+import java.util.HashSet;
+
+public class MyHashSetClass {
+    public static void main(String[] args) {
+        // 创建一个名为 numbers 的 HashSet 对象
+        HashSet<Integer> numbers = new HashSet<Integer>();
+
+        // 将值添加到集合
+        numbers.add(4);
+        numbers.add(7);
+        numbers.add(8);
+
+        // 显示 1 到 10 之间的数字在集合中
+        for(int i = 1; i <= 10; i++) {
+            if(numbers.contains(i)) {
+                System.out.println(i + " was found in the set.");
+            } else {
+                System.out.println(i + " was not found in the set.");
+            }
+        }
+    }
+}
+```
+
+### Java迭代器
+`Iterator`是一个可用于循环遍历集合的对象，例如`ArrayList`和`HashSet`。他被称为“迭代器”，因为**迭代**是指循环的技术术语。
+
+要使用迭代器，必须要从`java.util`中导入
+
+#### 获取迭代器
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class IteratorOperator {
+    public static void main(String[] args) {
+
+        // 创建一个集合
+        ArrayList<String> cars = new ArrayList<String>();
+
+        // 向集合中添加数据
+        cars.add("Volvo");
+        cars.add("BMW");
+        cars.add("Ford");
+        cars.add("Mazda");
+
+        // 获取迭代器
+        Iterator<String> it = cars.iterator();
+
+        // 打印第一项
+        System.out.println(it.next());
+    }
+}
+```
+
+**输出**
+> Volvo
+
+#### 循环遍历集合
+要遍历集合，请使用迭代器的`hasNext()`和`next()`方法：
+
+```java
+while(it.hashNext()) {
+    System.out.println(it.next())    
+}
+```
+
+#### 从集合中删除项目
+迭代器旨在轻松更改它们循环的集合。`remove()`方法可以在循环时从集合中删除项目。
+
+下面演示，使用迭代器从集合中删除小于10的数字：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class DeleteItemsFromSet {
+    public static void main(String[] args) {
+        // 创建集合
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+        // 向集合中添加数据
+        numbers.add(12);
+        numbers.add(8);
+        numbers.add(2);
+        numbers.add(23);
+
+        // 创建迭代器
+        Iterator<Integer> it = numbers.iterator();
+
+        // 使用while删除数据
+        while (it.hasNext()){
+            Integer i = it.next();
+            if (i < 10) {
+                it.remove();
+            }
+        }
+
+        System.out.println(numbers);
+
+    }
+}
+```
+
+> 注释：尝试使用 for 循环或 for-each 循环删除项目将无法正常工作，因为集合在代码尝试循环的同时改变大小。
+
+### Java包装类
+包装类提供了一种将原始数据类型（int,boolean等）用作对象的方法。
+
+下表显示了原始类型和等效的包装类：
+
+|原始数据类型|包装类|
+|----|----|
+|byte|Byte|
+|short|Short|
+|int|Integer|
+|long|Long|
+|float|Float|
+|double|Double|
+|boolean|Boolean|
+|char|Character|
+
+有时您必须使用包装类，例如在使用 Collection 对象时，例如 ArrayList，其中不能使用原始类型（列表只能存储对象）:
+
+```java
+ArrayList<int> myNumbers = new ArrayList<int>(); // 无效的
+```
+
+```java
+ArrayList<Integer> myNumbers = new ArrayList<Integer>(); // 有效的
+```
+
+#### 创建包装对象
+要创建包装器对象，请使用包装器类而不是原始类型。要获取值，只需要打印对象：
+
+```java
+public class MyClass {
+  public static void main(String[] args) {
+    Integer myInt = 5;
+    Double myDouble = 5.99;
+    Character myChar = 'A';
+    System.out.println(myInt);
+    System.out.println(myDouble);
+    System.out.println(myChar);
+  }
+}
+```
+
+由于您现在正在处理对象，因此您可以使用某些方法来获取有关特定对象的信息。
+
+例如，以下方法用于获取与对应包装对象关联的值: intValue(), byteValue(), shortValue(), longValue(), floatValue(), doubleValue(), charValue(),
+booleanValue().
+
+此示例将输出与上例相同的结果:
+
+```java
+public class MyClass {
+  public static void main(String[] args) {
+    Integer myInt = 5;
+    Double myDouble = 5.99;
+    Character myChar = 'A';
+    System.out.println(myInt.intValue());
+    System.out.println(myDouble.doubleValue());
+    System.out.println(myChar.charValue());
+  }
+}
+```
+
+> 输出：
+> 5
+> 5.99
+> A
+
+另一个有用的方法时`toString()`方法，它用于将包装对象转换为字符串
+
+在下面的例子中，我们将Integer转换为String，并使用String类的length()方法输出"字符串"的长度：
+
+```java
+package org.code;
+
+public class IntegerToString {
+    public static void main(String[] args) {
+        Integer myInt =10;
+
+        String myString = myInt.toString();
+
+        System.out.println(myString.length());
+    }
+}
+```
+
+### Java异常 - Try...Catch
+
+在执行Java代码时，可能会出现不同的错误：程序员编写的编码错误，错误输入导致的错误或者其他无法预料的事情。
+
+发生错误时，Java通常回停止并生成错误信息。对此的技术术语是：Java将抛出异常
+
+#### Java Try 和 Catch
+
+try 语句允许定义一个代码块，以便在执行时对其进行错误测试。
+
+如果 try 块中发生错误， catch 语句允许您定义要执行的代码块。
+
+try 和 catch 关键字成对出现:
+
+```java
+try {
+  //  要尝试的代码块
+}
+catch(Exception e) {
+  //  处理错误的代码块
+}
+```
+
+我们可以使用下面的示例来捕获错误信息
+
+```java
+package org.code;
+
+public class MyTryCatch {
+  public static void main(String[ ] args) {
+    try {
+      int[] myNumbers = {1, 2, 3};
+      System.out.println(myNumbers[10]);
+    } catch (Exception e) {
+      System.out.println("Something went wrong.");
+    }
+  }
+}
+```
+
+**输出**
+
+> Something went wrong.
+
+
+#### Finally
+`finally`语句运行在`try...catch`之后执行代码，而不管结果如何：
+
+```java
+package org.code;
+
+public class MyFinally {
+  public static void main(String[] args) {
+    try {
+      int[] myNumbers = {1,2,3};
+      System.out.println(myNumbers[10]);
+    }catch(Exception e){
+      System.out.println("Something went wrong.");
+    }finally {
+      System.out.println("The 'try catch' is finished.");
+    }
+  }
+}
+```
+
+**输出**
+
+> Something went wrong.
+> The 'try catch' is finished.
+
+#### throw 关键字
+
+`throw`语句允许创建自定义错误
+
+`throw`语句与**异常类型**一起使用。Java中许多异常类型可用：ArithmeticException, FileNotFoundException, ArrayIndexOutOfBoundsException, SecurityException, etc:
+
+| 异常类型                         | 运行时异常 | 所属包                     | 简要说明                                                                 |
+|----------------------------------|------------|----------------------------|--------------------------------------------------------------------------|
+| ArithmeticException              | 是         | java.lang                  | 算术运算异常，如除以0                                                   |
+| ArrayIndexOutOfBoundsException   | 是         | java.lang                  | 数组下标越界                                                             |
+| NullPointerException             | 是         | java.lang                  | 访问 null 引用对象的方法或属性                                          |
+| ClassCastException               | 是         | java.lang                  | 类型强制转换错误                                                         |
+| IllegalArgumentException         | 是         | java.lang                  | 传递非法参数给方法                                                       |
+| NumberFormatException            | 是         | java.lang                  | 字符串转换为数字时格式不正确                                             |
+| IllegalStateException            | 是         | java.lang                  | 在不适合当前状态下调用方法                                               |
+| IndexOutOfBoundsException        | 是         | java.lang                  | 索引越界（如 List、字符串等）                                            |
+| SecurityException                | 是         | java.lang                  | 安全管理器检测到安全违规                                                |
+| UnsupportedOperationException    | 是         | java.lang                  | 对象不支持调用的操作                                                     |
+| FileNotFoundException            | 否         | java.io                    | 文件未找到                                                              |
+| IOException                      | 否         | java.io                    | 输入/输出操作异常                                                       |
+| EOFException                     | 否         | java.io                    | 输入流已到达文件结尾                                                    |
+| ClassNotFoundException           | 否         | java.lang                  | 找不到指定类                                                            |
+| NoSuchMethodException            | 否         | java.lang                  | 访问的类中不存在某方法                                                  |
+| InterruptedException             | 否         | java.lang                  | 线程被中断                                                              |
+| SQLException                     | 否         | java.sql                   | JDBC 操作数据库时发生异常                                               |
+| InvocationTargetException        | 否         | java.lang.reflect          | 调用通过反射机制执行的方法时抛出的异常                                   |
+| InstantiationException           | 否         | java.lang                  | 尝试创建抽象类或接口的实例时抛出                                        |
+| MalformedURLException            | 否         | java.net                   | URL 格式不正确                                                           |
+
+> **备注**：
+>
+> - 运行时异常（RuntimeException 及其子类）不强制捕获，可选 try-catch
+> - 非运行时异常（Checked Exception）必须通过 try-catch 或 throws 显式处理。
+
+下面演示如果年龄低于 18 岁，则抛出异常（打印"访问被拒绝"）。如果年龄为 18 岁或以上，请打印"访问权限":
+
+```java
+package org.code;
+
+public class IfThrow {
+  static void checkAge(int age) {
+    if (age < 18) {
+      throw new ArithmeticException("访问拒绝 - 未满18岁！");
+    } else {
+      System.out.println("访问允许！");
+    }
+  }
+
+  public static void main(String[] args) {
+    checkAge(1);
+  }
+}
+```
+
+输出
+
+> Exception in thread "main" java.lang.ArithmeticException: 访问拒绝 - 未满18岁！
+> at org.code.general.IfThrow.checkAge(IfThrow.java:6)
+> at org.code.general.IfThrow.main(IfThrow.java:13)
+
+如果年龄为20岁，则不会抛出异常
+
+```java
+checkAge(20);
+```
+
+输出将是:
+
+> Access granted - You are old enough!
+
+### Java正则表达式
+
+Q&A
+
+Q：什么是正则表达式？
+A：正则表达式是形成搜索模式的字符序列。当在文本中搜索数据时，可以使用此搜索模式来描述需要搜索的内容
+
+A：正则表达式可以是单个字符，也可以是更复杂的模式
+
+A：正则表达式可以用于执行所有类型的文本搜索和文本替换操作
+
+- Java中没有内置的正则表达式类，但我们可以导入`java.util.regex`包来使用正则表达式。该软件包包括以下类：
+  - `Pattern`类 - 定义模式（用于搜索）
+  - `Matcher`类 - 用于搜索模式
+  - `PatternSyntaxException`类 - 指示正则表达式模式中的语法错误
+
+下面演示，从句中找出是否出现 “MuGay” 这个词：
+
+```java
+// 声明包名，表示该类属于 org.code.develop.RegularExpression 包
+package org.code.develop.RegularExpression;
+
+// 导入 Java 正则表达式相关的类
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+/**
+ * FindMuGay 类用于演示如何使用 Java 正则表达式
+ * 来在字符串中查找是否存在指定的模式。
+ */
+public class FindMuGay {
+
+  // 主方法：程序入口点
+  public static void main(String[] args) {
+    
+    // 创建一个正则表达式模式对象，匹配字符串 "MuGay"，忽略大小写
+    Pattern pattern = Pattern.compile("MuGay", Pattern.CASE_INSENSITIVE);
+
+    // 创建一个匹配器对象，用于在指定字符串中搜索 pattern 所定义的正则表达式
+    Matcher matcher = pattern.matcher("I am MuGay!");
+
+    // 尝试在字符串中查找是否存在匹配项
+    boolean matchFound = matcher.find();
+
+    // 根据查找结果输出匹配是否成功的信息
+    if (matchFound) {
+      System.out.println("Match Found!");  // 如果找到了匹配项，输出此信息
+    } else {
+      System.out.println("Match not Found!");  // 如果没有找到匹配项，输出此信息
+    }
+  }
+}
+```
+
+输出：
+
+> Match Found!
+
+**实例解析**
+
+在此示例中，正在一个句子中搜索单词 "MuGay" 。
+
+首先，使用 Pattern.compile() 方法创建模式。第一个参数指示正在搜索的模式，第二个参数有一个标志来指示搜索应该不区分大小写。第二个参数是可选的。
+
+matcher() 方法用于搜索字符串中的模式。它返回一个 Matcher 对象，其中包含有关已执行搜索的信息。
+
+如果在字符串中找到模式，find() 方法返回 true，如果没有找到，则返回 false。
+
+#### Flags标志
+`compile()`方法中的标志改变了搜索的执行方式，这里有几个：
+- `Pattern.CASE_INSENSITIVE` - 执行搜索时将忽略字母的大小写
+- `Pattern.LITERAL` - 模式中的特殊字符没有任何特殊含义，在执行搜索时将被视为普通字符
+- `Pattern.UNICODE_CASE` - 将它与 `CASE_INSENSITIVE` 标志一起使用，也可以忽略英文字母之外的字母的大小写
+
+#### 正则表达式模式
+`Pattern.compile()方法的第一个参数是模式。他描述了正在搜索的内容`
+
+括号用于查找一系列字符：
+
+|表达式|描述|
+|----|----|
+|[abc]|从括号内的选项中查找一个字符|
+|[^abc]|找到一个不在括号内的字符|
+|[0-9]|从 0 到 9 范围内查找一个字符|
+
+#### 元字符
+
+元字符是具有特殊含义的字符：
+
+|元字符|描述|
+|----|----|
+| I | 查找由 I 分隔的任意一种模式的匹配项如: cat dog fish |
+|.|只查找任何字符的一个实例|
+|^|查找作为字符串开头的匹配项，如: ^Hello|
+|$|在字符串末尾查找匹配项，如: World$|
+|\d|找一个数字|
+|\s|查找空白字符|
+|\b|在这样的单词开头查找匹配项: \bWORD，或在这样的单词结尾处查找匹配项: WORD\b|
+|\uxxxx|查找十六进制数 xxxx 指定的 Unicode 字符|
+
+> 元字符第一个 “I” 严格意义上来说是 " | " 制表符的这个符号，但是由于Markdown格式无法写入，所以只能用I替代，在实际开发时，请使用 " | "!
+
+#### 量词
+
+量词定义数量：
+
+|量词|描述|
+|----|----|
+|n+|匹配任何至少包含一个 n 的字符串|
+|n*|匹配包含零次或多次出现 n 的任何字符串|
+|n?|匹配包含零次或一次出现 n 的任何字符串|
+|n{x}|匹配任何包含一系列 X n 的字符串|
+|n{x,y}|匹配任何包含 X 到 Y n 序列的字符串|
+|n{x,}|匹配任何包含至少 X n 的序列的字符串|
+
+> 注释: 如果您的表达式需要搜索其中一个特殊字符，您可以使用反斜杠 (\) 对其进行转义。在Java中，字符串中的反斜杠需要自己转义，所以需要两个反斜杠来转义特殊字符。例如，要搜索一个或多个问号，您可以使用以下表达式:"\\?"
+
+### Java线程
+
+线程允许程序通过同时执行多项操作来更有效地运行。
+
+线程可以用来在后台执行复杂的任务而不中断主程序。
+
+#### 创建线程
+创建线程有两种方法。
+
+它可以通过扩展`Thread`类并覆盖其`run()`方法来创建：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread1 extends Thread {
+  public void run() {
+    System.out.println("This code is running in a thread");
+  }
+}
+```
+
+另一种创建线程的方法是实现`Runnable`接口：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread2 implements Runnable {
+  public void run() {
+    System.out.println("This code is running in a thread");
+  }
+}
+```
+
+#### 运行线程
+
+如果该类扩展了`Thread`类，则可以通过创建该类的实例并调用其`start()`方法来运行线程：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread3 extends Thread{ 
+  public static void main(String[] args) {
+    MyThread3 thread = new MyThread3();
+
+    thread.start();
+    System.out.println("This code is outside of the thread");
+  }
+
+  public void run () {
+    System.out.println("This code is outside of the thread");
+  }
+}
+
+```
+
+如果该类实现了`Runnable`接口，则可以通过将类的实例传递给`Thread`对象的构造函数，然后调用线程的`start()`方法来运行线程:
+
+```java
+package org.code.develop.threading;
+
+public class MyThread4 implements Runnable{
+  public static void main(String[] args) {
+    MyThread4 obj = new MyThread4();
+    Thread thread = new Thread(obj);
+    thread.start();
+    System.out.println("This code is outside of the thread");
+  }
+
+  public void run () {
+    System.out.println("This code is outside of the thread");
+  }
+}
+```
+
+> "extending"和"implementing"线程之间的区别
+> 主要区别在于，当一个类扩展Thread类时，不能扩展任何其他类，但通过实现Runnable接口，也可以从另一个类中扩展，例如：`MyClass extends OtherClass implements Runnable`
+
+#### 并发问题
+
+因为线程与程序的其他部分同时运行，所以无法知道代码将以何种顺序运行。当线程和主程序同时读取和写入相同的变量时，其值是不可预测的。由此产生的问题称为并发问题
+
+下面演示变量数值的值不可预测的代码实例：
+
+```java
+package org.code.develop.threading;
+
+public class MyThread5 extends Thread{
+  public static int amount = 0;
+
+  public static void main(String[] args) {
+    MyThread5 thread  = new MyThread5();
+
+    thread.start();
+
+    System.out.println(amount);
+
+    amount++;
+
+    System.out.println(amount);
+  }
+
+  public void run() {
+    amount++;
+  }
+}
+```
+
+为了避免并发问题，最好在线程之间共享尽可能少的属性。如果需要共享属性，一种可能的解决方案是在使用线程可以更改的任何属性之前，使用线程的`isAlive()`方法检查线程是否已完成运行：
+
+下面演示使用`isAlive()`来防止并发问题：
+
+```java
+package org.code.develop.threading;
+
+public class MyClass extends Thread {
+  public static int amount = 0;
+
+  public static void main(String[] args) {
+    MyClass thread = new MyClass();
+    thread.start();
+    // 等待线程完成
+    while(thread.isAlive()) {
+    System.out.println("Waiting...");
+  }
+  // 更新 amount 并打印其值
+  System.out.println("Main: " + amount);
+  amount++;
+  System.out.println("Main: " + amount);
+  }
+  public void run() {
+    amount++;
+  }
+}
+```
+
+### JavaLambda表达式
+
+Lambda表达式是在Java9中添加的。
+
+Lambda表达式时一段小代码，他接受参数返回一个值。Lambda表达式类似于方法，但他们不需要名称，并且可以直接在方法题体中实现。
+
+#### 语法
+
+最简单的Lambda表达式包含一个参数和一个表达式：
+
+```java
+parameter -> expression;
+```
+
+要使用多个参数，请将它们括在括号中：
+
+```java
+(parameter1,parameter2) -> expression;
+```
+
+表达方式有限。它们必须立即返回一个值，并且它们不能包含变量，赋值或者语句，例如if或for。为了进行更复杂的操作，可以使用带有花括号的代码块。如果 Lambda 表达式需要返回一个值，那么代码块应该有一个 `return` 语句
+
+```java
+(parameter1, parameter2) -> { code block }
+```
+
+#### 使用 Lambda 表达式
+
+Lambda表达式通常作为参数传递给函数：
+
+下面演示在ArrayList的ForEach() 方法中使用一个 Lambda 表达式来打印列表中的每个项目：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+
+public class Lambda1 {
+  public static void main(String[] args) {
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+    numbers.add(5);
+    numbers.add(9);
+    numbers.add(8);
+    numbers.add(1);
+
+    numbers.forEach((n) -> {System.out.println(n);});
+  }
+}
+```
+
+如果变量的类型只是一个方法的接口，则Lambda表达式可以存储在变量中。Lambda表达式应具有与该方法相同数量的参数和相同的返回类型。Java中内置了许多此类接口，例如列表使用的`Consumer`接口（在`java.util`包中）
+
+下面演示使用Java的`Consumer`接口将 Lambda 表达式存储在变量中：
+
+```java
+package org.code;
+
+import java.util.ArrayList;
+import java.util.function.Consumer;
+
+public class LambdaConsumer {
+  public static void main(String[] args) {
+    ArrayList<Integer> numbers = new ArrayList<Integer>();
+
+    numbers.add(5);
+    numbers.add(9);
+    numbers.add(8);
+    numbers.add(1);
+
+    Consumer<Integer> method = (n) -> {System.out.println(n);};
+    numbers.forEach(method);
+  }
+}
+```
+
+要在方法中使用 Lambda 表达式，该方法应该有一个参数，其类型为单方法接口。调用接口的方法将运行 `Lambda` 表达式
+
+下面演示创建一个Lambda表达式作为参数的方法：
+
+```java
+package org.code;
+
+interface StringFunction {
+  String run(String str);
+  
+}
+
+public class MyLambdaClass {
+  public static void main(String[] args) {
+    StringFunction exclaim = (s) -> s + "!";
+    StringFunction ask = (s) -> s + "?";
+  }
+
+  public static void printFormatted(String str,StringFunction format) {
+    String result = format.run(str);
+    System.out.println(result);
+  }
+}
+```
+
+## Java文件处理
+
+文件处理是任何应用程序的组成部分。
+Java有多种创建，读取，更新和删除文件的方法
+
+#### Java文件处理
+
+`java.io`包中的`File`文件类允许我们处理文件
+要使用`File`类，须创建该类的对象，并指定文件吗或者目录名
+
+```java
+package org.code;
+
+import java.io.File; // 导入包
+
+public class JavaFileOperator {
+  public static void main(String[] args) {
+    File myObj = new File("filename.txt"); // 指定文件名
+  }
+}
+```
+
+File 类有许多有用的方法来创建和获取有关文件的信息。 例如:
+
+|方法|类型|描述|
+|---|---|---|
+|canRead()|Boolean|测试文件是否可读|
+|canWrite()|Boolean|测试文件是否可写|
+|createNewFile()|Boolean|创建一个空文件|
+|delete()|Boolean|删除文件|
+|exists()|Boolean|测试文件是否存在|
+|getName()|String|返回文件名|
+|getAbsolutePath()|String|返回文件的绝对路径名|
+|length()|Long|返回文件的大小（以字节为单位）|
+|list()|String[]|返回目录中文件的数组|
+|mkdir()|Boolean|创建目录|
+
+### Java创建文件和写入文件
+
+要在Java中创建文件，可以使用`createNewFile()`方法。此方法返回一个布尔值：如果文件创建成功，则返回：`true`，如果文件已存在，则返回：`false`。请注意，该方法包含在`try...catch`块中。这是必要的，因为如果发生错误（如某种原因无法创建文件）它会抛出`IOException`:
+
+```java
+package org.code.develop.FileOperations; // 定义包名，用于组织类文件
+
+import java.io.File;      // 导入 File 类，用于文件操作
+import java.io.IOException; // 导入 IOException 异常类，用于处理文件操作可能抛出的异常
+
+/**
+ * CreateFile 类用于在当前工作目录下创建一个名为 test.txt 的文件
+ */
+public class CreateFile {
+  public static void main(String[] args) {
+    try {
+      // 创建 File 对象，指定要创建的文件名（在当前工作目录下）
+      File myObj = new File("test.txt");
+
+      // 调用 createNewFile() 方法尝试创建文件
+      // 如果文件不存在，将创建并返回 true；如果文件已存在，则返回 false
+      if (myObj.createNewFile()) {
+        System.out.println("文件创建成功：" + myObj.getName()); // 打印成功消息
+      } else {
+        System.out.println("文件创建失败，已存在"); // 打印文件已存在的提示
+      }
+
+    } catch (IOException e) {
+      // 如果在创建文件过程中发生 I/O 异常，则输出错误信息并打印堆栈跟踪
+      System.out.println("发生错误！");
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+要在特定目录中创建文件（需要权限），请指定文件的路径并使用双反斜杠转义 "\" 字符（对于 Windows）。 在 Mac 和 Linux 上，您可以只写路径，例如: /Users/name/filename.txt
+
+```java
+File myObj = new File("C:\\Users\\MyName\\filename.txt");
+```
+
+#### 写入文件
+
+在下面的示例中，我们使用`FileWriter`类及其`write()`方法将一些文本写入我们在上面示例中创建的文件。请注意，当您完成对文件的写入后，应该使用`close()`方法关闭它：
+
+```java
+package org.code.develop.FileOperations;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteToFile {
+  public static void main(String[] args) {
+    try {
+      FileWriter myWriter = new FileWriter("Text1.txt");
+      myWriter.write("我是木棍");
+      myWriter.close();
+    }catch(IOException exception){
+      System.out.println("Error!");
+      exception.printStackTrace();
+    }
+  }
+}
+```
+
+### Java读取文件
+
+在下面的示例中，我们使用`Scanner`类来读取我们在上一张中撞见的文本文件的内容：
+
+```java
+package org.code.develop.FileOperations;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class ReadFile {
+  public static void main(String[] args) {
+    try {
+      File myObj = new File("Text1.txt");
+      Scanner myReader = new Scanner(myObj);
+      while (myReader.hasNextLine()) {
+        String data = myReader.nextLine();
+        System.out.println(data);
+      }
+      myReader.close();
+    } catch (FileNotFoundException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### 获取文件信息
+
+如果需要获取有关文件的更多信息，请使用任何`File`方法：
+
+```java
+import java.io.File;  // 导入 File 文件类
+
+public class GetFileInfo { 
+  public static void main(String[] args) {
+    File myObj = new File("filename.txt");
+    if (myObj.exists()) {
+      System.out.println("File name: " + myObj.getName());
+      System.out.println("Absolute path: " + myObj.getAbsolutePath());
+      System.out.println("Writeable: " + myObj.canWrite());
+      System.out.println("Readable " + myObj.canRead());
+      System.out.println("File size in bytes " + myObj.length());
+    } else {
+      System.out.println("The file does not exist.");
+    }
+  }
+}
+```
+
+> 注释: Java API 中有许多可用类可用于在 Java 中读取和写入文件: FileReader, BufferedReader, Files, Scanner, FileInputStream, FileWriter, BufferedWriter, FileOutputStream 等。使用哪一个取决于 Java 版本 您正在使用以及是否需要读取字节或字符，以及文件/行的大小等。
+
+### Java删除文件
+
+要在Java中删除文件，请使用`delete()`方法：
+
+```java
+import java.io.File;  // 导入 File 文件类
+
+public class DeleteFile {
+  public static void main(String[] args) { 
+    File myObj = new File("filename.txt"); 
+    if (myObj.delete()) { 
+      System.out.println("Deleted the file: " + myObj.getName());
+    } else {
+      System.out.println("Failed to delete the file.");
+    } 
+  } 
+}
+```
+
+输出将是:
+> Deleted the file: filename.txt
+
+#### 删除文件夹
+
+也可以删除文件夹。 但是，它必须为空:
+
+```java
+import java.io.File; 
+
+public class DeleteFolder {
+  public static void main(String[] args) { 
+    File myObj = new File("C:\\Users\\MyName\\Test"); 
+    if (myObj.delete()) { 
+      System.out.println("Deleted the folder: " + myObj.getName());
+    } else {
+      System.out.println("Failed to delete the folder.");
+    } 
+  } 
+}
+```
+
+输出：
+> Deleted the folder: Test
