@@ -1,6 +1,7 @@
 // 自动类型转换
 package org.code.general;
 
+@SuppressWarnings({})
 public class AutomaticConvertDetail {
     public static void main(String[] args) {
         /*

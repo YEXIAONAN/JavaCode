@@ -13,5 +13,8 @@ public class Array {
         for (String arr : mugay){
             System.out.println(arr);
         }
+        
+        String gay = "MuGay";
+        System.out.println(gay);
     }
 }
