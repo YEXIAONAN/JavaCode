@@ -76,7 +76,7 @@ We welcome contributions of all kinds — bug fixes, new features, code cleanup,
 1. **Fork the repository** via GitHub.
 2. **Clone the fork** to your local machine:
    ```bash
-   git clone https://github.com/your-username/JavaCode.git
+   git clone https://github.com/YEXIAONAN/JavaCode.git
    ```
 3. **Create a new branch**:
    ```bash

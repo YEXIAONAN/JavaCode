@@ -77,7 +77,7 @@ git clone [https://github.com/YEXIAONAN/JavaCode.git](https://github.com/YEXIAON
 1. **Fork 仓库**：点击 GitHub 页面右上角的 “Fork”。
 2. **克隆仓库到本地**：
    ```bash
-   git clone https://github.com/your-username/JavaCode.git
+   git clone https://github.com/YEXIAONAN/JavaCode.git
    ```
 3. **创建新分支**：
    ```bash
