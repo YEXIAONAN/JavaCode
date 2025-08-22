@@ -26,6 +26,17 @@ public class SwitchReviews {
         switch (user_input_case){
             case 1:
                 System.out.println(d + "今天想吃点什么？");
+                int user_input_case_1 = user_input_case + 1;
+                switch (user_input_case_1){
+                    case 2:
+                        System.out.println("我是小奶狗");
+                        break;
+                    case 4:
+                        System.out.println("?");
+                        break;
+                    default:
+                        System.out.println("exit");
+                }
                 break;
             case 2:
                 System.out.println(d + "退出");
@@ -33,6 +44,8 @@ public class SwitchReviews {
             default:
                 System.out.println(d + "退出系统，欢迎下次光临！");
         }
+
+        // 使用多个switch进行循环
 
 
 
