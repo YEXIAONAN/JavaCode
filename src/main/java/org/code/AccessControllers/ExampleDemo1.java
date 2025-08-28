@@ -10,7 +10,12 @@ public class ExampleDemo1 {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Main.Print();
+    }
+    public static class MainClass {
+
+
     }
 }
