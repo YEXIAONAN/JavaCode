@@ -42,19 +42,6 @@ public class Gelya {
                 }else {
                     System.out.println("error!");
                 }
-
-
-
-
-
         }
-
-
-
-
-
-
-
-
     }
 }
