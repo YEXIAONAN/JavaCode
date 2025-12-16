@@ -4456,3 +4456,12 @@ public class DeleteFolder {
 
 输出：
 > Deleted the folder: Test
+
+
+----
+
+
+### Java访问修饰符
+
+- java的方法声明长这样
+[访问修饰符][其他修饰符] 返回值类型 方法名（参数）

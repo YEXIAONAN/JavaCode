@@ -33,6 +33,21 @@ public class Test1 {
 
     }
     public static void main(String[] args) {
+        NoticeClass cs = new NoticeClass();
+
         System.out.println(Print.Info());
+        System.out.println();
+
+        System.out.println(cs.TestNotice());
+
+
     }
+
+    public static class NoticeClass {
+        public String TestNotice() {
+            return "Class Be Used";
+        }
+    }
+
+
 }
