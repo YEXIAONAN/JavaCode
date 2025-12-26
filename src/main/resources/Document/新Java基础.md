@@ -1127,7 +1127,7 @@ public class MyClass {
 输出：
 
 ```bash
-D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=14760" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes org.code.general.MyClass
+D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=14760" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes org.code.General.MyClass
 I am MuGay!
 
 进程已结束，退出代码为 0
@@ -1209,7 +1209,7 @@ public class MyMethodTest {
 可以在传递参数时传递多个参数：
 
 ```java
-package org.code.develop;
+package org.code.Develop;
 
 /**
  * 这是一个用于演示方法定义和调用的示例类。
@@ -1217,35 +1217,35 @@ package org.code.develop;
  * 并在main方法中展示了如何调用该方法。
  */
 public class MyMethodTest1 {
-    /**
-     * 静态方法t2用于打印人员的姓名和年龄信息。
-     * 该方法不返回任何值，直接将信息输出到控制台。
-     * 
-     * @param name 要打印的人员姓名，字符串类型
-     * @param age  要打印的人员年龄，整数类型
-     * 
-     * @示例
-     * t2("Alice", 25); // 控制台输出：姓名：Alice年龄：25
-     * 
-     * @注意
-     * 1. 该方法不会对输入的姓名和年龄进行有效性检查
-     * 2. 年龄参数应为合理的整数值，否则输出可能不符合预期
-     * 3. 输出格式中姓名和年龄之间没有分隔符，调用时需注意
-     */
-    static void t2 (String name, int age) {
-        System.out.println("姓名：" + name + "年龄：" + age);
-    }
+  /**
+   * 静态方法t2用于打印人员的姓名和年龄信息。
+   * 该方法不返回任何值，直接将信息输出到控制台。
+   *
+   * @param name 要打印的人员姓名，字符串类型
+   * @param age  要打印的人员年龄，整数类型
+   *
+   * @示例
+   * t2(" Alice ", 25); // 控制台输出：姓名：Alice年龄：25
+   *
+   * @注意
+   * 1. 该方法不会对输入的姓名和年龄进行有效性检查
+   * 2. 年龄参数应为合理的整数值，否则输出可能不符合预期
+   * 3. 输出格式中姓名和年龄之间没有分隔符，调用时需注意
+   */
+  static void t2(String name, int age) {
+    System.out.println("姓名：" + name + "年龄：" + age);
+  }
 
-    /**
-     * 程序的主入口点。
-     * 创建并初始化对象，调用t2方法展示其功能。
-     * 
-     * @param args 命令行参数，在本程序中未使用
-     */
-    public static void main(String[] args) {
-        // 调用t2方法，传入姓名"MuMu"和年龄18
-        t2("MuMu", 18);
-    }
+  /**
+   * 程序的主入口点。
+   * 创建并初始化对象，调用t2方法展示其功能。
+   *
+   * @param args 命令行参数，在本程序中未使用
+   */
+  public static void main(String[] args) {
+    // 调用t2方法，传入姓名"MuMu"和年龄18
+    t2("MuMu", 18);
+  }
 }
 ```
 
@@ -1271,21 +1271,21 @@ public class MyMethodTest1 {
 >   这时方法必须用`return`语句返回一个对应类型的值（比如`int`、`double`），否则就像 “小工人” 没完成你的要求，会报错。
 
 ```java
-package org.code.develop.Method;
+package org.code.Develop.Method;
 
 // 这是一个用于演示自定义方法定义与调用的类
 public class MyMethodTest3 {
-    // 定义一个静态方法myMethon，接收一个int类型的参数x
-    // 该方法的功能是对传入的参数x进行简单运算，返回5加上x的结果
-    static int myMethon(int x) {
-        return 5 + x;
-    }
+  // 定义一个静态方法myMethon，接收一个int类型的参数x
+  // 该方法的功能是对传入的参数x进行简单运算，返回5加上x的结果
+  static int myMethon(int x) {
+    return 5 + x;
+  }
 
-    public static void main(String[] args) {
-        // 调用myMethon方法，并传入参数3
-        // 将方法调用的返回值作为参数传递给System.out.println方法，用于在控制台打印输出
-        System.out.println(myMethon(3));
-    }
+  public static void main(String[] args) {
+    // 调用myMethon方法，并传入参数3
+    // 将方法调用的返回值作为参数传递给System.out.println方法，用于在控制台打印输出
+    System.out.println(myMethon(3));
+  }
 }
 ```
 
@@ -1294,17 +1294,17 @@ public class MyMethodTest3 {
 - 此示例返回方法的两个参数之和:
 
 ```java
-package org.code.develop.Method;
+package org.code.Develop.Method;
 
 public class MethodSum {
-    static int count(int x,int y) {
-        return x + y;
-    }
+  static int count(int x, int y) {
+    return x + y;
+  }
 
-    public static void main(String[] args) {
-        System.out.println("计算两数之和");
-        System.out.println(count(10,20));
-    }
+  public static void main(String[] args) {
+    System.out.println("计算两数之和");
+    System.out.println(count(10, 20));
+  }
 }
 ```
 
@@ -1313,18 +1313,18 @@ public class MethodSum {
 - 还可以将结果存储在变量中（推荐，因为这样更易于读取和维护）:
 
 ```java
-package org.code.develop.Method;
+package org.code.Develop.Method;
 
 public class MyMethod4 {
-    static int Sum (int x,int y){
-        return  x + y;
-    }
+  static int Sum(int x, int y) {
+    return x + y;
+  }
 
-    public static void main(String[] args) {
-        int z = Sum(7,8);
+  public static void main(String[] args) {
+    int z = Sum(7, 8);
 
-        System.out.println(z);
-    }
+    System.out.println(z);
+  }
 }
 ```
 
@@ -1335,22 +1335,22 @@ public class MyMethod4 {
 - 通常在方法中可以使用`if...else`
 
 ```java
-package org.code.develop.Method;
+package org.code.Develop.Method;
 
 public class MyMethodTest6 {
-    static void CheckAge(int age){
-        // 如果年龄小于18岁。打印"you are so small!"
-        // 大于18则输出"you are so big! we need you!!!"
-        if (age < 18){
-            System.out.println("you are so small!");
-        }else {
-            System.out.println("you are so big! we need you!!!");
-        }
+  static void CheckAge(int age) {
+    // 如果年龄小于18岁。打印"you are so small!"
+    // 大于18则输出"you are so big! we need you!!!"
+    if (age < 18) {
+      System.out.println("you are so small!");
+    } else {
+      System.out.println("you are so big! we need you!!!");
     }
+  }
 
-    public static void main(String[] args) {
-        CheckAge(20);
-    }
+  public static void main(String[] args) {
+    CheckAge(20);
+  }
 }
 
 ```
@@ -1370,22 +1370,22 @@ double myMethod(double x, double y);
 思考一下，下面的实例，它有两种添加不同类型数字的方法
 
 ```java
-package org.code.develop.Method;
+package org.code.Develop.Method;
 
 public class MyMethodTest7 {
   // 计算两数之和（INT）
-  static int plusMethodInt (int x, int y){
+  static int plusMethodInt(int x, int y) {
     return x + y;
   }
 
   // 计算两数之和（DOUBLE）
-  static double plusMethodDouble (Double x,Double y){
+  static double plusMethodDouble(Double x, Double y) {
     return x + y;
   }
 
   public static void main(String[] args) {
-    int myNum1 = plusMethodInt(8,5);
-    double myNum2 = plusMethodDouble(4.3,6.26);
+    int myNum1 = plusMethodInt(8, 5);
+    double myNum2 = plusMethodDouble(4.3, 6.26);
     System.out.println("int: " + myNum1);
     System.out.println("double: " + myNum2);
   }
@@ -1396,23 +1396,23 @@ public class MyMethodTest7 {
 在下面的实例中，我们重载`PlusMethod`方法，使其同时适用于`int`,`double`类型
 
 ```java
-package org.code.develop.Method;
+package org.code.Develop.Method;
 
 public class MyMethodTest8 {
-    static int plusMethod(int x, int y) {
-        return x + y;
-    }
+  static int plusMethod(int x, int y) {
+    return x + y;
+  }
 
-    static double plusMethod(double x, double y) {
-        return x + y;
-    }
+  static double plusMethod(double x, double y) {
+    return x + y;
+  }
 
-    public static void main(String[] args) {
-        int myNum1 = plusMethod(8, 5);
-        double myNum2 = plusMethod(4.3, 6.26);
-        System.out.println("int: " + myNum1);
-        System.out.println("double: " + myNum2);
-    }
+  public static void main(String[] args) {
+    int myNum1 = plusMethod(8, 5);
+    double myNum2 = plusMethod(4.3, 6.26);
+    System.out.println("int: " + myNum1);
+    System.out.println("double: " + myNum2);
+  }
 }
 
 ```
@@ -1427,16 +1427,16 @@ public class MyMethodTest8 {
 直接在方法中声明的变量在方法中任何位置都可以使用，位于声明它们的代码行之后：
 
 ```java
-package org.code.develop.test;
+package org.code.Develop.test;
 
 public class MyScope {
-    public static void main(String[] args) {
-        // 此处的代码不能使用 x
-        int x = 100;
+  public static void main(String[] args) {
+    // 此处的代码不能使用 x
+    int x = 100;
 
-        // 这里的代码可以使用 x
-        System.out.println(x);
-    }
+    // 这里的代码可以使用 x
+    System.out.println(x);
+  }
 }
 ```
 
@@ -1480,30 +1480,30 @@ public class MyClass {
 将两个数字相加很容易，但将一系列数字相加则更为复杂。在以下实例中，递归用于将一系列数字相加，方法是将其分解为两个数字相加的简单任务：
 
 ```java
-package org.code.develop.test;
+package org.code.Develop.test;
 
 // 定义一个名为MyRecursion的公共类
 public class MyRecursion {
-    // 程序的入口点，Java程序从main方法开始执行
-    public static void main(String[] args) {
-        // 调用sum方法计算1到10的累加和，并将结果赋值给result变量
-        int result = sum(10);
-        // 输出计算得到的累加和结果
-        System.out.println(result);
-    }
+  // 程序的入口点，Java程序从main方法开始执行
+  public static void main(String[] args) {
+    // 调用sum方法计算1到10的累加和，并将结果赋值给result变量
+    int result = sum(10);
+    // 输出计算得到的累加和结果
+    System.out.println(result);
+  }
 
-    // 定义一个静态方法sum，用于计算从1到k的整数累加和，方法接收一个整数参数k
-    public static int sum(int k){
-        // 判断k是否大于0，如果是则执行递归计算
-        if (k > 0){
-            // 这里是递归调用，返回k加上k-1到1的累加和
-            // 即把当前的k值与比它小1的数的累加和相加
-            return k + sum(k - 1);
-        }else {
-            // 当k不大于0（即k为0或负数）时，作为递归的终止条件，返回0
-            return 0;
-        }
+  // 定义一个静态方法sum，用于计算从1到k的整数累加和，方法接收一个整数参数k
+  public static int sum(int k) {
+    // 判断k是否大于0，如果是则执行递归计算
+    if (k > 0) {
+      // 这里是递归调用，返回k加上k-1到1的累加和
+      // 即把当前的k值与比它小1的数的累加和相加
+      return k + sum(k - 1);
+    } else {
+      // 当k不大于0（即k为0或负数）时，作为递归的终止条件，返回0
+      return 0;
     }
+  }
 }
 ```
 
@@ -1781,31 +1781,32 @@ public class Person {
 - 方法是在类中声明的，他们用于执行某些操作
 
 ```java
-package org.code.develop.test;
+package org.code.Develop.test;
 
 public class MyClass {
-    static void myMethod(){
-        System.out.println("Hello,World!");
-    }
+  static void myMethod() {
+    System.out.println("Hello,World!");
+  }
 }
 ```
 
 - `myMethod()`在调用时打印文本。要调用一个方法，请写出该方法的名称，后跟两个`()`和分号`;`
 
 下面，在`Main`中调用`myMethod()`
+
 ```java
-package org.code.develop.test;
+package org.code.Develop.test;
 
 public class MyClass {
-    static void myMethod(){
-        System.out.println("Hello,World!");
-    }
+  static void myMethod() {
+    System.out.println("Hello,World!");
+  }
 
-    public static void main(String[] args) {
-        myMethod();
-    }
+  public static void main(String[] args) {
+    myMethod();
+  }
 
-    // 输出"Hello,World!"
+  // 输出"Hello,World!"
 }
 
 ```
@@ -1822,8 +1823,9 @@ public class MyClass {
 你可以把它们看作是分别控制 `“方式”` 和 `“权限”` 的两个维度。
 
 下面，演示`static`静态或`public`公共方法之间的差异
+
 ```java
-package org.code.develop.test;
+package org.code.Develop.test;
 
 public class MyClassTest1 {
   // Static 方法
@@ -1868,7 +1870,7 @@ public class Car {
 
   // 在Main中调用上方的方法
   public static void main(String[] args) {
-    org.code.general.Car myCay = new org.code.general.Car(); // 创建对象
+    org.code.General.Car myCay = new org.code.General.Car(); // 创建对象
     myCay.fullThrottle(); // 调用方法
     myCay.speed(120); // 调用speed方法，传入参数
   }
@@ -1904,7 +1906,7 @@ Java中构造函数是一种用于初始化对象的**特殊方法**。在创建
 #### 创建构造函数
 
 ```java
-package org.code.develop.function;
+package org.code.Develop.function;
 
 public class MyClass {
   int x; // 创建类属性
@@ -1916,7 +1918,7 @@ public class MyClass {
   }
 
   public static void main(String[] args) {
-    org.code.develop.MyClass myObj = new org.code.develop.MyClass(); //创建一个 MyClass 类的对象（这将调用构造函数）
+    org.code.Develop.MyClass myObj = new org.code.Develop.MyClass(); //创建一个 MyClass 类的对象（这将调用构造函数）
     System.out.println(myObj.x); // 打印x的值
   }
 }
@@ -1936,7 +1938,7 @@ public class MyClass {
 下面将演示`int i`参数添加到构造函数中。在构造函数找那个，我们将 x 设置为 y （x = y） 。调用构造函时，我们向构造函数(5)传递一个参数，将参数x的值设置为5.
 
 ```java
-package org.code.develop.function;
+package org.code.Develop.function;
 
 /**
  * 这是一个演示Java类和构造函数用法的示例类。
@@ -1944,36 +1946,36 @@ package org.code.develop.function;
  * 并在main方法中展示了如何创建对象和访问实例变量。
  */
 public class MyClass1 {
-    // 声明一个名为x的整型实例变量，用于存储对象的状态
-    int x;
+  // 声明一个名为x的整型实例变量，用于存储对象的状态
+  int x;
 
-    /**
-     * 构造函数：用于初始化MyClass1对象
-     * @param y 用于初始化实例变量x的值
-     */
-    public MyClass1(int y) {
-        // 将参数y的值赋给当前对象的实例变量x
-        x = y;
-    }
+  /**
+   * 构造函数：用于初始化MyClass1对象
+   * @param y 用于初始化实例变量x的值
+   */
+  public MyClass1(int y) {
+    // 将参数y的值赋给当前对象的实例变量x
+    x = y;
+  }
 
-    /**
-     * 程序入口点
-     * @param args 命令行参数数组
-     */
-    public static void main(String[] args) {
-        // 创建MyClass1类的一个实例（对象），并通过构造函数传递初始值5
-        MyClass1 myObj = new MyClass1(5);
+  /**
+   * 程序入口点
+   * @param args 命令行参数数组
+   */
+  public static void main(String[] args) {
+    // 创建MyClass1类的一个实例（对象），并通过构造函数传递初始值5
+    MyClass1 myObj = new MyClass1(5);
 
-        // 访问对象的实例变量x并打印其值到控制台
-        System.out.println(myObj.x); // 输出结果：5
-    }
+    // 访问对象的实例变量x并打印其值到控制台
+    System.out.println(myObj.x); // 输出结果：5
+  }
 }
 ```
 
 也可以有任意多个参数
 
 ```java
-package org.code.develop.function;
+package org.code.Develop.function;
 
 /**
  * MultiParameterFunction 类用于演示如何通过构造函数传递多个参数
@@ -1981,42 +1983,42 @@ package org.code.develop.function;
  */
 public class MultiParameterFunction {
 
-    // 成员变量：记录年份（可以理解为出生年份或其他年份信息）
-    int PersonYear;
+  // 成员变量：记录年份（可以理解为出生年份或其他年份信息）
+  int PersonYear;
 
-    // 成员变量：记录名字
-    String PersonName;
+  // 成员变量：记录名字
+  String PersonName;
 
-    /**
-     * 构造函数：
-     * 在创建对象时被自动调用，用于初始化对象的成员变量。
-     * 构造函数名称必须与类名一致。
-     *
-     * @param Year  初始化年份的参数，赋值给成员变量 PersonYear
-     * @param Name  初始化姓名的参数，赋值给成员变量 PersonName
-     */
-    public MultiParameterFunction(int Year, String Name) {
-        // 将传入的参数 Year 赋值给成员变量 PersonYear
-        PersonYear = Year;
+  /**
+   * 构造函数：
+   * 在创建对象时被自动调用，用于初始化对象的成员变量。
+   * 构造函数名称必须与类名一致。
+   *
+   * @param Year  初始化年份的参数，赋值给成员变量 PersonYear
+   * @param Name  初始化姓名的参数，赋值给成员变量 PersonName
+   */
+  public MultiParameterFunction(int Year, String Name) {
+    // 将传入的参数 Year 赋值给成员变量 PersonYear
+    PersonYear = Year;
 
-        // 将传入的参数 Name 赋值给成员变量 PersonName
-        PersonName = Name;
-    }
+    // 将传入的参数 Name 赋值给成员变量 PersonName
+    PersonName = Name;
+  }
 
-    /**
-     * 主方法（程序入口）：
-     * Java 程序从 main 方法开始执行。
-     *
-     * @param args  命令行参数（此示例未使用）
-     */
-    public static void main(String[] args) {
-        // 使用构造函数创建 MultiParameterFunction 类的实例
-        // 并传入两个参数：年份 2007 和姓名 "MuGay"
-        MultiParameterFunction MPF = new MultiParameterFunction(2007, "MuGay");
+  /**
+   * 主方法（程序入口）：
+   * Java 程序从 main 方法开始执行。
+   *
+   * @param args  命令行参数（此示例未使用）
+   */
+  public static void main(String[] args) {
+    // 使用构造函数创建 MultiParameterFunction 类的实例
+    // 并传入两个参数：年份 2007 和姓名 "MuGay"
+    MultiParameterFunction MPF = new MultiParameterFunction(2007, "MuGay");
 
-        // 打印对象的成员变量，输出格式为：2007 MuGay
-        System.out.println(MPF.PersonYear + " " + MPF.PersonName);
-    }
+    // 打印对象的成员变量，输出格式为：2007 MuGay
+    System.out.println(MPF.PersonYear + " " + MPF.PersonName);
+  }
 }
 ```
 
@@ -2077,7 +2079,7 @@ public class MyClass
 - 如果不希望覆盖现有属性值，将属性声明为`final`
 
 ```java
-package org.code.develop.Modifier;
+package org.code.Develop.Modifier;
 
 public class MyFinal {
   final String name = "MuGay";
@@ -2099,7 +2101,7 @@ public class MyFinal {
 - `static`静态方法意味着可以在不创建类对象的情况下访问它，这与`pubic`不同
 
 ```java
-package org.code.develop.Modifier;
+package org.code.Develop.Modifier;
 
 public class MyStatic {
   // 静态方法
@@ -2129,7 +2131,7 @@ public class MyStatic {
 abstract 抽象方法属于abstract抽象类，它没有主体。主体由子类提供:
 
 ```java
-package org.code.develop.Modifier;
+package org.code.Develop.Modifier;
 
 // Code from filename: Person.java
 // 抽象类
@@ -2179,27 +2181,27 @@ class MyClass {
 两者的语法都是以 **get** 或 **set**开头，后跟变量名，第一个字母大写:
 
 ```java
-package org.code.develop.encapsulation;
+package org.code.Develop.encapsulation;
 
 // Person类，用于表示一个人的信息
 // 这里体现了封装的概念，将数据（如name）隐藏起来，通过公共的方法（getter和setter）来访问和修改
 public class Person {
-    // 私有属性name，用于存储人的名字
-    // 使用private修饰符，将其封装起来，外部类不能直接访问
-    private String name;
+  // 私有属性name，用于存储人的名字
+  // 使用private修饰符，将其封装起来，外部类不能直接访问
+  private String name;
 
-    // Getter方法，用于获取name属性的值
-    // 外部类可以通过调用这个方法来获取name的值，而不是直接访问私有属性
-    public String getName() {
-        return name;
-    }
+  // Getter方法，用于获取name属性的值
+  // 外部类可以通过调用这个方法来获取name的值，而不是直接访问私有属性
+  public String getName() {
+    return name;
+  }
 
-    // Setter方法，用于设置name属性的值
-    // 外部类可以通过调用这个方法来设置name的值，并且可以在方法内部添加一些逻辑来验证或处理新的值
-    // 例如，可以在这里添加对新名字的长度限制等验证逻辑
-    public void setName(String newName) {
-        this.name = newName;
-    }
+  // Setter方法，用于设置name属性的值
+  // 外部类可以通过调用这个方法来设置name的值，并且可以在方法内部添加一些逻辑来验证或处理新的值
+  // 例如，可以在这里添加对新名字的长度限制等验证逻辑
+  public void setName(String newName) {
+    this.name = newName;
+  }
 }
 ```
 
@@ -2386,21 +2388,22 @@ class MyMainClass {
 要访问内部类，请创建外部类的对象，然后创建内部类的对象：
 
 ```java
-package org.code.develop.inheritance;
+package org.code.Develop.inheritance;
 
 class OuterClass {
-    int x = 10;
-    class InnerClass {
-        int y = 5;
-    }
+  int x = 10;
+
+  class InnerClass {
+    int y = 5;
+  }
 }
 
 public class MyNestedClass {
-    public static void main(String[] args) {
-        OuterClass myOuter = new OuterClass();
-        OuterClass.InnerClass myInner = myOuter.new InnerClass();
-        System.out.println(myInner.y + myOuter.x);
-    }
+  public static void main(String[] args) {
+    OuterClass myOuter = new OuterClass();
+    OuterClass.InnerClass myInner = myOuter.new InnerClass();
+    System.out.println(myInner.y + myOuter.x);
+  }
 }
 ```
 
@@ -2411,24 +2414,25 @@ public class MyNestedClass {
 如果不希望外部对象访问内部类，请将该类声明为`private`
 
 ```java
-package org.code.develop.inheritance;
+package org.code.Develop.inheritance;
 
 class OutClass {
-    int x = 9;
-    private class InnerClass {
-        int y = 1;
-    }
+  int x = 9;
+
+  private class InnerClass {
+    int y = 1;
+  }
 }
 
 public class PrivateInnerClass {
-    public static void main(String[] args) {
-        OutClass out = new OutClass();
+  public static void main(String[] args) {
+    OutClass out = new OutClass();
 
-        // 将上方的内部类修改为`private`编译器会立即报错，因为无法访问到
-        OutClass.InnerClass outInner = out.new InnerClass();
+    // 将上方的内部类修改为`private`编译器会立即报错，因为无法访问到
+    OutClass.InnerClass outInner = out.new InnerClass();
 
-        System.out.println(out.x + outInner.y);
-    }
+    System.out.println(out.x + outInner.y);
+  }
 }
 ```
 
@@ -2436,22 +2440,23 @@ public class PrivateInnerClass {
 内部类也可以是`static`静态的，这意味着可以在不创建外部类的对象的情况下访问它。
 
 ```java
-package org.code.develop.inheritance;
+package org.code.Develop.inheritance;
 
 class MyOutClass {
-    int x = 8;
-    static class MyInnerClass {
-        int y = 2;
-    }
+  int x = 8;
+
+  static class MyInnerClass {
+    int y = 2;
+  }
 }
 
 
 public class StaticInnerClass {
-    public static void main(String[] args) {
-        MyOutClass.MyInnerClass MyInner = new MyOutClass.MyInnerClass();
+  public static void main(String[] args) {
+    MyOutClass.MyInnerClass MyInner = new MyOutClass.MyInnerClass();
 
-        System.out.println(MyInner.y);
-    }
+    System.out.println(MyInner.y);
+  }
 }
 ```
 
@@ -2463,12 +2468,13 @@ public class StaticInnerClass {
 内部类的一个优点是，它们可以访问外部类的属性和方法。
 
 ```java
-package org.code.develop.inheritance;
+package org.code.Develop.inheritance;
 
 class OClass {
   int x = 10;
+
   class IClass {
-    public int myInnerMethod(){
+    public int myInnerMethod() {
       return x;
     }
   }
@@ -2572,48 +2578,50 @@ Java中实现**abstraction**抽象的另一种方法是使用接口。
 An ``interface``接口是一个完全“抽象类”，用于将相关方法与空实体分组：
 
 ```java
-package org.code.develop.Interface;
+package org.code.Develop.Interface;
 
 interface Animal {
-    // 接口方法
-    public void animalSound();
+  // 接口方法
+  public void animalSound();
 
-    // 接口方法
-    public void run();
+  // 接口方法
+  public void run();
 }
 ```
 
 要访问接口方法，接口必须由另一个具有`implements`关键字（而不是`extends`）的类“实现”（类似于继承）。接口方法的主体由“implements”类提供：
 
 ```java
-package org.code.develop.Interface;
+package org.code.Develop.Interface;
 
-interface Animal{
-    public void animalSound();
-    public void sleep();
+interface Animal {
+  public void animalSound();
+
+  public void sleep();
 }
 
 // Pig “实现” Animal 接口
 class Pig implements Animal {
-    public void animalSound(){
-        // 这里提供 animalSound() 主体
-        System.out.println("I am Pig");
-    }
-    public void sleep() {
-        System.out.println("Zzz...");
-    }
+  public void animalSound() {
+    // 这里提供 animalSound() 主体
+    System.out.println("I am Pig");
+  }
+
+  public void sleep() {
+    System.out.println("Zzz...");
+  }
 }
 
 
 // Main方法入口
 class MyMainClass {
-    public static void main(String[] args) {
-        // 创建Pig对象
-        Pig myPig = new Pig();
+  public static void main(String[] args) {
+    // 创建Pig对象
+    Pig myPig = new Pig();
 
-        myPig.animalSound();
-        myPig.sleep();
-    }
+    myPig.animalSound();
+    myPig.sleep();
+  }
 }
 ```
 
@@ -2634,34 +2642,34 @@ class MyMainClass {
 要实现多个接口，用逗号分隔：
 
 ```java
-package org.code.develop.Interface;
+package org.code.Develop.Interface;
 
 interface FirstInterface {
-    // 接口方法
-    public void myMethod();
+  // 接口方法
+  public void myMethod();
 }
 
 interface SecondInterface {
-    public void myOtherMethod();
+  public void myOtherMethod();
 }
 
-class DemoClass implements FirstInterface,SecondInterface {
-    public void myMethod() {
-        System.out.println("Some text...");
-    }
+class DemoClass implements FirstInterface, SecondInterface {
+  public void myMethod() {
+    System.out.println("Some text...");
+  }
 
-    public void myOtherMethod() {
-        System.out.println("some other text...");
-    }
+  public void myOtherMethod() {
+    System.out.println("some other text...");
+  }
 }
 
 class MainClass {
-    public static void main(String[] args) {
-        DemoClass myObj = new DemoClass();
+  public static void main(String[] args) {
+    DemoClass myObj = new DemoClass();
 
-        myObj.myMethod();
-        myObj.myOtherMethod();
-    }
+    myObj.myMethod();
+    myObj.myOtherMethod();
+  }
 }
 ```
 
@@ -2670,12 +2678,12 @@ class MainClass {
 要创建`enum`，请使用`enum`关键字（而不是类或者接口），并用逗号分隔常量。请注意，其应为大写字母
 
 ```java
-package org.code.develop.Enums;
+package org.code.Develop.Enums;
 
 enum Level {
-    LOW,
-    MEDIUM,
-    HIGH
+  LOW,
+  MEDIUM,
+  HIGH
 }
 ```
 
@@ -2703,19 +2711,19 @@ public class enums {
 还可以在类中具有enum枚举：
 
 ```java
-package org.code.develop.Enums;
+package org.code.Develop.Enums;
 
 public class MyClass {
-    enum Level {
-        LOW,
-        MEDIUM,
-        HIGH
-    }
+  enum Level {
+    LOW,
+    MEDIUM,
+    HIGH
+  }
 
-    public static void main(String[] args) {
-        Level myVar = Level.HIGH;
-        System.out.println(myVar);
-    }
+  public static void main(String[] args) {
+    Level myVar = Level.HIGH;
+    System.out.println(myVar);
+  }
 }
 ```
 
@@ -2723,35 +2731,35 @@ public class MyClass {
 枚举通常用于`switch`语句中检查相应的值：
 
 ```java
-package org.code.develop.Enums;
+package org.code.Develop.Enums;
 
 enum Size {
-    LOW,
-    MEDIUM,
-    HIGH
+  LOW,
+  MEDIUM,
+  HIGH
 }
 
 public class SwitchEnum {
-    public static void main(String[] args) {
-        Size mySize = Size.HIGH;
+  public static void main(String[] args) {
+    Size mySize = Size.HIGH;
 
-        switch (mySize){
-            case LOW :
-                System.out.println("Low Size");
-                break;
-            case MEDIUM:
-                System.out.println("MEDIUM Size");
-                break;
-            case HIGH:
-                System.out.println("you are so high!");
-                break;
-        }
+    switch (mySize) {
+      case LOW:
+        System.out.println("Low Size");
+        break;
+      case MEDIUM:
+        System.out.println("MEDIUM Size");
+        break;
+      case HIGH:
+        System.out.println("you are so high!");
+        break;
     }
+  }
 }
 ```
 
 输出：
-> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=10292" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.develop.Enums.SwitchEnum
+> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=10292" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.Develop.Enums.SwitchEnum
 > you are so high!
 > 
 > 进程已结束，退出代码为 0
@@ -2760,20 +2768,20 @@ public class SwitchEnum {
 枚举中有一个`values()`方法，该方法返回所有枚举常量的数组。如果要循环遍历枚举常量，此方法非常有效：
 
 ```java
-package org.code.develop.Enums;
+package org.code.Develop.Enums;
 
 public class LoopThroughTheEnumeration {
-    public static void main(String[] args) {
-        for (Size mySize : Size.values()) {
-            System.out.println(mySize);
-        }
+  public static void main(String[] args) {
+    for (Size mySize : Size.values()) {
+      System.out.println(mySize);
     }
+  }
 }
 ```
 
 
 输出：
-> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=13276" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.develop.Enums.LoopThroughTheEnumeration
+> D:\develop\JDK17\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.2.3\lib\idea_rt.jar=13276" -Dfile.encoding=UTF-8 -classpath D:\TestCode\Java\JavaCode\target\classes;C:\Users\Karey\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\Karey\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\Karey\.m2\repository\com\google\genai\google-genai\1.0.0\google-genai-1.0.0.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-oauth2-http\1.30.1\google-auth-library-oauth2-http-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value-annotations\1.11.0\auto-value-annotations-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\Karey\.m2\repository\com\google\auth\google-auth-library-credentials\1.30.1\google-auth-library-credentials-1.30.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client\1.45.2\google-http-client-1.45.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-context\1.68.2\grpc-context-1.68.2.jar;C:\Users\Karey\.m2\repository\io\grpc\grpc-api\1.68.2\grpc-api-1.68.2.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-api\0.31.1\opencensus-api-0.31.1.jar;C:\Users\Karey\.m2\repository\io\opencensus\opencensus-contrib-http-util\0.31.1\opencensus-contrib-http-util-0.31.1.jar;C:\Users\Karey\.m2\repository\com\google\http-client\google-http-client-gson\1.45.2\google-http-client-gson-1.45.2.jar;C:\Users\Karey\.m2\repository\com\google\code\gson\gson\2.11.0\gson-2.11.0.jar;C:\Users\Karey\.m2\repository\com\google\guava\guava\33.3.1-android\guava-33.3.1-android.jar;C:\Users\Karey\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\Karey\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\Karey\.m2\repository\org\checkerframework\checker-qual\3.43.0\checker-qual-3.43.0.jar;C:\Users\Karey\.m2\repository\com\google\errorprone\error_prone_annotations\2.36.0\error_prone_annotations-2.36.0.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpclient\4.5.14\httpclient-4.5.14.jar;C:\Users\Karey\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\Karey\.m2\repository\commons-codec\commons-codec\1.11\commons-codec-1.11.jar;C:\Users\Karey\.m2\repository\org\apache\httpcomponents\httpcore\4.4.16\httpcore-4.4.16.jar;C:\Users\Karey\.m2\repository\com\google\auto\value\auto-value\1.11.0\auto-value-1.11.0.jar;C:\Users\Karey\.m2\repository\com\google\api\api-common\2.42.1\api-common-2.42.1.jar;C:\Users\Karey\.m2\repository\javax\annotation\javax.annotation-api\1.3.2\javax.annotation-api-1.3.2.jar;C:\Users\Karey\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.17.2\jackson-databind-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.17.2\jackson-annotations-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.17.2\jackson-core-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.17.2\jackson-datatype-jdk8-2.17.2.jar;C:\Users\Karey\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.17.2\jackson-datatype-jsr310-2.17.2.jar;C:\Users\Karey\.m2\repository\org\java-websocket\Java-WebSocket\1.6.0\Java-WebSocket-1.6.0.jar;C:\Users\Karey\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\Karey\.m2\repository\org\jspecify\jspecify\1.0.0\jspecify-1.0.0.jar org.code.Develop.Enums.LoopThroughTheEnumeration
 > LOW
 > MEDIUM
 > HIGH
@@ -3079,24 +3087,24 @@ i.size();
 我们可以使用for循环遍历ArrayList中的元素，并使用siez.()方法指定循环应运行的次数：
 
 ```java
-package org.code.develop;
+package org.code.Develop;
 
 import java.util.ArrayList;
 
 public class ArrayListFor {
-    public static void main(String[] args) {
-        ArrayList<String> cars = new ArrayList<String>();
+  public static void main(String[] args) {
+    ArrayList<String> cars = new ArrayList<String>();
 
-        cars.add("MuGay");
-        cars.add("XiaoBa");
-        cars.add("High");
-        cars.add("SmallGay");
+    cars.add("MuGay");
+    cars.add("XiaoBa");
+    cars.add("High");
+    cars.add("SmallGay");
 
-        for (int i = 0; i < cars.size();i++){
-            System.out.println(cars.get(i));
-        }
-
+    for (int i = 0; i < cars.size(); i++) {
+      System.out.println(cars.get(i));
     }
+
+  }
 }
 ```
 
@@ -3890,8 +3898,8 @@ public class IfThrow {
 输出
 
 > Exception in thread "main" java.lang.ArithmeticException: 访问拒绝 - 未满18岁！
-> at org.code.general.IfThrow.checkAge(IfThrow.java:6)
-> at org.code.general.IfThrow.main(IfThrow.java:13)
+> at org.code.General.IfThrow.checkAge(IfThrow.java:6)
+> at org.code.General.IfThrow.main(IfThrow.java:13)
 
 如果年龄为20岁，则不会抛出异常
 
@@ -3922,10 +3930,11 @@ A：正则表达式可以用于执行所有类型的文本搜索和文本替换�
 下面演示，从句中找出是否出现 “MuGay” 这个词：
 
 ```java
-// 声明包名，表示该类属于 org.code.develop.RegularExpression 包
-package org.code.develop.RegularExpression;
+// 声明包名，表示该类属于 org.code.Develop.RegularExpression 包
+package org.code.Develop.RegularExpression;
 
 // 导入 Java 正则表达式相关的类
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -3937,7 +3946,7 @@ public class FindMuGay {
 
   // 主方法：程序入口点
   public static void main(String[] args) {
-    
+
     // 创建一个正则表达式模式对象，匹配字符串 "MuGay"，忽略大小写
     Pattern pattern = Pattern.compile("MuGay", Pattern.CASE_INSENSITIVE);
 
@@ -4032,7 +4041,7 @@ matcher() 方法用于搜索字符串中的模式。它返回一个 Matcher 对�
 它可以通过扩展`Thread`类并覆盖其`run()`方法来创建：
 
 ```java
-package org.code.develop.threading;
+package org.code.Develop.threading;
 
 public class MyThread1 extends Thread {
   public void run() {
@@ -4044,7 +4053,7 @@ public class MyThread1 extends Thread {
 另一种创建线程的方法是实现`Runnable`接口：
 
 ```java
-package org.code.develop.threading;
+package org.code.Develop.threading;
 
 public class MyThread2 implements Runnable {
   public void run() {
@@ -4058,9 +4067,9 @@ public class MyThread2 implements Runnable {
 如果该类扩展了`Thread`类，则可以通过创建该类的实例并调用其`start()`方法来运行线程：
 
 ```java
-package org.code.develop.threading;
+package org.code.Develop.threading;
 
-public class MyThread3 extends Thread{ 
+public class MyThread3 extends Thread {
   public static void main(String[] args) {
     MyThread3 thread = new MyThread3();
 
@@ -4068,7 +4077,7 @@ public class MyThread3 extends Thread{
     System.out.println("This code is outside of the thread");
   }
 
-  public void run () {
+  public void run() {
     System.out.println("This code is outside of the thread");
   }
 }
@@ -4078,9 +4087,9 @@ public class MyThread3 extends Thread{
 如果该类实现了`Runnable`接口，则可以通过将类的实例传递给`Thread`对象的构造函数，然后调用线程的`start()`方法来运行线程:
 
 ```java
-package org.code.develop.threading;
+package org.code.Develop.threading;
 
-public class MyThread4 implements Runnable{
+public class MyThread4 implements Runnable {
   public static void main(String[] args) {
     MyThread4 obj = new MyThread4();
     Thread thread = new Thread(obj);
@@ -4088,7 +4097,7 @@ public class MyThread4 implements Runnable{
     System.out.println("This code is outside of the thread");
   }
 
-  public void run () {
+  public void run() {
     System.out.println("This code is outside of the thread");
   }
 }
@@ -4104,13 +4113,13 @@ public class MyThread4 implements Runnable{
 下面演示变量数值的值不可预测的代码实例：
 
 ```java
-package org.code.develop.threading;
+package org.code.Develop.threading;
 
-public class MyThread5 extends Thread{
+public class MyThread5 extends Thread {
   public static int amount = 0;
 
   public static void main(String[] args) {
-    MyThread5 thread  = new MyThread5();
+    MyThread5 thread = new MyThread5();
 
     thread.start();
 
@@ -4132,7 +4141,7 @@ public class MyThread5 extends Thread{
 下面演示使用`isAlive()`来防止并发问题：
 
 ```java
-package org.code.develop.threading;
+package org.code.Develop.threading;
 
 public class MyClass extends Thread {
   public static int amount = 0;
@@ -4141,14 +4150,15 @@ public class MyClass extends Thread {
     MyClass thread = new MyClass();
     thread.start();
     // 等待线程完成
-    while(thread.isAlive()) {
-    System.out.println("Waiting...");
+    while (thread.isAlive()) {
+      System.out.println("Waiting...");
+    }
+    // 更新 amount 并打印其值
+    System.out.println("Main: " + amount);
+    amount++;
+    System.out.println("Main: " + amount);
   }
-  // 更新 amount 并打印其值
-  System.out.println("Main: " + amount);
-  amount++;
-  System.out.println("Main: " + amount);
-  }
+
   public void run() {
     amount++;
   }
@@ -4298,7 +4308,7 @@ File 类有许多有用的方法来创建和获取有关文件的信息。 例�
 要在Java中创建文件，可以使用`createNewFile()`方法。此方法返回一个布尔值：如果文件创建成功，则返回：`true`，如果文件已存在，则返回：`false`。请注意，该方法包含在`try...catch`块中。这是必要的，因为如果发生错误（如某种原因无法创建文件）它会抛出`IOException`:
 
 ```java
-package org.code.develop.FileOperations; // 定义包名，用于组织类文件
+package org.code.Develop.FileOperations; // 定义包名，用于组织类文件
 
 import java.io.File;      // 导入 File 类，用于文件操作
 import java.io.IOException; // 导入 IOException 异常类，用于处理文件操作可能抛出的异常
@@ -4340,7 +4350,7 @@ File myObj = new File("C:\\Users\\MyName\\filename.txt");
 在下面的示例中，我们使用`FileWriter`类及其`write()`方法将一些文本写入我们在上面示例中创建的文件。请注意，当您完成对文件的写入后，应该使用`close()`方法关闭它：
 
 ```java
-package org.code.develop.FileOperations;
+package org.code.Develop.FileOperations;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -4351,7 +4361,7 @@ public class WriteToFile {
       FileWriter myWriter = new FileWriter("Text1.txt");
       myWriter.write("我是木棍");
       myWriter.close();
-    }catch(IOException exception){
+    } catch (IOException exception) {
       System.out.println("Error!");
       exception.printStackTrace();
     }
@@ -4364,7 +4374,7 @@ public class WriteToFile {
 在下面的示例中，我们使用`Scanner`类来读取我们在上一张中撞见的文本文件的内容：
 
 ```java
-package org.code.develop.FileOperations;
+package org.code.Develop.FileOperations;
 
 import java.io.File;
 import java.io.FileNotFoundException;

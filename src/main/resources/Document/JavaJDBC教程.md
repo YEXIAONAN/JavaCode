@@ -22,7 +22,7 @@ JDBC（Java Database Connectivity）是 Java 提供的标准 API，旨在实现 
 将来需要创建自己的JDBC程序时，可以使用这个示例来当作**模板**
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.*;
 
@@ -34,9 +34,9 @@ public class FirstExample {
 
     public static void main(String[] args) {
         // Open a connection
-        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(QUERY);) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(QUERY);) {
             // Extract data from result set
             while (rs.next()) {
                 // Retrieve by column name
@@ -187,7 +187,7 @@ URL 格式中所有突出显示的部分都是静态的，只需根据数据库�
 #### 示例代码
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -198,14 +198,14 @@ public class JDBCExample {
 
     // 定义JDBC连接数据库信息
     static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/?useSSL=false&allowPublicKeyRetrieval=true";
-    static final String MySQL_USER= "root";
+    static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
 
     public static void main(String[] args) {
         // 打开一个连接
-        try (Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
              Statement stmt = conn.createStatement();
-        ){
+        ) {
             String sql = "CREATE DATABASE TEST";
             stmt.executeLargeUpdate(sql);
             System.out.println("数据库创建完毕");
@@ -221,22 +221,21 @@ public class JDBCExample {
 ## JDBC - 选择数据库示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class JDBCSelectDatabase {
-    static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
 
     public static void main(String[] args) {
-        try (Connection conn  = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);){
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);) {
             System.out.println("Database 已选择");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -246,7 +245,7 @@ public class JDBCSelectDatabase {
 ## JDBC - Drop Database 删除数据库示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -254,18 +253,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBCDeleteDatabase {
-    private static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    private static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     private static final String MySQL_USER = "root";
     private static final String MySQL_PASSWORD = "123456";
 
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
              Statement stat = conn.createStatement()
-        ){
+        ) {
             String delete_sql = "DROP DATABASE TEST";
             stat.executeLargeUpdate(delete_sql);
             System.out.println("Database 删除完毕");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -275,7 +274,7 @@ public class JDBCDeleteDatabase {
 ## JDBC - CREATE TABLE 创建表示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -283,20 +282,20 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBCCreateTable {
-    static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
 
     public static void main(String[] args) {
-        try(Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
-            Statement stat = conn.createStatement();
-        ){
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
+             Statement stat = conn.createStatement();
+        ) {
             String sql = "CREATE TABLE TEST_TABLE" +
                     " (id int," +
                     "name varchar(20))";
             stat.executeLargeUpdate(sql);
             System.out.println("Table 创建完毕");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -306,7 +305,7 @@ public class JDBCCreateTable {
 ## JDBC - DROP TABLE 删除表示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -315,18 +314,18 @@ import java.sql.Statement;
 
 public class JDBCDeleteTable {
 
-    static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
 
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
              Statement stat = conn.createStatement();
-        ){
+        ) {
             String sql = "drop table TEST_TABLE";
             stat.executeLargeUpdate(sql);
             System.out.println("Table 已删除");
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -336,7 +335,7 @@ public class JDBCDeleteTable {
 ## JDBC - INSERT INTO 插入记录示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -344,21 +343,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class JDBCInsertInto {
-    static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
 
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
              Statement stat = conn.createStatement();
-        ){
+        ) {
             String sql = "insert into employees values" +
                     "(NULL,'Bob Li', 32, 'DevOps Engineer', '2021-11-01')," +
                     "(NULL,'Cindy Wang', 25, 'QA Tester', '2023-03-10')," +
                     "(NULL,'David Chen', 40, 'Project Manager', '2020-01-20');";
 
             stat.executeLargeUpdate(sql);
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -368,23 +367,23 @@ public class JDBCInsertInto {
 ## JDBC - Select 选择记录示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.*;
 
 public class JDBCQuery {
 
-    static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
     static final String QUERY = "select id,name,age,position,hire_date from employees";
 
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
              Statement stat = conn.createStatement();
              ResultSet rs = stat.executeQuery(QUERY);
         ) {
-            while (rs.next()){
+            while (rs.next()) {
                 System.out.println("ID:" + rs.getInt("id"));
                 System.out.println("Name:" + rs.getString("name"));
                 System.out.println("Age:" + rs.getInt("age"));
@@ -392,7 +391,7 @@ public class JDBCQuery {
                 System.out.println("hire_date:" + rs.getDate("hire_date"));
             }
 
-        }catch (SQLException exception){
+        } catch (SQLException exception) {
             exception.printStackTrace();
         }
     }
@@ -410,19 +409,19 @@ public class JDBCQuery {
 ## JDBC - UPDATE 更新记录示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.*;
 
 public class JDBCUpdate {
-    static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
     static final String QUERY = "select id,name,age,position,hire_date from employees";
+
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
-             Statement stat = conn.createStatement())
-        {
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
+             Statement stat = conn.createStatement()) {
             String sql = "update employees " +
                     "set age = 30 where id = 1";
             stat.executeLargeUpdate(sql);
@@ -430,12 +429,12 @@ public class JDBCUpdate {
             // 这个是查询语句，放在这里是因为我们需要先update再查询，不然放在前面查询没用
             ResultSet rs = stat.executeQuery(QUERY);
 
-            while (rs.next()){
+            while (rs.next()) {
                 System.out.println("id:" + rs.getInt("id"));
                 System.out.println("name:" + rs.getString("name"));
                 System.out.println("age:" + rs.getInt("age"));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -446,19 +445,19 @@ public class JDBCUpdate {
 ## JDBC - Delete 删除记录示例
 
 ```java
-package org.code.jdbc;
+package org.code.JDBC;
 
 import java.sql.*;
 
 public class JDBCDelete {
-    static final String  MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
+    static final String MySQL_URL = "jdbc:mysql://172.16.7.100:3306/food?useSSL=false&allowPublicKeyRetrieval=true";
     static final String MySQL_USER = "root";
     static final String MySQL_PASSWORD = "123456";
     static final String QUERY = "select id,name,age,position,hire_date from employees";
+
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection(MySQL_URL,MySQL_USER,MySQL_PASSWORD);
-             Statement stat = conn.createStatement())
-        {
+        try (Connection conn = DriverManager.getConnection(MySQL_URL, MySQL_USER, MySQL_PASSWORD);
+             Statement stat = conn.createStatement()) {
             String sql = "delete from employees where id = 1";
 
             stat.executeLargeUpdate(sql);
@@ -466,12 +465,12 @@ public class JDBCDelete {
             // 这个是查询语句，放在这里是因为我们需要先update再查询，不然放在前面查询没用
             ResultSet rs = stat.executeQuery(QUERY);
 
-            while (rs.next()){
+            while (rs.next()) {
                 System.out.println("id:" + rs.getInt("id"));
                 System.out.println("name:" + rs.getString("name"));
                 System.out.println("age:" + rs.getInt("age"));
             }
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
